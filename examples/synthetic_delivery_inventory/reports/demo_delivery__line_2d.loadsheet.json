@@ -1,0 +1,265 @@
+{
+  "schema": "segwise.loadsheet/1",
+  "generated_by": "segwise 0.1.0",
+  "generated_at": "2026-11-13T17:04:25+00:00",
+  "source": {
+    "path": "/data/demo_delivery/line_2d.sgy",
+    "file_name": "line_2d.sgy",
+    "size_bytes": 939600,
+    "fingerprint": "29b0a03e3129b5e6"
+  },
+  "status": "ready",
+  "status_reason": "Standard layout and a confirmed coordinate system. Loads as it is.",
+  "summary": "2D post-stack, CDP 2000-2899, 900 traces x 200 samples @ 4 ms, EPSG:23031",
+  "layout": {
+    "endian": "big",
+    "text_encoding": "ebcdic",
+    "revision": "1.0",
+    "ns": 200,
+    "dt_us": 4000.0,
+    "n_traces": 900,
+    "data_offset": 3600,
+    "variable_length": false,
+    "is_su": false,
+    "sample_format": 1,
+    "declared_format": 1
+  },
+  "geometry": {
+    "kind": "2D post-stack",
+    "cdp": {
+      "byte": 21,
+      "type": "int32"
+    },
+    "sp": {
+      "byte": 197,
+      "type": "int32"
+    },
+    "x": {
+      "byte": 181,
+      "type": "int32"
+    },
+    "y": {
+      "byte": 185,
+      "type": "int32"
+    },
+    "scalar_header": -100,
+    "scalar_effective": -100,
+    "swap_xy": false,
+    "coord_type": "projected",
+    "coordinate_units_code": 1,
+    "key_min": 2000,
+    "key_max": 2899,
+    "trace_spacing": 12.377095782394235,
+    "line_length": 11191.305537209986,
+    "centre_lonlat": [
+      4.91389,
+      54.8399
+    ]
+  },
+  "crs": {
+    "coord_type": "projected",
+    "status": "confirmed",
+    "chosen": {
+      "epsg": 23031,
+      "name": "ED50 / UTM zone 31N",
+      "reasons": [
+        "ED50 + zone 31N stated in the textual header",
+        "places the survey inside NORTH SEA as the text says"
+      ],
+      "inside_area_of_use": true,
+      "matches_regions": [
+        "NORTH SEA"
+      ],
+      "conflicts_regions": [],
+      "centre_lonlat": [
+        4.91384,
+        54.83985
+      ],
+      "score": 12.0,
+      "from_text": true
+    },
+    "candidates": [
+      {
+        "epsg": 23031,
+        "name": "ED50 / UTM zone 31N",
+        "reasons": [
+          "ED50 + zone 31N stated in the textual header",
+          "places the survey inside NORTH SEA as the text says"
+        ],
+        "inside_area_of_use": true,
+        "matches_regions": [
+          "NORTH SEA"
+        ],
+        "conflicts_regions": [],
+        "centre_lonlat": [
+          4.91384,
+          54.83985
+        ],
+        "score": 12.0,
+        "from_text": true
+      }
+    ],
+    "notes": [],
+    "datum_stated": true,
+    "units": null
+  },
+  "decisions": [
+    {
+      "key": "endian",
+      "label": "Byte order",
+      "value": "big",
+      "display": "big-endian",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "The binary header only makes sense read this way."
+      ]
+    },
+    {
+      "key": "ns",
+      "label": "Samples per trace",
+      "value": 200,
+      "display": "200 samples",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "File size divides exactly into traces of this length."
+      ]
+    },
+    {
+      "key": "dt",
+      "label": "Sample interval",
+      "value": 4000.0,
+      "display": "4000 \u00b5s (4 ms)",
+      "confidence": "high",
+      "source": "binary header",
+      "evidence": []
+    },
+    {
+      "key": "sample_format",
+      "label": "Sample format",
+      "value": 1,
+      "display": "1 - 4-byte IBM floating point",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "IBM-normalisation test on 40,000 non-zero samples: 0.00% have a zero leading fraction digit (genuine IBM floats: 0%; IEEE floats: typically 5-10%).",
+        "This agrees with the declared format."
+      ]
+    },
+    {
+      "key": "kind",
+      "label": "Data type",
+      "value": "2D post-stack",
+      "display": "2D post-stack",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Bytes 21-24 are unique for every sampled trace and step by 1: a single line of stacked traces numbered by CDP/trace.",
+        "Bytes 181 and 185 move smoothly along the line: 1237.71 raw units per CDP step, varying by only 2.0%."
+      ]
+    },
+    {
+      "key": "cdp",
+      "label": "CDP / trace number",
+      "value": {
+        "byte": 21,
+        "type": "int32"
+      },
+      "display": "bytes 21-24 (int32)",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Bytes 21-24 are unique for every sampled trace and step by 1: a single line of stacked traces numbered by CDP/trace.",
+        "Bytes 181 and 185 move smoothly along the line: 1237.71 raw units per CDP step, varying by only 2.0%."
+      ]
+    },
+    {
+      "key": "sp",
+      "label": "Shotpoint number",
+      "value": {
+        "byte": 197,
+        "type": "int32"
+      },
+      "display": "bytes 197-200 (int32)",
+      "confidence": "medium",
+      "source": "data",
+      "evidence": [
+        "Varies in step with the CDP number along the line."
+      ]
+    },
+    {
+      "key": "x",
+      "label": "X coordinate (easting)",
+      "value": {
+        "byte": 181,
+        "type": "int32"
+      },
+      "display": "bytes 181-184 (int32)",
+      "confidence": "high",
+      "source": "data",
+      "evidence": []
+    },
+    {
+      "key": "y",
+      "label": "Y coordinate (northing)",
+      "value": {
+        "byte": 185,
+        "type": "int32"
+      },
+      "display": "bytes 185-188 (int32)",
+      "confidence": "high",
+      "source": "data",
+      "evidence": []
+    },
+    {
+      "key": "scalar",
+      "label": "Coordinate scalar",
+      "value": -100,
+      "display": "-100 (divide by 100)",
+      "confidence": "high",
+      "source": "binary header",
+      "evidence": [
+        "With scalar -100 the bin/trace spacing is 12.377 m, a standard survey size."
+      ]
+    },
+    {
+      "key": "crs",
+      "label": "Coordinate reference system",
+      "value": 23031,
+      "display": "EPSG:23031 - ED50 / UTM zone 31N",
+      "confidence": "high",
+      "source": "text header + data",
+      "evidence": [
+        "ED50 + zone 31N stated in the textual header",
+        "places the survey inside NORTH SEA as the text says"
+      ]
+    }
+  ],
+  "issues": [],
+  "load_original_file": {
+    "CDP / ensemble number": "21-24",
+    "X coordinate (easting)": "181-184",
+    "Y coordinate (northing)": "185-188",
+    "Coordinate scalar": "bytes 71-72 (apply from header; value -100)",
+    "Sample format": "1",
+    "Byte order": "big",
+    "Samples / interval": "200 @ 4 ms",
+    "Coordinate system": "EPSG:23031 ED50 / UTM zone 31N (confirmed)"
+  },
+  "overrides": {
+    "x": {
+      "byte": 181,
+      "type": "int32"
+    },
+    "y": {
+      "byte": 185,
+      "type": "int32"
+    },
+    "cdp": {
+      "byte": 21,
+      "type": "int32"
+    },
+    "epsg": 23031
+  }
+}

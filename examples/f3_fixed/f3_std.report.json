@@ -1,0 +1,5790 @@
+{
+  "path": "/data/segyio/f3.sgy",
+  "file_name": "f3.sgy",
+  "size": 165060,
+  "tool_version": "0.1.0",
+  "scanned_at": "2026-11-13T17:04:19+00:00",
+  "fingerprint": "9ca96bfe233cc8f3",
+  "status": "fixable",
+  "status_reason": "Loads with the right settings; a fixed standard copy can be written.",
+  "summary": "3D post-stack, IL 111-133 x XL 875-892, 414 traces x 75 samples @ 4 ms, EPSG:23031",
+  "layout": {
+    "is_su": false,
+    "endian": "big",
+    "text_encoding": "ebcdic",
+    "revision": "1.0",
+    "n_ext_text": 0,
+    "extra_trace_headers": 0,
+    "declared_format": 3,
+    "ns": 75,
+    "dt_us": 4000.0,
+    "record_length_ms": 300.0,
+    "n_traces": 414,
+    "trace_bytes": 390,
+    "variable_length": false,
+    "data_offset": 3600,
+    "trailing_bytes": 0,
+    "sorting": "horizontally stacked",
+    "measurement_system": "metres"
+  },
+  "geometry": {
+    "kind": "3D post-stack",
+    "confidence": "high",
+    "evidence": [
+      "Bytes 189-192 and 193-196 together give a unique grid position for 100.0% of 414 sampled traces; the first stays constant for runs of traces while the second steps by 1.",
+      "The inline number is also stored in byte(s) 9, 11, 191; byte 189 was chosen as the conventional location.",
+      "The crossline number is also stored in byte(s) 17, 19, 21, 23, 195; byte 193 was chosen as the conventional location.",
+      "Coordinates in bytes 181 and 185 are an exact linear function of (inline, crossline): residual 0.12% of a bin, a perfect regular grid.",
+      "The textual header (line 6) gives the inline range 111-133, matching the data.",
+      "The textual header (line 7) gives the crossline range 875-892, matching the data."
+    ],
+    "sampled": false,
+    "n_traces": 414,
+    "inline": {
+      "byte": 189,
+      "type": "int32"
+    },
+    "crossline": {
+      "byte": 193,
+      "type": "int32"
+    },
+    "il_min": 111,
+    "il_max": 133,
+    "il_inc": 1,
+    "xl_min": 875,
+    "xl_max": 892,
+    "xl_inc": 1,
+    "n_inlines": 23,
+    "n_crosslines": 18,
+    "n_positions": 414,
+    "grid_positions": 414,
+    "fill": 1.0,
+    "duplicates": 0,
+    "fold_max": 1,
+    "fold_median": 1.0,
+    "coordinate_units_code": 1,
+    "x": {
+      "byte": 181,
+      "type": "int32"
+    },
+    "y": {
+      "byte": 185,
+      "type": "int32"
+    },
+    "coord_kind": "CDP",
+    "coord_type": "projected",
+    "inline_spacing": 24.99956115801023,
+    "crossline_spacing": 25.000064776392577,
+    "inline_azimuth": 88.39996701552468,
+    "crossline_azimuth": 358.4002002608382,
+    "grid_rms_residual": 0.0416195169210928,
+    "grid_outliers": 0,
+    "handedness": "left",
+    "grid_coef_x": [
+      598408.1741100267,
+      -0.69794137022425,
+      24.990317225287313
+    ],
+    "grid_coef_y": [
+      6070848.196305116,
+      24.98981664472197,
+      0.6980571633705263
+    ],
+    "bin_check_size": 25.000064776392577,
+    "corners": [
+      {
+        "inline": 111,
+        "crossline": 875,
+        "x": 620197.2301900581,
+        "y": 6074232.865970629
+      },
+      {
+        "inline": 111,
+        "crossline": 892,
+        "x": 620622.0655828881,
+        "y": 6074244.732942407
+      },
+      {
+        "inline": 133,
+        "crossline": 892,
+        "x": 620606.7108727432,
+        "y": 6074794.50890859
+      },
+      {
+        "inline": 133,
+        "crossline": 875,
+        "x": 620181.8754799132,
+        "y": 6074782.641936813
+      }
+    ],
+    "area_km2_grid": 0.25874612840930045,
+    "scalar_evidence": "With scalar -10 the bin/trace spacing is 25.000 m, a standard survey size.",
+    "scalar_header": -10,
+    "scalar_effective": -10,
+    "swap_xy": false,
+    "x_min": 620181.9,
+    "x_max": 620622.1,
+    "y_min": 6074232.9,
+    "y_max": 6074794.5,
+    "centre_lonlat": [
+      4.87165,
+      54.80144
+    ],
+    "centre_on_land": false
+  },
+  "crs": {
+    "coord_type": "projected",
+    "status": "confirmed",
+    "chosen": {
+      "epsg": 23031,
+      "name": "ED50 / UTM zone 31N",
+      "reasons": [
+        "set by the user",
+        "zone 31N overlaps 'NORTH SEA' mentioned in the text; datum ED50 assumed",
+        "zone 31N overlaps 'NORTH SEA' mentioned in the text; datum ED50 assumed",
+        "zone 31N overlaps 'DUTCH' mentioned in the text; datum ED50 assumed",
+        "zone 31N overlaps 'DUTCH' mentioned in the text; datum ED50 assumed",
+        "places the survey inside NORTH SEA, DUTCH as the text says"
+      ],
+      "inside_area_of_use": true,
+      "matches_regions": [
+        "NORTH SEA",
+        "DUTCH"
+      ],
+      "conflicts_regions": [],
+      "centre_lonlat": [
+        4.87165,
+        54.80144
+      ],
+      "score": 111.0,
+      "from_text": false
+    },
+    "candidates": [
+      {
+        "epsg": 23031,
+        "name": "ED50 / UTM zone 31N",
+        "reasons": [
+          "set by the user",
+          "zone 31N overlaps 'NORTH SEA' mentioned in the text; datum ED50 assumed",
+          "zone 31N overlaps 'NORTH SEA' mentioned in the text; datum ED50 assumed",
+          "zone 31N overlaps 'DUTCH' mentioned in the text; datum ED50 assumed",
+          "zone 31N overlaps 'DUTCH' mentioned in the text; datum ED50 assumed",
+          "places the survey inside NORTH SEA, DUTCH as the text says"
+        ],
+        "inside_area_of_use": true,
+        "matches_regions": [
+          "NORTH SEA",
+          "DUTCH"
+        ],
+        "conflicts_regions": [],
+        "centre_lonlat": [
+          4.87165,
+          54.80144
+        ],
+        "score": 111.0,
+        "from_text": false
+      },
+      {
+        "epsg": 32631,
+        "name": "WGS 84 / UTM zone 31N",
+        "reasons": [
+          "zone 31N overlaps 'NORTH SEA' mentioned in the text; datum WGS 84 assumed",
+          "zone 31N overlaps 'NORTH SEA' mentioned in the text; datum WGS 84 assumed",
+          "zone 31N overlaps 'DUTCH' mentioned in the text; datum WGS 84 assumed",
+          "zone 31N overlaps 'DUTCH' mentioned in the text; datum WGS 84 assumed",
+          "places the survey inside NORTH SEA, DUTCH as the text says"
+        ],
+        "inside_area_of_use": true,
+        "matches_regions": [
+          "NORTH SEA",
+          "DUTCH"
+        ],
+        "conflicts_regions": [],
+        "centre_lonlat": [
+          4.87317,
+          54.80332
+        ],
+        "score": 11.0,
+        "from_text": false
+      },
+      {
+        "epsg": 25831,
+        "name": "ETRS89 / UTM zone 31N",
+        "reasons": [
+          "zone 31N overlaps 'NORTH SEA' mentioned in the text; datum ETRS89 assumed",
+          "zone 31N overlaps 'NORTH SEA' mentioned in the text; datum ETRS89 assumed",
+          "zone 31N overlaps 'DUTCH' mentioned in the text; datum ETRS89 assumed",
+          "zone 31N overlaps 'DUTCH' mentioned in the text; datum ETRS89 assumed",
+          "places the survey inside NORTH SEA, DUTCH as the text says"
+        ],
+        "inside_area_of_use": true,
+        "matches_regions": [
+          "NORTH SEA",
+          "DUTCH"
+        ],
+        "conflicts_regions": [],
+        "centre_lonlat": [
+          4.87317,
+          54.80332
+        ],
+        "score": 11.0,
+        "from_text": false
+      },
+      {
+        "epsg": 23030,
+        "name": "ED50 / UTM zone 30N",
+        "reasons": [
+          "zone 30N overlaps 'NORTH SEA' mentioned in the text; datum ED50 assumed",
+          "zone 30N overlaps 'NORTH SEA' mentioned in the text; datum ED50 assumed",
+          "places the survey inside NORTH SEA as the text says"
+        ],
+        "inside_area_of_use": true,
+        "matches_regions": [
+          "NORTH SEA"
+        ],
+        "conflicts_regions": [
+          "DUTCH"
+        ],
+        "centre_lonlat": [
+          -1.1285,
+          54.80136
+        ],
+        "score": 4.0,
+        "from_text": false
+      },
+      {
+        "epsg": 32630,
+        "name": "WGS 84 / UTM zone 30N",
+        "reasons": [
+          "zone 30N overlaps 'NORTH SEA' mentioned in the text; datum WGS 84 assumed",
+          "zone 30N overlaps 'NORTH SEA' mentioned in the text; datum WGS 84 assumed",
+          "places the survey inside NORTH SEA as the text says"
+        ],
+        "inside_area_of_use": true,
+        "matches_regions": [
+          "NORTH SEA"
+        ],
+        "conflicts_regions": [
+          "DUTCH"
+        ],
+        "centre_lonlat": [
+          -1.12683,
+          54.80332
+        ],
+        "score": 4.0,
+        "from_text": false
+      },
+      {
+        "epsg": 25830,
+        "name": "ETRS89 / UTM zone 30N",
+        "reasons": [
+          "zone 30N overlaps 'NORTH SEA' mentioned in the text; datum ETRS89 assumed",
+          "zone 30N overlaps 'NORTH SEA' mentioned in the text; datum ETRS89 assumed",
+          "places the survey inside NORTH SEA as the text says"
+        ],
+        "inside_area_of_use": true,
+        "matches_regions": [
+          "NORTH SEA"
+        ],
+        "conflicts_regions": [
+          "DUTCH"
+        ],
+        "centre_lonlat": [
+          -1.12683,
+          54.80332
+        ],
+        "score": 4.0,
+        "from_text": false
+      },
+      {
+        "epsg": 23032,
+        "name": "ED50 / UTM zone 32N",
+        "reasons": [
+          "zone 32N overlaps 'NORTH SEA' mentioned in the text; datum ED50 assumed",
+          "zone 32N overlaps 'NORTH SEA' mentioned in the text; datum ED50 assumed",
+          "places the survey inside NORTH SEA as the text says"
+        ],
+        "inside_area_of_use": true,
+        "matches_regions": [
+          "NORTH SEA"
+        ],
+        "conflicts_regions": [
+          "DUTCH"
+        ],
+        "centre_lonlat": [
+          10.87182,
+          54.80149
+        ],
+        "score": 4.0,
+        "from_text": false
+      },
+      {
+        "epsg": 32632,
+        "name": "WGS 84 / UTM zone 32N",
+        "reasons": [
+          "zone 32N overlaps 'NORTH SEA' mentioned in the text; datum WGS 84 assumed",
+          "zone 32N overlaps 'NORTH SEA' mentioned in the text; datum WGS 84 assumed",
+          "places the survey inside NORTH SEA as the text says"
+        ],
+        "inside_area_of_use": true,
+        "matches_regions": [
+          "NORTH SEA"
+        ],
+        "conflicts_regions": [
+          "DUTCH"
+        ],
+        "centre_lonlat": [
+          10.87317,
+          54.80332
+        ],
+        "score": 4.0,
+        "from_text": false
+      }
+    ],
+    "notes": [],
+    "datum_stated": false,
+    "units": null
+  },
+  "samples": {
+    "declared_format": 3,
+    "format": 3,
+    "format_name": "2-byte two's complement integer",
+    "n_checked": 414,
+    "dead_frac": 0.0,
+    "nan_frac": 0.0,
+    "inf_frac": 0.0,
+    "clip_frac": 0.0,
+    "p01": 26.0,
+    "p50": 1598.5,
+    "p99": 6121.929999999986,
+    "absmax": 10827.0,
+    "rms": 2160.3598475303265,
+    "constant_traces": 0,
+    "spikes": 0,
+    "spike_max": 0.0,
+    "ibm_overflow": 0
+  },
+  "header_map": [
+    {
+      "byte": 1,
+      "end": 4,
+      "type": "int32",
+      "standard": "TRACE_SEQUENCE_LINE",
+      "role": "",
+      "min": 576.0,
+      "max": 593.0,
+      "nunique": 18,
+      "constant": false,
+      "pattern": "steps by 1"
+    },
+    {
+      "byte": 5,
+      "end": 8,
+      "type": "int32",
+      "standard": "TRACE_SEQUENCE_FILE",
+      "role": "",
+      "min": 11037.0,
+      "max": 31976.0,
+      "nunique": 414,
+      "constant": false,
+      "pattern": "steps by 1"
+    },
+    {
+      "byte": 9,
+      "end": 12,
+      "type": "int32",
+      "standard": "FieldRecord",
+      "role": "copy of inline",
+      "min": 111.0,
+      "max": 133.0,
+      "nunique": 23,
+      "constant": false,
+      "pattern": "changes every ~19 traces"
+    },
+    {
+      "byte": 17,
+      "end": 20,
+      "type": "int32",
+      "standard": "EnergySourcePoint",
+      "role": "copy of crossline",
+      "min": 875.0,
+      "max": 892.0,
+      "nunique": 18,
+      "constant": false,
+      "pattern": "steps by 1"
+    },
+    {
+      "byte": 21,
+      "end": 24,
+      "type": "int32",
+      "standard": "CDP",
+      "role": "copy of crossline",
+      "min": 875.0,
+      "max": 892.0,
+      "nunique": 18,
+      "constant": false,
+      "pattern": "steps by 1"
+    },
+    {
+      "byte": 29,
+      "end": 30,
+      "type": "int16",
+      "standard": "TraceIdentificationCode",
+      "role": "",
+      "min": 1.0,
+      "max": 1.0,
+      "nunique": 1,
+      "constant": true,
+      "pattern": "constant 1"
+    },
+    {
+      "byte": 35,
+      "end": 36,
+      "type": "int16",
+      "standard": "DataUse",
+      "role": "",
+      "min": 1.0,
+      "max": 1.0,
+      "nunique": 1,
+      "constant": true,
+      "pattern": "constant 1"
+    },
+    {
+      "byte": 71,
+      "end": 72,
+      "type": "int16",
+      "standard": "SourceGroupScalar",
+      "role": "",
+      "min": -10.0,
+      "max": -10.0,
+      "nunique": 1,
+      "constant": true,
+      "pattern": "constant -10"
+    },
+    {
+      "byte": 73,
+      "end": 76,
+      "type": "int32",
+      "standard": "SourceX",
+      "role": "copy of X coordinate",
+      "min": 6201819.0,
+      "max": 6206221.0,
+      "nunique": 414,
+      "constant": false,
+      "pattern": "steps by 250"
+    },
+    {
+      "byte": 77,
+      "end": 80,
+      "type": "int32",
+      "standard": "SourceY",
+      "role": "copy of Y coordinate",
+      "min": 60742329.0,
+      "max": 60747945.0,
+      "nunique": 414,
+      "constant": false,
+      "pattern": "steps by 7"
+    },
+    {
+      "byte": 89,
+      "end": 90,
+      "type": "int16",
+      "standard": "CoordinateUnits",
+      "role": "",
+      "min": 1.0,
+      "max": 1.0,
+      "nunique": 1,
+      "constant": true,
+      "pattern": "constant 1"
+    },
+    {
+      "byte": 105,
+      "end": 106,
+      "type": "int16",
+      "standard": "LagTimeA",
+      "role": "",
+      "min": -4.0,
+      "max": -4.0,
+      "nunique": 1,
+      "constant": true,
+      "pattern": "constant -4"
+    },
+    {
+      "byte": 109,
+      "end": 110,
+      "type": "int16",
+      "standard": "DelayRecordingTime",
+      "role": "",
+      "min": 4.0,
+      "max": 4.0,
+      "nunique": 1,
+      "constant": true,
+      "pattern": "constant 4"
+    },
+    {
+      "byte": 115,
+      "end": 116,
+      "type": "int16",
+      "standard": "TRACE_SAMPLE_COUNT",
+      "role": "",
+      "min": 462.0,
+      "max": 462.0,
+      "nunique": 1,
+      "constant": true,
+      "pattern": "constant 462"
+    },
+    {
+      "byte": 117,
+      "end": 118,
+      "type": "int16",
+      "standard": "TRACE_SAMPLE_INTERVAL",
+      "role": "",
+      "min": 4000.0,
+      "max": 4000.0,
+      "nunique": 1,
+      "constant": true,
+      "pattern": "constant 4000"
+    },
+    {
+      "byte": 181,
+      "end": 184,
+      "type": "int32",
+      "standard": "CDP_X",
+      "role": "X coordinate",
+      "min": 6201819.0,
+      "max": 6206221.0,
+      "nunique": 414,
+      "constant": false,
+      "pattern": "steps by 250"
+    },
+    {
+      "byte": 185,
+      "end": 188,
+      "type": "int32",
+      "standard": "CDP_Y",
+      "role": "Y coordinate",
+      "min": 60742329.0,
+      "max": 60747945.0,
+      "nunique": 414,
+      "constant": false,
+      "pattern": "steps by 7"
+    },
+    {
+      "byte": 189,
+      "end": 192,
+      "type": "int32",
+      "standard": "INLINE_3D",
+      "role": "inline",
+      "min": 111.0,
+      "max": 133.0,
+      "nunique": 23,
+      "constant": false,
+      "pattern": "changes every ~19 traces"
+    },
+    {
+      "byte": 193,
+      "end": 196,
+      "type": "int32",
+      "standard": "CROSSLINE_3D",
+      "role": "crossline",
+      "min": 875.0,
+      "max": 892.0,
+      "nunique": 18,
+      "constant": false,
+      "pattern": "steps by 1"
+    },
+    {
+      "byte": 197,
+      "end": 200,
+      "type": "int32",
+      "standard": "ShotPoint",
+      "role": "",
+      "min": 11037.0,
+      "max": 31976.0,
+      "nunique": 414,
+      "constant": false,
+      "pattern": "steps by 1"
+    }
+  ],
+  "text": {
+    "encoding": "ebcdic",
+    "lines": [
+      "C 1 Cropped F3 2-byte integer data set",
+      "C 2 This file is a cropped copy of the F3 block in the Dutch North Sea",
+      "C 3 This copy was obtained from",
+      "C 4 https://www.opendtect.org/osr/Main/NetherlandsOffshoreF3BlockComplete4GB",
+      "C 5 and was created by inclusively extracting:",
+      "C 6     inlines:    111 .. 133",
+      "C 7     crosslines: 875 .. 892",
+      "C 8     samples:      0 .. 300",
+      "C 9",
+      "C10 This file is cropped and modified with the intention of unit testing segyio",
+      "C11",
+      "C12",
+      "C13",
+      "C14",
+      "C15",
+      "C16",
+      "C17",
+      "C18",
+      "C19",
+      "C20",
+      "C21",
+      "C22",
+      "C23",
+      "C24",
+      "C25",
+      "C26",
+      "C27",
+      "C28",
+      "C29",
+      "C30",
+      "C31",
+      "C32",
+      "C33",
+      "C34",
+      "C35",
+      "C36",
+      "C37",
+      "C38",
+      "C39",
+      "C40"
+    ],
+    "highlights": {
+      "6": [
+        "inline range"
+      ],
+      "7": [
+        "crossline range"
+      ],
+      "2": [
+        "region"
+      ]
+    },
+    "byte_claims": [],
+    "range_claims": [
+      {
+        "what": "inline",
+        "lo": 111.0,
+        "hi": 133.0,
+        "line": 6,
+        "quote": "C 6     inlines:    111 .. 133"
+      },
+      {
+        "what": "crossline",
+        "lo": 875.0,
+        "hi": 892.0,
+        "line": 7,
+        "quote": "C 7     crosslines: 875 .. 892"
+      }
+    ],
+    "hints": [
+      {
+        "kind": "region",
+        "value": "NORTH SEA",
+        "line": 2
+      },
+      {
+        "kind": "region",
+        "value": "DUTCH",
+        "line": 2
+      }
+    ],
+    "domain": null,
+    "domain_quote": null,
+    "survey_name": null,
+    "keywords": []
+  },
+  "binary_header": [
+    {
+      "name": "job_id",
+      "label": "Job identification number",
+      "value": 1
+    },
+    {
+      "name": "line_number",
+      "label": "Line number",
+      "value": 0
+    },
+    {
+      "name": "reel_number",
+      "label": "Reel number",
+      "value": 0
+    },
+    {
+      "name": "traces_per_ensemble",
+      "label": "Data traces per ensemble",
+      "value": 0
+    },
+    {
+      "name": "aux_traces_per_ensemble",
+      "label": "Auxiliary traces per ensemble",
+      "value": 0
+    },
+    {
+      "name": "sample_interval",
+      "label": "Sample interval (microseconds)",
+      "value": 4000
+    },
+    {
+      "name": "orig_sample_interval",
+      "label": "Original field sample interval",
+      "value": 0
+    },
+    {
+      "name": "samples_per_trace",
+      "label": "Samples per trace",
+      "value": 75
+    },
+    {
+      "name": "orig_samples_per_trace",
+      "label": "Original field samples per trace",
+      "value": 0
+    },
+    {
+      "name": "format_code",
+      "label": "Data sample format code",
+      "value": 3
+    },
+    {
+      "name": "ensemble_fold",
+      "label": "Ensemble fold",
+      "value": 0
+    },
+    {
+      "name": "sorting_code",
+      "label": "Trace sorting code",
+      "value": 4
+    },
+    {
+      "name": "vertical_sum_code",
+      "label": "Vertical sum code",
+      "value": 0
+    },
+    {
+      "name": "measurement_system",
+      "label": "Measurement system (1=metres, 2=feet)",
+      "value": 1
+    },
+    {
+      "name": "impulse_polarity",
+      "label": "Impulse signal polarity",
+      "value": 0
+    },
+    {
+      "name": "vibratory_polarity",
+      "label": "Vibratory polarity code",
+      "value": 0
+    },
+    {
+      "name": "ext_samples_per_trace",
+      "label": "Extended samples per trace (rev 2)",
+      "value": 0
+    },
+    {
+      "name": "byte_order_marker",
+      "label": "Byte order marker (rev 2: 16909060)",
+      "value": 0
+    },
+    {
+      "name": "rev_major",
+      "label": "SEG-Y revision (major)",
+      "value": 1
+    },
+    {
+      "name": "rev_minor",
+      "label": "SEG-Y revision (minor)",
+      "value": 0
+    },
+    {
+      "name": "fixed_length_flag",
+      "label": "Fixed length trace flag",
+      "value": 1
+    },
+    {
+      "name": "n_ext_text_headers",
+      "label": "Number of extended textual headers",
+      "value": 0
+    },
+    {
+      "name": "max_extra_trace_headers",
+      "label": "Additional trace headers per trace (rev 2)",
+      "value": 0
+    }
+  ],
+  "overrides": {
+    "epsg": 23031
+  },
+  "recipe": {
+    "standard_layout": true,
+    "moves": [],
+    "auto_fixes": [
+      "NS_MISMATCH_TRACE"
+    ],
+    "output": {
+      "endian": "big",
+      "format": 3,
+      "ns": 75,
+      "dt_us": 4000.0,
+      "inline": {
+        "byte": 189,
+        "type": "int32"
+      },
+      "crossline": {
+        "byte": 193,
+        "type": "int32"
+      },
+      "cdp": {
+        "byte": 21,
+        "type": "int32"
+      },
+      "x": {
+        "byte": 181,
+        "type": "int32"
+      },
+      "y": {
+        "byte": 185,
+        "type": "int32"
+      },
+      "scalar": {
+        "byte": 71,
+        "type": "int16"
+      }
+    }
+  },
+  "layout_key": "41a0505f82",
+  "notes": [],
+  "findings": [
+    {
+      "key": "endian",
+      "label": "Byte order",
+      "value": "big",
+      "display": "big-endian",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "The binary header only makes sense read this way."
+      ],
+      "alternatives": []
+    },
+    {
+      "key": "ns",
+      "label": "Samples per trace",
+      "value": 75,
+      "display": "75 samples",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "File size divides exactly into traces of this length."
+      ],
+      "alternatives": []
+    },
+    {
+      "key": "dt",
+      "label": "Sample interval",
+      "value": 4000.0,
+      "display": "4000 \u00b5s (4 ms)",
+      "confidence": "high",
+      "source": "binary header",
+      "evidence": [],
+      "alternatives": []
+    },
+    {
+      "key": "sample_format",
+      "label": "Sample format",
+      "value": 3,
+      "display": "3 - 2-byte two's complement integer",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Samples decoded as format 3 (2-byte two's complement integer) look like seismic data (plausibility 1.00, best of all candidates)."
+      ],
+      "alternatives": [
+        {
+          "format": 3,
+          "plausibility": 1.0
+        }
+      ]
+    },
+    {
+      "key": "kind",
+      "label": "Data type",
+      "value": "3D post-stack",
+      "display": "3D post-stack",
+      "confidence": "high",
+      "source": "user",
+      "evidence": [
+        "Bytes 189-192 and 193-196 together give a unique grid position for 100.0% of 414 sampled traces; the first stays constant for runs of traces while the second steps by 1.",
+        "The inline number is also stored in byte(s) 9, 11, 191; byte 189 was chosen as the conventional location.",
+        "The crossline number is also stored in byte(s) 17, 19, 21, 23, 195; byte 193 was chosen as the conventional location.",
+        "Coordinates in bytes 181 and 185 are an exact linear function of (inline, crossline): residual 0.12% of a bin, a perfect regular grid.",
+        "The textual header (line 6) gives the inline range 111-133, matching the data.",
+        "The textual header (line 7) gives the crossline range 875-892, matching the data."
+      ],
+      "alternatives": []
+    },
+    {
+      "key": "inline",
+      "label": "Inline number",
+      "value": {
+        "byte": 189,
+        "type": "int32"
+      },
+      "display": "bytes 189-192 (int32), 111-133",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Bytes 189-192 and 193-196 together give a unique grid position for 100.0% of 414 sampled traces; the first stays constant for runs of traces while the second steps by 1.",
+        "The inline number is also stored in byte(s) 9, 11, 191; byte 189 was chosen as the conventional location.",
+        "Coordinates in bytes 181 and 185 are an exact linear function of (inline, crossline): residual 0.12% of a bin, a perfect regular grid.",
+        "The textual header (line 6) gives the inline range 111-133, matching the data."
+      ],
+      "alternatives": [
+        {
+          "byte": 9
+        },
+        {
+          "byte": 11
+        },
+        {
+          "byte": 191
+        }
+      ]
+    },
+    {
+      "key": "crossline",
+      "label": "Crossline number",
+      "value": {
+        "byte": 193,
+        "type": "int32"
+      },
+      "display": "bytes 193-196 (int32), 875-892",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Bytes 189-192 and 193-196 together give a unique grid position for 100.0% of 414 sampled traces; the first stays constant for runs of traces while the second steps by 1.",
+        "The crossline number is also stored in byte(s) 17, 19, 21, 23, 195; byte 193 was chosen as the conventional location.",
+        "Coordinates in bytes 181 and 185 are an exact linear function of (inline, crossline): residual 0.12% of a bin, a perfect regular grid.",
+        "The textual header (line 7) gives the crossline range 875-892, matching the data."
+      ],
+      "alternatives": [
+        {
+          "byte": 17
+        },
+        {
+          "byte": 19
+        },
+        {
+          "byte": 21
+        },
+        {
+          "byte": 23
+        },
+        {
+          "byte": 195
+        }
+      ]
+    },
+    {
+      "key": "x",
+      "label": "X coordinate (easting)",
+      "value": {
+        "byte": 181,
+        "type": "int32"
+      },
+      "display": "bytes 181-184 (int32)",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Coordinates in bytes 181 and 185 are an exact linear function of (inline, crossline): residual 0.12% of a bin, a perfect regular grid.",
+        "Across all traces, positions deviate from a perfect grid by 0.0416 units RMS; 0 traces are more than half a bin off."
+      ],
+      "alternatives": []
+    },
+    {
+      "key": "y",
+      "label": "Y coordinate (northing)",
+      "value": {
+        "byte": 185,
+        "type": "int32"
+      },
+      "display": "bytes 185-188 (int32)",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Coordinates in bytes 181 and 185 are an exact linear function of (inline, crossline): residual 0.12% of a bin, a perfect regular grid.",
+        "Across all traces, positions deviate from a perfect grid by 0.0416 units RMS; 0 traces are more than half a bin off."
+      ],
+      "alternatives": []
+    },
+    {
+      "key": "scalar",
+      "label": "Coordinate scalar",
+      "value": -10,
+      "display": "-10 (divide by 10)",
+      "confidence": "high",
+      "source": "binary header",
+      "evidence": [
+        "With scalar -10 the bin/trace spacing is 25.000 m, a standard survey size."
+      ],
+      "alternatives": []
+    },
+    {
+      "key": "crs",
+      "label": "Coordinate reference system",
+      "value": 23031,
+      "display": "EPSG:23031 - ED50 / UTM zone 31N",
+      "confidence": "high",
+      "source": "user",
+      "evidence": [
+        "set by the user",
+        "zone 31N overlaps 'NORTH SEA' mentioned in the text; datum ED50 assumed",
+        "zone 31N overlaps 'NORTH SEA' mentioned in the text; datum ED50 assumed",
+        "zone 31N overlaps 'DUTCH' mentioned in the text; datum ED50 assumed",
+        "zone 31N overlaps 'DUTCH' mentioned in the text; datum ED50 assumed",
+        "places the survey inside NORTH SEA, DUTCH as the text says"
+      ],
+      "alternatives": [
+        {
+          "epsg": 32631,
+          "name": "WGS 84 / UTM zone 31N",
+          "reasons": [
+            "zone 31N overlaps 'NORTH SEA' mentioned in the text; datum WGS 84 assumed",
+            "zone 31N overlaps 'NORTH SEA' mentioned in the text; datum WGS 84 assumed",
+            "zone 31N overlaps 'DUTCH' mentioned in the text; datum WGS 84 assumed",
+            "zone 31N overlaps 'DUTCH' mentioned in the text; datum WGS 84 assumed",
+            "places the survey inside NORTH SEA, DUTCH as the text says"
+          ],
+          "inside_area_of_use": true,
+          "matches_regions": [
+            "NORTH SEA",
+            "DUTCH"
+          ],
+          "conflicts_regions": [],
+          "centre_lonlat": [
+            4.87317,
+            54.80332
+          ],
+          "score": 11.0,
+          "from_text": false
+        },
+        {
+          "epsg": 25831,
+          "name": "ETRS89 / UTM zone 31N",
+          "reasons": [
+            "zone 31N overlaps 'NORTH SEA' mentioned in the text; datum ETRS89 assumed",
+            "zone 31N overlaps 'NORTH SEA' mentioned in the text; datum ETRS89 assumed",
+            "zone 31N overlaps 'DUTCH' mentioned in the text; datum ETRS89 assumed",
+            "zone 31N overlaps 'DUTCH' mentioned in the text; datum ETRS89 assumed",
+            "places the survey inside NORTH SEA, DUTCH as the text says"
+          ],
+          "inside_area_of_use": true,
+          "matches_regions": [
+            "NORTH SEA",
+            "DUTCH"
+          ],
+          "conflicts_regions": [],
+          "centre_lonlat": [
+            4.87317,
+            54.80332
+          ],
+          "score": 11.0,
+          "from_text": false
+        },
+        {
+          "epsg": 23030,
+          "name": "ED50 / UTM zone 30N",
+          "reasons": [
+            "zone 30N overlaps 'NORTH SEA' mentioned in the text; datum ED50 assumed",
+            "zone 30N overlaps 'NORTH SEA' mentioned in the text; datum ED50 assumed",
+            "places the survey inside NORTH SEA as the text says"
+          ],
+          "inside_area_of_use": true,
+          "matches_regions": [
+            "NORTH SEA"
+          ],
+          "conflicts_regions": [
+            "DUTCH"
+          ],
+          "centre_lonlat": [
+            -1.1285,
+            54.80136
+          ],
+          "score": 4.0,
+          "from_text": false
+        },
+        {
+          "epsg": 32630,
+          "name": "WGS 84 / UTM zone 30N",
+          "reasons": [
+            "zone 30N overlaps 'NORTH SEA' mentioned in the text; datum WGS 84 assumed",
+            "zone 30N overlaps 'NORTH SEA' mentioned in the text; datum WGS 84 assumed",
+            "places the survey inside NORTH SEA as the text says"
+          ],
+          "inside_area_of_use": true,
+          "matches_regions": [
+            "NORTH SEA"
+          ],
+          "conflicts_regions": [
+            "DUTCH"
+          ],
+          "centre_lonlat": [
+            -1.12683,
+            54.80332
+          ],
+          "score": 4.0,
+          "from_text": false
+        },
+        {
+          "epsg": 25830,
+          "name": "ETRS89 / UTM zone 30N",
+          "reasons": [
+            "zone 30N overlaps 'NORTH SEA' mentioned in the text; datum ETRS89 assumed",
+            "zone 30N overlaps 'NORTH SEA' mentioned in the text; datum ETRS89 assumed",
+            "places the survey inside NORTH SEA as the text says"
+          ],
+          "inside_area_of_use": true,
+          "matches_regions": [
+            "NORTH SEA"
+          ],
+          "conflicts_regions": [
+            "DUTCH"
+          ],
+          "centre_lonlat": [
+            -1.12683,
+            54.80332
+          ],
+          "score": 4.0,
+          "from_text": false
+        }
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "code": "NS_MISMATCH_TRACE",
+      "severity": "warning",
+      "title": "Trace headers carry a different sample count",
+      "detail": "The first trace header (bytes 115-116) says 462 samples, but the file layout proves 75. This is typical of files that were cropped in time without updating the trace headers.",
+      "fix": "The fixed file writes 75 into every trace header.",
+      "explain": "Some loaders read the per-trace sample count instead of the file-level one and will mis-read this file.",
+      "auto_fixed": true
+    }
+  ],
+  "plot": {
+    "x": [
+      620197.2000000001,
+      620222.2000000001,
+      620247.2000000001,
+      620272.2000000001,
+      620297.2000000001,
+      620322.2000000001,
+      620347.2000000001,
+      620372.2000000001,
+      620397.2000000001,
+      620422.1,
+      620447.1,
+      620472.1,
+      620497.1,
+      620522.1,
+      620547.1,
+      620572.1,
+      620597.1,
+      620622.1,
+      620196.5,
+      620221.5,
+      620246.5,
+      620271.5,
+      620296.5,
+      620321.5,
+      620346.5,
+      620371.5,
+      620396.5,
+      620421.4,
+      620446.4,
+      620471.4,
+      620496.4,
+      620521.4,
+      620546.4,
+      620571.4,
+      620596.4,
+      620621.4,
+      620195.8,
+      620220.8,
+      620245.8,
+      620270.8,
+      620295.8,
+      620320.8,
+      620345.8,
+      620370.8,
+      620395.8,
+      620420.8,
+      620445.7000000001,
+      620470.7000000001,
+      620495.7000000001,
+      620520.7000000001,
+      620545.7000000001,
+      620570.7000000001,
+      620595.7000000001,
+      620620.7000000001,
+      620195.1,
+      620220.1,
+      620245.1,
+      620270.1,
+      620295.1,
+      620320.1,
+      620345.1,
+      620370.1,
+      620395.1,
+      620420.1,
+      620445.0,
+      620470.0,
+      620495.0,
+      620520.0,
+      620545.0,
+      620570.0,
+      620595.0,
+      620620.0,
+      620194.4,
+      620219.4,
+      620244.4,
+      620269.4,
+      620294.4,
+      620319.4,
+      620344.4,
+      620369.4,
+      620394.4,
+      620419.4,
+      620444.3,
+      620469.3,
+      620494.3,
+      620519.3,
+      620544.3,
+      620569.3,
+      620594.3,
+      620619.3,
+      620193.7000000001,
+      620218.7000000001,
+      620243.7000000001,
+      620268.7000000001,
+      620293.7000000001,
+      620318.7000000001,
+      620343.7000000001,
+      620368.7000000001,
+      620393.7000000001,
+      620418.7000000001,
+      620443.6,
+      620468.6,
+      620493.6,
+      620518.6,
+      620543.6,
+      620568.6,
+      620593.6,
+      620618.6,
+      620193.0,
+      620218.0,
+      620243.0,
+      620268.0,
+      620293.0,
+      620318.0,
+      620343.0,
+      620368.0,
+      620393.0,
+      620418.0,
+      620442.9,
+      620467.9,
+      620492.9,
+      620517.9,
+      620542.9,
+      620567.9,
+      620592.9,
+      620617.9,
+      620192.3,
+      620217.3,
+      620242.3,
+      620267.3,
+      620292.3,
+      620317.3,
+      620342.3,
+      620367.3,
+      620392.3,
+      620417.3,
+      620442.3,
+      620467.2000000001,
+      620492.2000000001,
+      620517.2000000001,
+      620542.2000000001,
+      620567.2000000001,
+      620592.2000000001,
+      620617.2000000001,
+      620191.7000000001,
+      620216.6,
+      620241.6,
+      620266.6,
+      620291.6,
+      620316.6,
+      620341.6,
+      620366.6,
+      620391.6,
+      620416.6,
+      620441.6,
+      620466.5,
+      620491.5,
+      620516.5,
+      620541.5,
+      620566.5,
+      620591.5,
+      620616.5,
+      620191.0,
+      620215.9,
+      620240.9,
+      620265.9,
+      620290.9,
+      620315.9,
+      620340.9,
+      620365.9,
+      620390.9,
+      620415.9,
+      620440.9,
+      620465.8,
+      620490.8,
+      620515.8,
+      620540.8,
+      620565.8,
+      620590.8,
+      620615.8,
+      620190.3,
+      620215.2000000001,
+      620240.2000000001,
+      620265.2000000001,
+      620290.2000000001,
+      620315.2000000001,
+      620340.2000000001,
+      620365.2000000001,
+      620390.2000000001,
+      620415.2000000001,
+      620440.2000000001,
+      620465.1,
+      620490.1,
+      620515.1,
+      620540.1,
+      620565.1,
+      620590.1,
+      620615.1,
+      620189.6,
+      620214.5,
+      620239.5,
+      620264.5,
+      620289.5,
+      620314.5,
+      620339.5,
+      620364.5,
+      620389.5,
+      620414.5,
+      620439.5,
+      620464.4,
+      620489.4,
+      620514.4,
+      620539.4,
+      620564.4,
+      620589.4,
+      620614.4,
+      620188.9,
+      620213.8,
+      620238.8,
+      620263.8,
+      620288.8,
+      620313.8,
+      620338.8,
+      620363.8,
+      620388.8,
+      620413.8,
+      620438.8,
+      620463.8,
+      620488.7000000001,
+      620513.7000000001,
+      620538.7000000001,
+      620563.7000000001,
+      620588.7000000001,
+      620613.7000000001,
+      620188.2000000001,
+      620213.2000000001,
+      620238.1,
+      620263.1,
+      620288.1,
+      620313.1,
+      620338.1,
+      620363.1,
+      620388.1,
+      620413.1,
+      620438.1,
+      620463.1,
+      620488.0,
+      620513.0,
+      620538.0,
+      620563.0,
+      620588.0,
+      620613.0,
+      620187.5,
+      620212.5,
+      620237.4,
+      620262.4,
+      620287.4,
+      620312.4,
+      620337.4,
+      620362.4,
+      620387.4,
+      620412.4,
+      620437.4,
+      620462.4,
+      620487.3,
+      620512.3,
+      620537.3,
+      620562.3,
+      620587.3,
+      620612.3,
+      620186.8,
+      620211.8,
+      620236.7000000001,
+      620261.7000000001,
+      620286.7000000001,
+      620311.7000000001,
+      620336.7000000001,
+      620361.7000000001,
+      620386.7000000001,
+      620411.7000000001,
+      620436.7000000001,
+      620461.7000000001,
+      620486.6,
+      620511.6,
+      620536.6,
+      620561.6,
+      620586.6,
+      620611.6,
+      620186.1,
+      620211.1,
+      620236.0,
+      620261.0,
+      620286.0,
+      620311.0,
+      620336.0,
+      620361.0,
+      620386.0,
+      620411.0,
+      620436.0,
+      620461.0,
+      620485.9,
+      620510.9,
+      620535.9,
+      620560.9,
+      620585.9,
+      620610.9,
+      620185.4,
+      620210.4,
+      620235.3,
+      620260.3,
+      620285.3,
+      620310.3,
+      620335.3,
+      620360.3,
+      620385.3,
+      620410.3,
+      620435.3,
+      620460.3,
+      620485.3,
+      620510.2000000001,
+      620535.2000000001,
+      620560.2000000001,
+      620585.2000000001,
+      620610.2000000001,
+      620184.7000000001,
+      620209.7000000001,
+      620234.7000000001,
+      620259.6,
+      620284.6,
+      620309.6,
+      620334.6,
+      620359.6,
+      620384.6,
+      620409.6,
+      620434.6,
+      620459.6,
+      620484.6,
+      620509.5,
+      620534.5,
+      620559.5,
+      620584.5,
+      620609.5,
+      620184.0,
+      620209.0,
+      620234.0,
+      620258.9,
+      620283.9,
+      620308.9,
+      620333.9,
+      620358.9,
+      620383.9,
+      620408.9,
+      620433.9,
+      620458.9,
+      620483.9,
+      620508.8,
+      620533.8,
+      620558.8,
+      620583.8,
+      620608.8,
+      620183.3,
+      620208.3,
+      620233.3,
+      620258.2000000001,
+      620283.2000000001,
+      620308.2000000001,
+      620333.2000000001,
+      620358.2000000001,
+      620383.2000000001,
+      620408.2000000001,
+      620433.2000000001,
+      620458.2000000001,
+      620483.2000000001,
+      620508.1,
+      620533.1,
+      620558.1,
+      620583.1,
+      620608.1,
+      620182.6,
+      620207.6,
+      620232.6,
+      620257.5,
+      620282.5,
+      620307.5,
+      620332.5,
+      620357.5,
+      620382.5,
+      620407.5,
+      620432.5,
+      620457.5,
+      620482.5,
+      620507.4,
+      620532.4,
+      620557.4,
+      620582.4,
+      620607.4,
+      620181.9,
+      620206.9,
+      620231.9,
+      620256.8,
+      620281.8,
+      620306.8,
+      620331.8,
+      620356.8,
+      620381.8,
+      620406.8,
+      620431.8,
+      620456.8,
+      620481.8,
+      620506.8,
+      620531.7000000001,
+      620556.7000000001,
+      620581.7000000001,
+      620606.7000000001
+    ],
+    "y": [
+      6074232.9,
+      6074233.600000001,
+      6074234.300000001,
+      6074235.0,
+      6074235.7,
+      6074236.4,
+      6074237.100000001,
+      6074237.800000001,
+      6074238.5,
+      6074239.2,
+      6074239.9,
+      6074240.5,
+      6074241.2,
+      6074241.9,
+      6074242.600000001,
+      6074243.300000001,
+      6074244.0,
+      6074244.7,
+      6074257.9,
+      6074258.600000001,
+      6074259.300000001,
+      6074260.0,
+      6074260.7,
+      6074261.300000001,
+      6074262.0,
+      6074262.7,
+      6074263.4,
+      6074264.100000001,
+      6074264.800000001,
+      6074265.5,
+      6074266.2,
+      6074266.9,
+      6074267.600000001,
+      6074268.300000001,
+      6074269.0,
+      6074269.7,
+      6074282.800000001,
+      6074283.5,
+      6074284.2,
+      6074284.9,
+      6074285.600000001,
+      6074286.300000001,
+      6074287.0,
+      6074287.7,
+      6074288.4,
+      6074289.100000001,
+      6074289.800000001,
+      6074290.5,
+      6074291.2,
+      6074291.9,
+      6074292.600000001,
+      6074293.300000001,
+      6074294.0,
+      6074294.7,
+      6074307.800000001,
+      6074308.5,
+      6074309.2,
+      6074309.9,
+      6074310.600000001,
+      6074311.300000001,
+      6074312.0,
+      6074312.7,
+      6074313.4,
+      6074314.100000001,
+      6074314.800000001,
+      6074315.5,
+      6074316.2,
+      6074316.9,
+      6074317.600000001,
+      6074318.300000001,
+      6074319.0,
+      6074319.7,
+      6074332.800000001,
+      6074333.5,
+      6074334.2,
+      6074334.9,
+      6074335.600000001,
+      6074336.300000001,
+      6074337.0,
+      6074337.7,
+      6074338.4,
+      6074339.100000001,
+      6074339.800000001,
+      6074340.5,
+      6074341.2,
+      6074341.9,
+      6074342.600000001,
+      6074343.300000001,
+      6074344.0,
+      6074344.7,
+      6074357.800000001,
+      6074358.5,
+      6074359.2,
+      6074359.9,
+      6074360.600000001,
+      6074361.300000001,
+      6074362.0,
+      6074362.7,
+      6074363.4,
+      6074364.100000001,
+      6074364.800000001,
+      6074365.5,
+      6074366.2,
+      6074366.9,
+      6074367.600000001,
+      6074368.300000001,
+      6074369.0,
+      6074369.7,
+      6074382.800000001,
+      6074383.5,
+      6074384.2,
+      6074384.9,
+      6074385.600000001,
+      6074386.300000001,
+      6074387.0,
+      6074387.7,
+      6074388.4,
+      6074389.100000001,
+      6074389.800000001,
+      6074390.5,
+      6074391.2,
+      6074391.9,
+      6074392.600000001,
+      6074393.300000001,
+      6074394.0,
+      6074394.7,
+      6074407.800000001,
+      6074408.5,
+      6074409.2,
+      6074409.9,
+      6074410.600000001,
+      6074411.300000001,
+      6074412.0,
+      6074412.7,
+      6074413.4,
+      6074414.100000001,
+      6074414.800000001,
+      6074415.5,
+      6074416.2,
+      6074416.9,
+      6074417.600000001,
+      6074418.300000001,
+      6074419.0,
+      6074419.7,
+      6074432.800000001,
+      6074433.5,
+      6074434.2,
+      6074434.9,
+      6074435.600000001,
+      6074436.300000001,
+      6074437.0,
+      6074437.7,
+      6074438.4,
+      6074439.100000001,
+      6074439.800000001,
+      6074440.5,
+      6074441.2,
+      6074441.9,
+      6074442.600000001,
+      6074443.300000001,
+      6074444.0,
+      6074444.7,
+      6074457.800000001,
+      6074458.5,
+      6074459.2,
+      6074459.9,
+      6074460.600000001,
+      6074461.300000001,
+      6074462.0,
+      6074462.7,
+      6074463.4,
+      6074464.100000001,
+      6074464.800000001,
+      6074465.5,
+      6074466.2,
+      6074466.9,
+      6074467.600000001,
+      6074468.300000001,
+      6074468.9,
+      6074469.600000001,
+      6074482.800000001,
+      6074483.5,
+      6074484.2,
+      6074484.9,
+      6074485.600000001,
+      6074486.300000001,
+      6074487.0,
+      6074487.7,
+      6074488.4,
+      6074489.0,
+      6074489.7,
+      6074490.4,
+      6074491.100000001,
+      6074491.800000001,
+      6074492.5,
+      6074493.2,
+      6074493.9,
+      6074494.600000001,
+      6074507.800000001,
+      6074508.5,
+      6074509.2,
+      6074509.800000001,
+      6074510.5,
+      6074511.2,
+      6074511.9,
+      6074512.600000001,
+      6074513.300000001,
+      6074514.0,
+      6074514.7,
+      6074515.4,
+      6074516.100000001,
+      6074516.800000001,
+      6074517.5,
+      6074518.2,
+      6074518.9,
+      6074519.600000001,
+      6074532.7,
+      6074533.4,
+      6074534.100000001,
+      6074534.800000001,
+      6074535.5,
+      6074536.2,
+      6074536.9,
+      6074537.600000001,
+      6074538.300000001,
+      6074539.0,
+      6074539.7,
+      6074540.4,
+      6074541.100000001,
+      6074541.800000001,
+      6074542.5,
+      6074543.2,
+      6074543.9,
+      6074544.600000001,
+      6074557.7,
+      6074558.4,
+      6074559.100000001,
+      6074559.800000001,
+      6074560.5,
+      6074561.2,
+      6074561.9,
+      6074562.600000001,
+      6074563.300000001,
+      6074564.0,
+      6074564.7,
+      6074565.4,
+      6074566.100000001,
+      6074566.800000001,
+      6074567.5,
+      6074568.2,
+      6074568.9,
+      6074569.600000001,
+      6074582.7,
+      6074583.4,
+      6074584.100000001,
+      6074584.800000001,
+      6074585.5,
+      6074586.2,
+      6074586.9,
+      6074587.600000001,
+      6074588.300000001,
+      6074589.0,
+      6074589.7,
+      6074590.4,
+      6074591.100000001,
+      6074591.800000001,
+      6074592.5,
+      6074593.2,
+      6074593.9,
+      6074594.600000001,
+      6074607.7,
+      6074608.4,
+      6074609.100000001,
+      6074609.800000001,
+      6074610.5,
+      6074611.2,
+      6074611.9,
+      6074612.600000001,
+      6074613.300000001,
+      6074614.0,
+      6074614.7,
+      6074615.4,
+      6074616.100000001,
+      6074616.800000001,
+      6074617.5,
+      6074618.2,
+      6074618.9,
+      6074619.600000001,
+      6074632.7,
+      6074633.4,
+      6074634.100000001,
+      6074634.800000001,
+      6074635.5,
+      6074636.2,
+      6074636.9,
+      6074637.600000001,
+      6074638.300000001,
+      6074639.0,
+      6074639.7,
+      6074640.4,
+      6074641.100000001,
+      6074641.800000001,
+      6074642.5,
+      6074643.2,
+      6074643.9,
+      6074644.600000001,
+      6074657.7,
+      6074658.4,
+      6074659.100000001,
+      6074659.800000001,
+      6074660.5,
+      6074661.2,
+      6074661.9,
+      6074662.600000001,
+      6074663.300000001,
+      6074664.0,
+      6074664.7,
+      6074665.4,
+      6074666.100000001,
+      6074666.800000001,
+      6074667.5,
+      6074668.2,
+      6074668.9,
+      6074669.600000001,
+      6074682.7,
+      6074683.4,
+      6074684.100000001,
+      6074684.800000001,
+      6074685.5,
+      6074686.2,
+      6074686.9,
+      6074687.600000001,
+      6074688.300000001,
+      6074689.0,
+      6074689.7,
+      6074690.4,
+      6074691.100000001,
+      6074691.800000001,
+      6074692.5,
+      6074693.2,
+      6074693.9,
+      6074694.600000001,
+      6074707.7,
+      6074708.4,
+      6074709.100000001,
+      6074709.800000001,
+      6074710.5,
+      6074711.2,
+      6074711.9,
+      6074712.600000001,
+      6074713.300000001,
+      6074714.0,
+      6074714.7,
+      6074715.4,
+      6074716.100000001,
+      6074716.800000001,
+      6074717.4,
+      6074718.100000001,
+      6074718.800000001,
+      6074719.5,
+      6074732.7,
+      6074733.4,
+      6074734.100000001,
+      6074734.800000001,
+      6074735.5,
+      6074736.2,
+      6074736.9,
+      6074737.5,
+      6074738.2,
+      6074738.9,
+      6074739.600000001,
+      6074740.300000001,
+      6074741.0,
+      6074741.7,
+      6074742.4,
+      6074743.100000001,
+      6074743.800000001,
+      6074744.5,
+      6074757.600000001,
+      6074758.300000001,
+      6074759.0,
+      6074759.7,
+      6074760.4,
+      6074761.100000001,
+      6074761.800000001,
+      6074762.5,
+      6074763.2,
+      6074763.9,
+      6074764.600000001,
+      6074765.300000001,
+      6074766.0,
+      6074766.7,
+      6074767.4,
+      6074768.100000001,
+      6074768.800000001,
+      6074769.5,
+      6074782.600000001,
+      6074783.300000001,
+      6074784.0,
+      6074784.7,
+      6074785.4,
+      6074786.100000001,
+      6074786.800000001,
+      6074787.5,
+      6074788.2,
+      6074788.9,
+      6074789.600000001,
+      6074790.300000001,
+      6074791.0,
+      6074791.7,
+      6074792.4,
+      6074793.100000001,
+      6074793.800000001,
+      6074794.5
+    ],
+    "trace": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
+      135,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      151,
+      152,
+      153,
+      154,
+      155,
+      156,
+      157,
+      158,
+      159,
+      160,
+      161,
+      162,
+      163,
+      164,
+      165,
+      166,
+      167,
+      168,
+      169,
+      170,
+      171,
+      172,
+      173,
+      174,
+      175,
+      176,
+      177,
+      178,
+      179,
+      180,
+      181,
+      182,
+      183,
+      184,
+      185,
+      186,
+      187,
+      188,
+      189,
+      190,
+      191,
+      192,
+      193,
+      194,
+      195,
+      196,
+      197,
+      198,
+      199,
+      200,
+      201,
+      202,
+      203,
+      204,
+      205,
+      206,
+      207,
+      208,
+      209,
+      210,
+      211,
+      212,
+      213,
+      214,
+      215,
+      216,
+      217,
+      218,
+      219,
+      220,
+      221,
+      222,
+      223,
+      224,
+      225,
+      226,
+      227,
+      228,
+      229,
+      230,
+      231,
+      232,
+      233,
+      234,
+      235,
+      236,
+      237,
+      238,
+      239,
+      240,
+      241,
+      242,
+      243,
+      244,
+      245,
+      246,
+      247,
+      248,
+      249,
+      250,
+      251,
+      252,
+      253,
+      254,
+      255,
+      256,
+      257,
+      258,
+      259,
+      260,
+      261,
+      262,
+      263,
+      264,
+      265,
+      266,
+      267,
+      268,
+      269,
+      270,
+      271,
+      272,
+      273,
+      274,
+      275,
+      276,
+      277,
+      278,
+      279,
+      280,
+      281,
+      282,
+      283,
+      284,
+      285,
+      286,
+      287,
+      288,
+      289,
+      290,
+      291,
+      292,
+      293,
+      294,
+      295,
+      296,
+      297,
+      298,
+      299,
+      300,
+      301,
+      302,
+      303,
+      304,
+      305,
+      306,
+      307,
+      308,
+      309,
+      310,
+      311,
+      312,
+      313,
+      314,
+      315,
+      316,
+      317,
+      318,
+      319,
+      320,
+      321,
+      322,
+      323,
+      324,
+      325,
+      326,
+      327,
+      328,
+      329,
+      330,
+      331,
+      332,
+      333,
+      334,
+      335,
+      336,
+      337,
+      338,
+      339,
+      340,
+      341,
+      342,
+      343,
+      344,
+      345,
+      346,
+      347,
+      348,
+      349,
+      350,
+      351,
+      352,
+      353,
+      354,
+      355,
+      356,
+      357,
+      358,
+      359,
+      360,
+      361,
+      362,
+      363,
+      364,
+      365,
+      366,
+      367,
+      368,
+      369,
+      370,
+      371,
+      372,
+      373,
+      374,
+      375,
+      376,
+      377,
+      378,
+      379,
+      380,
+      381,
+      382,
+      383,
+      384,
+      385,
+      386,
+      387,
+      388,
+      389,
+      390,
+      391,
+      392,
+      393,
+      394,
+      395,
+      396,
+      397,
+      398,
+      399,
+      400,
+      401,
+      402,
+      403,
+      404,
+      405,
+      406,
+      407,
+      408,
+      409,
+      410,
+      411,
+      412,
+      413
+    ],
+    "il": [
+      111,
+      111,
+      111,
+      111,
+      111,
+      111,
+      111,
+      111,
+      111,
+      111,
+      111,
+      111,
+      111,
+      111,
+      111,
+      111,
+      111,
+      111,
+      112,
+      112,
+      112,
+      112,
+      112,
+      112,
+      112,
+      112,
+      112,
+      112,
+      112,
+      112,
+      112,
+      112,
+      112,
+      112,
+      112,
+      112,
+      113,
+      113,
+      113,
+      113,
+      113,
+      113,
+      113,
+      113,
+      113,
+      113,
+      113,
+      113,
+      113,
+      113,
+      113,
+      113,
+      113,
+      113,
+      114,
+      114,
+      114,
+      114,
+      114,
+      114,
+      114,
+      114,
+      114,
+      114,
+      114,
+      114,
+      114,
+      114,
+      114,
+      114,
+      114,
+      114,
+      115,
+      115,
+      115,
+      115,
+      115,
+      115,
+      115,
+      115,
+      115,
+      115,
+      115,
+      115,
+      115,
+      115,
+      115,
+      115,
+      115,
+      115,
+      116,
+      116,
+      116,
+      116,
+      116,
+      116,
+      116,
+      116,
+      116,
+      116,
+      116,
+      116,
+      116,
+      116,
+      116,
+      116,
+      116,
+      116,
+      117,
+      117,
+      117,
+      117,
+      117,
+      117,
+      117,
+      117,
+      117,
+      117,
+      117,
+      117,
+      117,
+      117,
+      117,
+      117,
+      117,
+      117,
+      118,
+      118,
+      118,
+      118,
+      118,
+      118,
+      118,
+      118,
+      118,
+      118,
+      118,
+      118,
+      118,
+      118,
+      118,
+      118,
+      118,
+      118,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      119,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      121,
+      122,
+      122,
+      122,
+      122,
+      122,
+      122,
+      122,
+      122,
+      122,
+      122,
+      122,
+      122,
+      122,
+      122,
+      122,
+      122,
+      122,
+      122,
+      123,
+      123,
+      123,
+      123,
+      123,
+      123,
+      123,
+      123,
+      123,
+      123,
+      123,
+      123,
+      123,
+      123,
+      123,
+      123,
+      123,
+      123,
+      124,
+      124,
+      124,
+      124,
+      124,
+      124,
+      124,
+      124,
+      124,
+      124,
+      124,
+      124,
+      124,
+      124,
+      124,
+      124,
+      124,
+      124,
+      125,
+      125,
+      125,
+      125,
+      125,
+      125,
+      125,
+      125,
+      125,
+      125,
+      125,
+      125,
+      125,
+      125,
+      125,
+      125,
+      125,
+      125,
+      126,
+      126,
+      126,
+      126,
+      126,
+      126,
+      126,
+      126,
+      126,
+      126,
+      126,
+      126,
+      126,
+      126,
+      126,
+      126,
+      126,
+      126,
+      127,
+      127,
+      127,
+      127,
+      127,
+      127,
+      127,
+      127,
+      127,
+      127,
+      127,
+      127,
+      127,
+      127,
+      127,
+      127,
+      127,
+      127,
+      128,
+      128,
+      128,
+      128,
+      128,
+      128,
+      128,
+      128,
+      128,
+      128,
+      128,
+      128,
+      128,
+      128,
+      128,
+      128,
+      128,
+      128,
+      129,
+      129,
+      129,
+      129,
+      129,
+      129,
+      129,
+      129,
+      129,
+      129,
+      129,
+      129,
+      129,
+      129,
+      129,
+      129,
+      129,
+      129,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      130,
+      131,
+      131,
+      131,
+      131,
+      131,
+      131,
+      131,
+      131,
+      131,
+      131,
+      131,
+      131,
+      131,
+      131,
+      131,
+      131,
+      131,
+      131,
+      132,
+      132,
+      132,
+      132,
+      132,
+      132,
+      132,
+      132,
+      132,
+      132,
+      132,
+      132,
+      132,
+      132,
+      132,
+      132,
+      132,
+      132,
+      133,
+      133,
+      133,
+      133,
+      133,
+      133,
+      133,
+      133,
+      133,
+      133,
+      133,
+      133,
+      133,
+      133,
+      133,
+      133,
+      133,
+      133
+    ],
+    "xl": [
+      875,
+      876,
+      877,
+      878,
+      879,
+      880,
+      881,
+      882,
+      883,
+      884,
+      885,
+      886,
+      887,
+      888,
+      889,
+      890,
+      891,
+      892,
+      875,
+      876,
+      877,
+      878,
+      879,
+      880,
+      881,
+      882,
+      883,
+      884,
+      885,
+      886,
+      887,
+      888,
+      889,
+      890,
+      891,
+      892,
+      875,
+      876,
+      877,
+      878,
+      879,
+      880,
+      881,
+      882,
+      883,
+      884,
+      885,
+      886,
+      887,
+      888,
+      889,
+      890,
+      891,
+      892,
+      875,
+      876,
+      877,
+      878,
+      879,
+      880,
+      881,
+      882,
+      883,
+      884,
+      885,
+      886,
+      887,
+      888,
+      889,
+      890,
+      891,
+      892,
+      875,
+      876,
+      877,
+      878,
+      879,
+      880,
+      881,
+      882,
+      883,
+      884,
+      885,
+      886,
+      887,
+      888,
+      889,
+      890,
+      891,
+      892,
+      875,
+      876,
+      877,
+      878,
+      879,
+      880,
+      881,
+      882,
+      883,
+      884,
+      885,
+      886,
+      887,
+      888,
+      889,
+      890,
+      891,
+      892,
+      875,
+      876,
+      877,
+      878,
+      879,
+      880,
+      881,
+      882,
+      883,
+      884,
+      885,
+      886,
+      887,
+      888,
+      889,
+      890,
+      891,
+      892,
+      875,
+      876,
+      877,
+      878,
+      879,
+      880,
+      881,
+      882,
+      883,
+      884,
+      885,
+      886,
+      887,
+      888,
+      889,
+      890,
+      891,
+      892,
+      875,
+      876,
+      877,
+      878,
+      879,
+      880,
+      881,
+      882,
+      883,
+      884,
+      885,
+      886,
+      887,
+      888,
+      889,
+      890,
+      891,
+      892,
+      875,
+      876,
+      877,
+      878,
+      879,
+      880,
+      881,
+      882,
+      883,
+      884,
+      885,
+      886,
+      887,
+      888,
+      889,
+      890,
+      891,
+      892,
+      875,
+      876,
+      877,
+      878,
+      879,
+      880,
+      881,
+      882,
+      883,
+      884,
+      885,
+      886,
+      887,
+      888,
+      889,
+      890,
+      891,
+      892,
+      875,
+      876,
+      877,
+      878,
+      879,
+      880,
+      881,
+      882,
+      883,
+      884,
+      885,
+      886,
+      887,
+      888,
+      889,
+      890,
+      891,
+      892,
+      875,
+      876,
+      877,
+      878,
+      879,
+      880,
+      881,
+      882,
+      883,
+      884,
+      885,
+      886,
+      887,
+      888,
+      889,
+      890,
+      891,
+      892,
+      875,
+      876,
+      877,
+      878,
+      879,
+      880,
+      881,
+      882,
+      883,
+      884,
+      885,
+      886,
+      887,
+      888,
+      889,
+      890,
+      891,
+      892,
+      875,
+      876,
+      877,
+      878,
+      879,
+      880,
+      881,
+      882,
+      883,
+      884,
+      885,
+      886,
+      887,
+      888,
+      889,
+      890,
+      891,
+      892,
+      875,
+      876,
+      877,
+      878,
+      879,
+      880,
+      881,
+      882,
+      883,
+      884,
+      885,
+      886,
+      887,
+      888,
+      889,
+      890,
+      891,
+      892,
+      875,
+      876,
+      877,
+      878,
+      879,
+      880,
+      881,
+      882,
+      883,
+      884,
+      885,
+      886,
+      887,
+      888,
+      889,
+      890,
+      891,
+      892,
+      875,
+      876,
+      877,
+      878,
+      879,
+      880,
+      881,
+      882,
+      883,
+      884,
+      885,
+      886,
+      887,
+      888,
+      889,
+      890,
+      891,
+      892,
+      875,
+      876,
+      877,
+      878,
+      879,
+      880,
+      881,
+      882,
+      883,
+      884,
+      885,
+      886,
+      887,
+      888,
+      889,
+      890,
+      891,
+      892,
+      875,
+      876,
+      877,
+      878,
+      879,
+      880,
+      881,
+      882,
+      883,
+      884,
+      885,
+      886,
+      887,
+      888,
+      889,
+      890,
+      891,
+      892,
+      875,
+      876,
+      877,
+      878,
+      879,
+      880,
+      881,
+      882,
+      883,
+      884,
+      885,
+      886,
+      887,
+      888,
+      889,
+      890,
+      891,
+      892,
+      875,
+      876,
+      877,
+      878,
+      879,
+      880,
+      881,
+      882,
+      883,
+      884,
+      885,
+      886,
+      887,
+      888,
+      889,
+      890,
+      891,
+      892,
+      875,
+      876,
+      877,
+      878,
+      879,
+      880,
+      881,
+      882,
+      883,
+      884,
+      885,
+      886,
+      887,
+      888,
+      889,
+      890,
+      891,
+      892
+    ],
+    "outline": [
+      [
+        620197.2301900581,
+        6074232.865970629
+      ],
+      [
+        620622.0655828881,
+        6074244.732942407
+      ],
+      [
+        620606.7108727432,
+        6074794.50890859
+      ],
+      [
+        620181.8754799132,
+        6074782.641936813
+      ],
+      [
+        620197.2301900581,
+        6074232.865970629
+      ]
+    ],
+    "lonlat": [
+      [
+        4.868348192174426,
+        54.79896275635164
+      ],
+      [
+        4.868737148217565,
+        54.79896305763101
+      ],
+      [
+        4.869126104237811,
+        54.79896335766337
+      ],
+      [
+        4.869515060235136,
+        54.79896365644869
+      ],
+      [
+        4.869904016209503,
+        54.79896395398698
+      ],
+      [
+        4.870292972160889,
+        54.798964250278246
+      ],
+      [
+        4.870681928089263,
+        54.79896454532249
+      ],
+      [
+        4.871070883994592,
+        54.79896483911969
+      ],
+      [
+        4.871459839876848,
+        54.79896513166986
+      ],
+      [
+        4.871847241075113,
+        54.79896544695952
+      ],
+      [
+        4.872236196911468,
+        54.79896573702063
+      ],
+      [
+        4.8726251111894765,
+        54.798965127648415
+      ],
+      [
+        4.873014066970851,
+        54.79896541521566
+      ],
+      [
+        4.873403022729004,
+        54.79896570153591
+      ],
+      [
+        4.873791978463904,
+        54.79896598660909
+      ],
+      [
+        4.874180934175523,
+        54.79896627043525
+      ],
+      [
+        4.874569889863828,
+        54.79896655301439
+      ],
+      [
+        4.874958845528792,
+        54.7989668343465
+      ],
+      [
+        4.8683476696256065,
+        54.799187471056676
+      ],
+      [
+        4.868736627827226,
+        54.799187772321176
+      ],
+      [
+        4.869125586005951,
+        54.799188072338616
+      ],
+      [
+        4.8695145441617536,
+        54.79918837110902
+      ],
+      [
+        4.869903502294601,
+        54.79918866863238
+      ],
+      [
+        4.8702924189206644,
+        54.79918806672128
+      ],
+      [
+        4.870681376998891,
+        54.79918836175073
+      ],
+      [
+        4.871070335054075,
+        54.79918865553319
+      ],
+      [
+        4.871459293086184,
+        54.799188948068604
+      ],
+      [
+        4.871846696425714,
+        54.79918926334353
+      ],
+      [
+        4.872235654411923,
+        54.79918955338983
+      ],
+      [
+        4.872624612374966,
+        54.79918984218911
+      ],
+      [
+        4.87301357031482,
+        54.79919012974135
+      ],
+      [
+        4.873402528231449,
+        54.79919041604656
+      ],
+      [
+        4.873791486124826,
+        54.799190701104706
+      ],
+      [
+        4.874180443994922,
+        54.799190984915825
+      ],
+      [
+        4.874569401841702,
+        54.7991912674799
+      ],
+      [
+        4.874958359665143,
+        54.799191548796955
+      ],
+      [
+        4.868347105658642,
+        54.79941128756548
+      ],
+      [
+        4.868736066010145,
+        54.799411588815246
+      ],
+      [
+        4.869125026338755,
+        54.79941188881799
+      ],
+      [
+        4.869513986644441,
+        54.79941218757366
+      ],
+      [
+        4.869902946927174,
+        54.7994124850823
+      ],
+      [
+        4.870291907186924,
+        54.799412781343875
+      ],
+      [
+        4.8706808674236575,
+        54.799413076358405
+      ],
+      [
+        4.87106982763735,
+        54.7994133701259
+      ],
+      [
+        4.8714587878279705,
+        54.79941366264633
+      ],
+      [
+        4.871847747995485,
+        54.79941395391972
+      ],
+      [
+        4.872235153462097,
+        54.79941426793765
+      ],
+      [
+        4.872624113583651,
+        54.79941455672192
+      ],
+      [
+        4.873013073682008,
+        54.79941484425915
+      ],
+      [
+        4.873402033757145,
+        54.79941513054933
+      ],
+      [
+        4.873790993809029,
+        54.799415415592435
+      ],
+      [
+        4.874179953837632,
+        54.79941569938851
+      ],
+      [
+        4.874568913842921,
+        54.79941598193756
+      ],
+      [
+        4.874957873824867,
+        54.79941626323953
+      ],
+      [
+        4.868346583155216,
+        54.7996360022548
+      ],
+      [
+        4.868735545665259,
+        54.7996363034897
+      ],
+      [
+        4.869124508152408,
+        54.799636603477495
+      ],
+      [
+        4.869513470616636,
+        54.79963690221827
+      ],
+      [
+        4.869902433057906,
+        54.799637199711974
+      ],
+      [
+        4.870291395476194,
+        54.79963749595862
+      ],
+      [
+        4.870680357871468,
+        54.799637790958194
+      ],
+      [
+        4.871069320243697,
+        54.799638084710715
+      ],
+      [
+        4.871458282592853,
+        54.79963837721618
+      ],
+      [
+        4.871847244918907,
+        54.79963866847459
+      ],
+      [
+        4.8722346525354325,
+        54.79963898247758
+      ],
+      [
+        4.872623614815523,
+        54.799639271246846
+      ],
+      [
+        4.873012577072418,
+        54.79963955876906
+      ],
+      [
+        4.873401539306093,
+        54.7996398450442
+      ],
+      [
+        4.873790501516516,
+        54.7996401300723
+      ],
+      [
+        4.874179463703653,
+        54.799640413853325
+      ],
+      [
+        4.874568425867479,
+        54.79964069638729
+      ],
+      [
+        4.874957388007961,
+        54.79964097767421
+      ],
+      [
+        4.868346060674657,
+        54.79986071693627
+      ],
+      [
+        4.86873502534327,
+        54.79986101815624
+      ],
+      [
+        4.86912398998899,
+        54.79986131812916
+      ],
+      [
+        4.869512954611785,
+        54.799861616855
+      ],
+      [
+        4.869901919211625,
+        54.79986191433378
+      ],
+      [
+        4.87029088378848,
+        54.79986221056548
+      ],
+      [
+        4.8706798483423235,
+        54.7998625055501
+      ],
+      [
+        4.87106881287312,
+        54.79986279928765
+      ],
+      [
+        4.871457777380845,
+        54.79986309177815
+      ],
+      [
+        4.871846741865466,
+        54.799863383021574
+      ],
+      [
+        4.872234151631934,
+        54.79986369700965
+      ],
+      [
+        4.872623116070592,
+        54.79986398576389
+      ],
+      [
+        4.873012080486056,
+        54.7998642732711
+      ],
+      [
+        4.873401044878298,
+        54.79986455953122
+      ],
+      [
+        4.873790009247285,
+        54.799864844544274
+      ],
+      [
+        4.874178973592991,
+        54.799865128310266
+      ],
+      [
+        4.874567937915381,
+        54.79986541082918
+      ],
+      [
+        4.8749569022144295,
+        54.79986569210103
+      ],
+      [
+        4.868345538216964,
+        54.80008543160987
+      ],
+      [
+        4.868734505044174,
+        54.80008573281493
+      ],
+      [
+        4.869123471848492,
+        54.80008603277294
+      ],
+      [
+        4.8695124386298865,
+        54.80008633148386
+      ],
+      [
+        4.869901405388327,
+        54.800086628947696
+      ],
+      [
+        4.8702903721237805,
+        54.80008692516445
+      ],
+      [
+        4.87067933883622,
+        54.80008722013411
+      ],
+      [
+        4.871068305525617,
+        54.80008751385674
+      ],
+      [
+        4.8714572721919405,
+        54.80008780633224
+      ],
+      [
+        4.8718462388351575,
+        54.800088097560675
+      ],
+      [
+        4.872233650751595,
+        54.80008841153381
+      ],
+      [
+        4.872622617348852,
+        54.800088700273065
+      ],
+      [
+        4.873011583922913,
+        54.80008898776525
+      ],
+      [
+        4.873400550473753,
+        54.800089274010375
+      ],
+      [
+        4.873789517001337,
+        54.800089559008384
+      ],
+      [
+        4.874178483505637,
+        54.80008984275932
+      ],
+      [
+        4.874567449986626,
+        54.80009012526318
+      ],
+      [
+        4.874956416444269,
+        54.80009040651998
+      ],
+      [
+        4.868345015782133,
+        54.800310146275564
+      ],
+      [
+        4.8687339847679745,
+        54.80031044746574
+      ],
+      [
+        4.86912295373092,
+        54.80031074740884
+      ],
+      [
+        4.869511922670943,
+        54.80031104610483
+      ],
+      [
+        4.86990089158801,
+        54.800311343553744
+      ],
+      [
+        4.8702898604820914,
+        54.800311639755556
+      ],
+      [
+        4.870678829353161,
+        54.80031193471028
+      ],
+      [
+        4.871067798201187,
+        54.800312228417916
+      ],
+      [
+        4.871456767026136,
+        54.80031252087846
+      ],
+      [
+        4.871845735827982,
+        54.80031281209191
+      ],
+      [
+        4.872233149894426,
+        54.80031312605012
+      ],
+      [
+        4.87262211865031,
+        54.80031341477438
+      ],
+      [
+        4.873011087382998,
+        54.80031370225154
+      ],
+      [
+        4.873400056092461,
+        54.800313988481626
+      ],
+      [
+        4.873789024778672,
+        54.80031427346461
+      ],
+      [
+        4.8741779934416005,
+        54.80031455720051
+      ],
+      [
+        4.874566962081213,
+        54.8003148396893
+      ],
+      [
+        4.874955930697485,
+        54.80031512093104
+      ],
+      [
+        4.8683444933701665,
+        54.800534860933396
+      ],
+      [
+        4.868733464514668,
+        54.800535162108666
+      ],
+      [
+        4.869122435636274,
+        54.80053546203685
+      ],
+      [
+        4.869511406734953,
+        54.80053576071792
+      ],
+      [
+        4.869900377810682,
+        54.800536058151906
+      ],
+      [
+        4.870289348863421,
+        54.800536354338774
+      ],
+      [
+        4.870678319893148,
+        54.80053664927855
+      ],
+      [
+        4.871067290899831,
+        54.800536942971235
+      ],
+      [
+        4.871456261883439,
+        54.8005372354168
+      ],
+      [
+        4.871845232843944,
+        54.80053752661526
+      ],
+      [
+        4.872234203781312,
+        54.800537816566646
+      ],
+      [
+        4.872621619974958,
+        54.80053812926779
+      ],
+      [
+        4.873010590866303,
+        54.80053841672994
+      ],
+      [
+        4.8733995617344235,
+        54.800538702945005
+      ],
+      [
+        4.873788532579292,
+        54.80053898791295
+      ],
+      [
+        4.874177503400874,
+        54.8005392716338
+      ],
+      [
+        4.874566474199145,
+        54.800539554107544
+      ],
+      [
+        4.874955444974071,
+        54.80053983533421
+      ],
+      [
+        4.86834552571392,
+        54.8007595516412
+      ],
+      [
+        4.868732944284255,
+        54.80075987674372
+      ],
+      [
+        4.8691219175645495,
+        54.800760176656986
+      ],
+      [
+        4.869510890821919,
+        54.800760475323145
+      ],
+      [
+        4.869899864056334,
+        54.80076077274221
+      ],
+      [
+        4.870288837267764,
+        54.80076106891412
+      ],
+      [
+        4.870677810456179,
+        54.80076136383896
+      ],
+      [
+        4.87106678362155,
+        54.80076165751665
+      ],
+      [
+        4.871455756763843,
+        54.80076194994725
+      ],
+      [
+        4.871844729883034,
+        54.80076224113075
+      ],
+      [
+        4.872233702979091,
+        54.80076253106713
+      ],
+      [
+        4.872621121322799,
+        54.80076284375332
+      ],
+      [
+        4.87301009437283,
+        54.800763131200476
+      ],
+      [
+        4.873399067399638,
+        54.80076341740049
+      ],
+      [
+        4.873788040403192,
+        54.80076370235342
+      ],
+      [
+        4.874177013383463,
+        54.80076398605923
+      ],
+      [
+        4.874565986340419,
+        54.80076426851794
+      ],
+      [
+        4.8749549592740316,
+        54.80076454972952
+      ],
+      [
+        4.868345003356309,
+        54.80098426628322
+      ],
+      [
+        4.86873242407674,
+        54.800984591370884
+      ],
+      [
+        4.869121399515753,
+        54.80098489126926
+      ],
+      [
+        4.869510374931842,
+        54.80098518992049
+      ],
+      [
+        4.869899350324975,
+        54.8009854873246
+      ],
+      [
+        4.870288325695123,
+        54.80098578348159
+      ],
+      [
+        4.870677301042254,
+        54.80098607839145
+      ],
+      [
+        4.871066276366343,
+        54.80098637205421
+      ],
+      [
+        4.8714552516673555,
+        54.80098666446985
+      ],
+      [
+        4.871844226945264,
+        54.80098695563836
+      ],
+      [
+        4.872233202200038,
+        54.80098724555974
+      ],
+      [
+        4.8726206226938364,
+        54.80098755823098
+      ],
+      [
+        4.873009597902585,
+        54.80098784566312
+      ],
+      [
+        4.873398573088108,
+        54.800988131848136
+      ],
+      [
+        4.87378754825038,
+        54.80098841678601
+      ],
+      [
+        4.874176523389366,
+        54.80098870047678
+      ],
+      [
+        4.874565456923722,
+        54.80098808473543
+      ],
+      [
+        4.874954432007424,
+        54.80098836593217
+      ],
+      [
+        4.868344481021566,
+        54.801208980917345
+      ],
+      [
+        4.868731903892118,
+        54.80120930599018
+      ],
+      [
+        4.869120881489882,
+        54.801209605873645
+      ],
+      [
+        4.869509859064718,
+        54.80120990450995
+      ],
+      [
+        4.869898836616599,
+        54.80121020189914
+      ],
+      [
+        4.870287814145495,
+        54.801210498041186
+      ],
+      [
+        4.870676791651375,
+        54.8012107929361
+      ],
+      [
+        4.87106576913421,
+        54.80121108658388
+      ],
+      [
+        4.8714547465939715,
+        54.80121137898455
+      ],
+      [
+        4.871843682509322,
+        54.80121077195173
+      ],
+      [
+        4.872232659914217,
+        54.80121106185832
+      ],
+      [
+        4.872620082549543,
+        54.80121137451482
+      ],
+      [
+        4.873009059908413,
+        54.80121166193216
+      ],
+      [
+        4.873398037244058,
+        54.801211948102335
+      ],
+      [
+        4.87378701455645,
+        54.80121223302539
+      ],
+      [
+        4.874175991845556,
+        54.80121251670132
+      ],
+      [
+        4.87456496911135,
+        54.8012127991301
+      ],
+      [
+        4.874953946353796,
+        54.80121308031175
+      ],
+      [
+        4.868343958709687,
+        54.80143369554362
+      ],
+      [
+        4.868731383730392,
+        54.8014340206016
+      ],
+      [
+        4.869120363486933,
+        54.80143432047016
+      ],
+      [
+        4.8695093017506625,
+        54.801433720904036
+      ],
+      [
+        4.869898281452697,
+        54.801434018278485
+      ],
+      [
+        4.870287261131745,
+        54.80143431440579
+      ],
+      [
+        4.870676240787778,
+        54.80143460928596
+      ],
+      [
+        4.871065220420765,
+        54.801434902919
+      ],
+      [
+        4.871454200030677,
+        54.801435195304876
+      ],
+      [
+        4.871843179617484,
+        54.80143548644361
+      ],
+      [
+        4.872232159181157,
+        54.80143577633521
+      ],
+      [
+        4.872619583966635,
+        54.801436088976764
+      ],
+      [
+        4.873008563484283,
+        54.80143637637909
+      ],
+      [
+        4.873397542978704,
+        54.801436662534236
+      ],
+      [
+        4.873786522449872,
+        54.801436947442255
+      ],
+      [
+        4.874175501897753,
+        54.80143723110312
+      ],
+      [
+        4.874564481322319,
+        54.80143751351686
+      ],
+      [
+        4.874953460723543,
+        54.801437794683466
+      ],
+      [
+        4.868343394976299,
+        54.801657511973914
+      ],
+      [
+        4.8687308221385965,
+        54.80165783701728
+      ],
+      [
+        4.86911980404532,
+        54.8016581368711
+      ],
+      [
+        4.869508785929119,
+        54.801658435477776
+      ],
+      [
+        4.869897767789959,
+        54.801658732837296
+      ],
+      [
+        4.870286749627815,
+        54.80165902894967
+      ],
+      [
+        4.870675731442654,
+        54.801659323814874
+      ],
+      [
+        4.871064713234451,
+        54.80165961743295
+      ],
+      [
+        4.8714536950031695,
+        54.80165990980385
+      ],
+      [
+        4.871842676748782,
+        54.8016602009276
+      ],
+      [
+        4.872231658471263,
+        54.80166049080421
+      ],
+      [
+        4.8726206401705765,
+        54.80166077943368
+      ],
+      [
+        4.873008067083374,
+        54.80166109081814
+      ],
+      [
+        4.873397048736603,
+        54.80166137695827
+      ],
+      [
+        4.873786030366575,
+        54.80166166185125
+      ],
+      [
+        4.874175011973263,
+        54.80166194549708
+      ],
+      [
+        4.874563993556637,
+        54.80166222789576
+      ],
+      [
+        4.874952975116666,
+        54.8016625090473
+      ],
+      [
+        4.868342872709821,
+        54.80188222658445
+      ],
+      [
+        4.868731856797945,
+        54.801882527665555
+      ],
+      [
+        4.869119286087891,
+        54.80188285145188
+      ],
+      [
+        4.869508270130526,
+        54.801883150043636
+      ],
+      [
+        4.869897254150206,
+        54.80188344738823
+      ],
+      [
+        4.870286238146899,
+        54.80188374348566
+      ],
+      [
+        4.870675222120576,
+        54.80188403833592
+      ],
+      [
+        4.871064206071208,
+        54.80188433193902
+      ],
+      [
+        4.871453189998766,
+        54.80188462429497
+      ],
+      [
+        4.871842173903217,
+        54.80188491540373
+      ],
+      [
+        4.8722311577845305,
+        54.801885205265336
+      ],
+      [
+        4.872620141642682,
+        54.801885493879794
+      ],
+      [
+        4.873007570705692,
+        54.801885805249306
+      ],
+      [
+        4.873396554517754,
+        54.8018860913744
+      ],
+      [
+        4.873785538306563,
+        54.801886376252355
+      ],
+      [
+        4.874174522072089,
+        54.80188665988315
+      ],
+      [
+        4.874563505814297,
+        54.80188694226678
+      ],
+      [
+        4.874952489533161,
+        54.801887223403234
+      ],
+      [
+        4.8683423504662064,
+        54.80210694118711
+      ],
+      [
+        4.868731336713198,
+        54.80210724225331
+      ],
+      [
+        4.869118768153388,
+        54.8021075660248
+      ],
+      [
+        4.869507754354891,
+        54.80210786460163
+      ],
+      [
+        4.869896740533439,
+        54.80210816193129
+      ],
+      [
+        4.870285726689,
+        54.80210845801376
+      ],
+      [
+        4.870674712821547,
+        54.80210875284909
+      ],
+      [
+        4.871063698931045,
+        54.80210904643721
+      ],
+      [
+        4.871452685017469,
+        54.802109338778195
+      ],
+      [
+        4.871841671080785,
+        54.80210962987198
+      ],
+      [
+        4.872230657120968,
+        54.802109919718596
+      ],
+      [
+        4.872619643137983,
+        54.80211020831804
+      ],
+      [
+        4.873007074351235,
+        54.80211051967261
+      ],
+      [
+        4.873396060322165,
+        54.8021108057827
+      ],
+      [
+        4.873785046269838,
+        54.80211109064558
+      ],
+      [
+        4.874174032194229,
+        54.802111374261344
+      ],
+      [
+        4.874563018095303,
+        54.80211165662993
+      ],
+      [
+        4.874952003973032,
+        54.80211193775132
+      ],
+      [
+        4.868341828245459,
+        54.80233165578189
+      ],
+      [
+        4.868730816651351,
+        54.80233195683319
+      ],
+      [
+        4.869118250241812,
+        54.80233228058983
+      ],
+      [
+        4.869507238602213,
+        54.802332579151745
+      ],
+      [
+        4.869896226939659,
+        54.802332876466465
+      ],
+      [
+        4.870285215254117,
+        54.802333172534006
+      ],
+      [
+        4.87067420354556,
+        54.80233346735438
+      ],
+      [
+        4.871063191813954,
+        54.802333760927546
+      ],
+      [
+        4.8714521800592765,
+        54.80233405325355
+      ],
+      [
+        4.871841168281492,
+        54.802334344332344
+      ],
+      [
+        4.87223015648057,
+        54.802334634163984
+      ],
+      [
+        4.872619144656482,
+        54.80233492274842
+      ],
+      [
+        4.873006578020002,
+        54.80233523408802
+      ],
+      [
+        4.873395566149828,
+        54.802335520183085
+      ],
+      [
+        4.873784554256396,
+        54.80233580503095
+      ],
+      [
+        4.8741735423396815,
+        54.80233608863166
+      ],
+      [
+        4.874562530399652,
+        54.80233637098519
+      ],
+      [
+        4.8749515184362755,
+        54.80233665209151
+      ],
+      [
+        4.868341306047578,
+        54.8025563703688
+      ],
+      [
+        4.868730296612397,
+        54.80255667140519
+      ],
+      [
+        4.869117732353161,
+        54.80255699514697
+      ],
+      [
+        4.86950672287249,
+        54.80255729369398
+      ],
+      [
+        4.869895713368863,
+        54.80255759099376
+      ],
+      [
+        4.870284703842248,
+        54.80255788704637
+      ],
+      [
+        4.870673694292618,
+        54.80255818185178
+      ],
+      [
+        4.871062684719943,
+        54.80255847541
+      ],
+      [
+        4.871451675124189,
+        54.802558767721024
+      ],
+      [
+        4.871840665505331,
+        54.80255905878484
+      ],
+      [
+        4.872229655863336,
+        54.80255934860147
+      ],
+      [
+        4.872618646198174,
+        54.80255963717092
+      ],
+      [
+        4.873006081711993,
+        54.80255994849557
+      ],
+      [
+        4.873395072000746,
+        54.8025602345756
+      ],
+      [
+        4.8737840622662425,
+        54.80256051940845
+      ],
+      [
+        4.874173052508454,
+        54.80256080299411
+      ],
+      [
+        4.874562042727348,
+        54.80256108533256
+      ],
+      [
+        4.874951032922897,
+        54.802561366423845
+      ],
+      [
+        4.868340783872566,
+        54.80278108494781
+      ],
+      [
+        4.868729776596343,
+        54.80278138596933
+      ],
+      [
+        4.869117214487439,
+        54.802781709696255
+      ],
+      [
+        4.869506207165725,
+        54.80278200822832
+      ],
+      [
+        4.869895199821054,
+        54.802782305513176
+      ],
+      [
+        4.870284192453398,
+        54.80278260155085
+      ],
+      [
+        4.870673185062725,
+        54.80278289634131
+      ],
+      [
+        4.871062177649007,
+        54.802783189884565
+      ],
+      [
+        4.871451170212211,
+        54.80278348218063
+      ],
+      [
+        4.871840162752308,
+        54.802783773229464
+      ],
+      [
+        4.8722291552692685,
+        54.80278406303111
+      ],
+      [
+        4.872618147763063,
+        54.80278435158553
+      ],
+      [
+        4.873007140233664,
+        54.80278463889278
+      ],
+      [
+        4.873394577874922,
+        54.80278494896025
+      ],
+      [
+        4.8737835702993735,
+        54.80278523377807
+      ],
+      [
+        4.874172562700538,
+        54.80278551734867
+      ],
+      [
+        4.874561555078389,
+        54.80278579967207
+      ],
+      [
+        4.874950547432896,
+        54.80278608074828
+      ],
+      [
+        4.86834026172042,
+        54.80300579951898
+      ],
+      [
+        4.868729256603185,
+        54.80300610052558
+      ],
+      [
+        4.869118251463054,
+        54.803006400284964
+      ],
+      [
+        4.869505691481914,
+        54.80300672275481
+      ],
+      [
+        4.869894686296232,
+        54.80300702002473
+      ],
+      [
+        4.870283681087563,
+        54.80300731604745
+      ],
+      [
+        4.870672675855878,
+        54.80300761082297
+      ],
+      [
+        4.8710616706011445,
+        54.803007904351254
+      ],
+      [
+        4.871450665323335,
+        54.803008196632334
+      ],
+      [
+        4.87183966002242,
+        54.803008487666204
+      ],
+      [
+        4.872228654698367,
+        54.80300877745283
+      ],
+      [
+        4.87261764935115,
+        54.80300906599229
+      ],
+      [
+        4.873006643980736,
+        54.8030093532845
+      ],
+      [
+        4.87339408377235,
+        54.803009663337015
+      ],
+      [
+        4.873783078355787,
+        54.80300994813978
+      ],
+      [
+        4.87417207291594,
+        54.803010231695346
+      ],
+      [
+        4.874561067452774,
+        54.8030105140037
+      ],
+      [
+        4.874950061966264,
+        54.80301079506486
+      ],
+      [
+        4.86833973959114,
+        54.803230514082244
+      ],
+      [
+        4.868728736632924,
+        54.803230815073945
+      ],
+      [
+        4.869117733651808,
+        54.80323111481841
+      ],
+      [
+        4.869505175821063,
+        54.80323143727341
+      ],
+      [
+        4.869894172794398,
+        54.803231734528396
+      ],
+      [
+        4.870283169744743,
+        54.80323203053618
+      ],
+      [
+        4.870672166672076,
+        54.80323232529673
+      ],
+      [
+        4.871061163576361,
+        54.80323261881007
+      ],
+      [
+        4.871450160457568,
+        54.80323291107617
+      ],
+      [
+        4.8718391573156685,
+        54.80323320209504
+      ],
+      [
+        4.872228154150634,
+        54.80323349186673
+      ],
+      [
+        4.872617150962431,
+        54.803233780391146
+      ],
+      [
+        4.873006147751034,
+        54.80323406766837
+      ],
+      [
+        4.8733935896930385,
+        54.80323437770589
+      ],
+      [
+        4.873782544868081,
+        54.80323376430859
+      ],
+      [
+        4.874171541578621,
+        54.803234047849315
+      ],
+      [
+        4.874560538265847,
+        54.80323433014282
+      ],
+      [
+        4.874949534929723,
+        54.80323461118908
+      ],
+      [
+        4.8683392174847295,
+        54.80345522863764
+      ],
+      [
+        4.86872821668556,
+        54.803455529614446
+      ],
+      [
+        4.869117215863494,
+        54.803455829343996
+      ],
+      [
+        4.869504660183168,
+        54.80345615178412
+      ],
+      [
+        4.869893659315552,
+        54.80345644902419
+      ],
+      [
+        4.870282658424945,
+        54.80345674501703
+      ],
+      [
+        4.870671657511323,
+        54.80345703976264
+      ],
+      [
+        4.871060615067264,
+        54.803456435074594
+      ],
+      [
+        4.871449614098893,
+        54.80345672732593
+      ],
+      [
+        4.871838613107412,
+        54.80345701833003
+      ],
+      [
+        4.872227612092795,
+        54.803457308086905
+      ],
+      [
+        4.872616611055011,
+        54.80345759659652
+      ],
+      [
+        4.873005609994032,
+        54.80345788385891
+      ],
+      [
+        4.873393054077862,
+        54.80345819388169
+      ],
+      [
+        4.873782052970733,
+        54.8034584786546
+      ],
+      [
+        4.874171051840319,
+        54.80345876218028
+      ],
+      [
+        4.874560050686586,
+        54.80345904445872
+      ],
+      [
+        4.874949049509509,
+        54.80345932548993
+      ],
+      [
+        4.868338653953813,
+        54.80367904499738
+      ],
+      [
+        4.868727655305096,
+        54.80367934595948
+      ],
+      [
+        4.869116656633481,
+        54.80367964567432
+      ],
+      [
+        4.8695041030950135,
+        54.803679968099786
+      ],
+      [
+        4.869893104377845,
+        54.80368026532514
+      ],
+      [
+        4.870282105637689,
+        54.80368056130322
+      ],
+      [
+        4.87067110687452,
+        54.80368085603409
+      ],
+      [
+        4.8710601080883,
+        54.803681149517686
+      ],
+      [
+        4.871449109279003,
+        54.803681441754044
+      ],
+      [
+        4.8718381104466,
+        54.803681732743165
+      ],
+      [
+        4.87222711159106,
+        54.80368202248504
+      ],
+      [
+        4.872616112712352,
+        54.80368231097967
+      ],
+      [
+        4.873005113810447,
+        54.80368259822703
+      ],
+      [
+        4.873392560044726,
+        54.80368290823484
+      ],
+      [
+        4.873781561096674,
+        54.803683192992736
+      ],
+      [
+        4.874170562125334,
+        54.803683476503366
+      ],
+      [
+        4.874559563130677,
+        54.803683758766745
+      ],
+      [
+        4.874948564112675,
+        54.803684039782894
+      ],
+      [
+        4.868338131892806,
+        54.80390375953705
+      ],
+      [
+        4.868727135403195,
+        54.80390406048425
+      ],
+      [
+        4.869116138890688,
+        54.803904360184184
+      ],
+      [
+        4.869503587502699,
+        54.80390468259478
+      ],
+      [
+        4.869892590944639,
+        54.80390497980521
+      ],
+      [
+        4.870281594363591,
+        54.80390527576835
+      ],
+      [
+        4.870670597759525,
+        54.80390557048426
+      ],
+      [
+        4.871059601132414,
+        54.8039058639529
+      ],
+      [
+        4.871448604482224,
+        54.803906156174286
+      ],
+      [
+        4.871837607808926,
+        54.803906447148435
+      ],
+      [
+        4.8722266111124926,
+        54.80390673687532
+      ],
+      [
+        4.87261561439289,
+        54.80390702535493
+      ],
+      [
+        4.873004617650091,
+        54.80390731258729
+      ],
+      [
+        4.873393620884064,
+        54.803907598572415
+      ],
+      [
+        4.873781069245902,
+        54.80390790732299
+      ],
+      [
+        4.874170072433666,
+        54.803908190818575
+      ],
+      [
+        4.874559075598113,
+        54.803908473066905
+      ],
+      [
+        4.874948078739213,
+        54.803908754067976
+      ]
+    ],
+    "outline_lonlat": [
+      [
+        4.868348647426465,
+        54.79896244347574
+      ],
+      [
+        4.874958324160078,
+        54.79896713849947
+      ],
+      [
+        4.874948251499295,
+        54.803908831471084
+      ],
+      [
+        4.8683377680232045,
+        54.803904142079205
+      ],
+      [
+        4.868348647426465,
+        54.79896244347574
+      ]
+    ],
+    "rms_idx": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
+      135,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      151,
+      152,
+      153,
+      154,
+      155,
+      156,
+      157,
+      158,
+      159,
+      160,
+      161,
+      162,
+      163,
+      164,
+      165,
+      166,
+      167,
+      168,
+      169,
+      170,
+      171,
+      172,
+      173,
+      174,
+      175,
+      176,
+      177,
+      178,
+      179,
+      180,
+      181,
+      182,
+      183,
+      184,
+      185,
+      186,
+      187,
+      188,
+      189,
+      190,
+      191,
+      192,
+      193,
+      194,
+      195,
+      196,
+      197,
+      198,
+      199,
+      200,
+      201,
+      202,
+      203,
+      204,
+      205,
+      206,
+      207,
+      208,
+      209,
+      210,
+      211,
+      212,
+      213,
+      214,
+      215,
+      216,
+      217,
+      218,
+      219,
+      220,
+      221,
+      222,
+      223,
+      224,
+      225,
+      226,
+      227,
+      228,
+      229,
+      230,
+      231,
+      232,
+      233,
+      234,
+      235,
+      236,
+      237,
+      238,
+      239,
+      240,
+      241,
+      242,
+      243,
+      244,
+      245,
+      246,
+      247,
+      248,
+      249,
+      250,
+      251,
+      252,
+      253,
+      254,
+      255,
+      256,
+      257,
+      258,
+      259,
+      260,
+      261,
+      262,
+      263,
+      264,
+      265,
+      266,
+      267,
+      268,
+      269,
+      270,
+      271,
+      272,
+      273,
+      274,
+      275,
+      276,
+      277,
+      278,
+      279,
+      280,
+      281,
+      282,
+      283,
+      284,
+      285,
+      286,
+      287,
+      288,
+      289,
+      290,
+      291,
+      292,
+      293,
+      294,
+      295,
+      296,
+      297,
+      298,
+      299,
+      300,
+      301,
+      302,
+      303,
+      304,
+      305,
+      306,
+      307,
+      308,
+      309,
+      310,
+      311,
+      312,
+      313,
+      314,
+      315,
+      316,
+      317,
+      318,
+      319,
+      320,
+      321,
+      322,
+      323,
+      324,
+      325,
+      326,
+      327,
+      328,
+      329,
+      330,
+      331,
+      332,
+      333,
+      334,
+      335,
+      336,
+      337,
+      338,
+      339,
+      340,
+      341,
+      342,
+      343,
+      344,
+      345,
+      346,
+      347,
+      348,
+      349,
+      350,
+      351,
+      352,
+      353,
+      354,
+      355,
+      356,
+      357,
+      358,
+      359,
+      360,
+      361,
+      362,
+      363,
+      364,
+      365,
+      366,
+      367,
+      368,
+      369,
+      370,
+      371,
+      372,
+      373,
+      374,
+      375,
+      376,
+      377,
+      378,
+      379,
+      380,
+      381,
+      382,
+      383,
+      384,
+      385,
+      386,
+      387,
+      388,
+      389,
+      390,
+      391,
+      392,
+      393,
+      394,
+      395,
+      396,
+      397,
+      398,
+      399,
+      400,
+      401,
+      402,
+      403,
+      404,
+      405,
+      406,
+      407,
+      408,
+      409,
+      410,
+      411,
+      412,
+      413
+    ],
+    "rms": [
+      2515.376128269223,
+      2375.6171549024193,
+      2251.219038654391,
+      2252.5088501490955,
+      2021.482136123559,
+      2146.9619030931435,
+      2263.6321638758654,
+      2619.944381089034,
+      2338.1198857201484,
+      1797.0486916052107,
+      2157.2735323396832,
+      2089.1251661879905,
+      2000.3454901591374,
+      1932.824648021646,
+      1935.3465942822747,
+      1881.482100189458,
+      1949.6192961704087,
+      2105.396209742955,
+      1952.1779802739982,
+      2197.1155575739144,
+      2528.687799366831,
+      2448.2094300392955,
+      2395.704533813244,
+      2306.503607916826,
+      2578.7577009094903,
+      2063.0724304622304,
+      2289.813497500033,
+      2345.4122224746193,
+      2146.0792529634127,
+      2378.220211278454,
+      2368.3840454340734,
+      2218.50812334175,
+      2639.137045828933,
+      2770.1851273876987,
+      2072.6850186814845,
+      2462.3028327157485,
+      2169.3013775560707,
+      1909.131949342423,
+      2214.562716805886,
+      2167.074045804619,
+      2058.5757892290485,
+      1903.9298271382447,
+      2332.216633734239,
+      2214.986690704935,
+      1833.1094057184184,
+      2319.269430948749,
+      1889.4008891709564,
+      2159.882055421854,
+      2126.9686817941947,
+      2058.2810660030536,
+      2345.8077585343603,
+      2174.423543532094,
+      2102.727349578796,
+      2427.8999402776053,
+      2256.044783834458,
+      2437.6123044214123,
+      2082.912957054775,
+      2251.8354913270196,
+      2468.2546870207702,
+      2002.3230741649395,
+      2031.0373769743053,
+      1899.4885136092119,
+      2213.4883540089686,
+      2412.0165809269774,
+      2211.2039013472577,
+      1892.5930747698162,
+      2309.4437714162545,
+      1878.1503170229303,
+      1844.217673341915,
+      2264.854982848424,
+      1755.070733617309,
+      1867.9949393221957,
+      1808.537062563736,
+      2039.8802121693323,
+      1992.3304846335107,
+      2049.2505687039184,
+      2501.9182827049594,
+      2307.9503576405914,
+      2013.161079827775,
+      1644.0921831414037,
+      2371.919194801262,
+      2176.3759785478246,
+      2511.851877267713,
+      2340.6100999525743,
+      2025.1408905719786,
+      1803.8311450909146,
+      2115.677502204278,
+      1939.199339933881,
+      1866.4813098448105,
+      2144.012077080413,
+      2143.1370682560955,
+      2229.25944654273,
+      1820.3215759859575,
+      2218.3743417196297,
+      2763.8846116773157,
+      2047.6146545024856,
+      2194.2104365807763,
+      2104.42338262369,
+      1859.5147646630828,
+      2446.325334046966,
+      2455.9569865940243,
+      1815.2090715213312,
+      1967.2871473173407,
+      2082.1871513707247,
+      2109.72604224656,
+      2034.6417866543486,
+      2272.362339064789,
+      2190.609997238212,
+      1778.5167715449486,
+      1835.925495946572,
+      1778.877005304189,
+      1922.5672281266698,
+      1988.8933539366392,
+      2096.7673976862575,
+      2424.83978852212,
+      1568.5458403672278,
+      1910.1104296174433,
+      2262.1524823347636,
+      2607.1484166933546,
+      2361.2941225805253,
+      2518.397003386612,
+      1957.8860300504384,
+      2273.8661936593076,
+      2608.5957959535754,
+      1958.9104931057977,
+      2264.921926542576,
+      1594.0409070451528,
+      1965.840648001087,
+      2336.899940804769,
+      1981.4080313420218,
+      1997.1827491076858,
+      2270.914729061104,
+      2136.700446950859,
+      2602.835579389012,
+      1866.0733783357325,
+      1832.0502649581788,
+      2191.375671429555,
+      2159.597058095175,
+      2221.7627566116657,
+      2143.152379090204,
+      2124.401205045789,
+      2089.5663409744457,
+      1923.7136931813252,
+      2069.143977590733,
+      1886.7364521840352,
+      2028.7672053080248,
+      2179.571649047889,
+      2627.1942448170826,
+      1664.129085537938,
+      2191.896922758915,
+      2668.61908859245,
+      2127.549194104177,
+      1843.5656357540768,
+      1799.5446757443951,
+      1771.2724842139148,
+      1918.7686051215244,
+      1858.0227949803702,
+      2065.657593439274,
+      1901.8567874579833,
+      1781.3156822977785,
+      2329.4602350473097,
+      1841.2980892113403,
+      1632.084340140954,
+      2167.268059101135,
+      2153.653320909999,
+      1903.7758236375066,
+      2075.30164554457,
+      2117.2610860889754,
+      2151.135510995685,
+      2248.1737981452115,
+      2325.9761821652432,
+      2219.4132437801363,
+      1699.7769932160709,
+      1907.402118065302,
+      1832.379072863109,
+      1835.4016163590281,
+      1908.5615071740986,
+      1974.5233180019256,
+      2115.8799493355004,
+      1874.930089363334,
+      2035.2804393170654,
+      1939.618515756814,
+      1701.1944470479166,
+      2202.8777178953897,
+      2158.4031412134295,
+      1763.2527858099832,
+      2212.5742624071777,
+      1868.140822671924,
+      2094.7127726731414,
+      2474.3463460073654,
+      1833.5971931333954,
+      2093.9229753423756,
+      2102.091796282931,
+      2035.94804452373,
+      2706.2485670511987,
+      1679.0451889888689,
+      2179.496837957483,
+      2564.3758928831007,
+      2034.7007675167702,
+      2276.1456514614056,
+      1819.0247570241222,
+      2084.1990787830227,
+      2339.098778019717,
+      1877.2312413054854,
+      1899.1320859803302,
+      2216.428252842848,
+      2026.0161269512803,
+      2167.634547919306,
+      1738.4183731196583,
+      1828.975210329544,
+      2157.1693334862084,
+      2025.4292911215966,
+      2071.1072851657555,
+      2207.933785239041,
+      2140.2588316992565,
+      1990.2796553918413,
+      1714.9654340539928,
+      1980.9548707630875,
+      2098.406373099993,
+      1811.7274923858354,
+      2328.0276344293397,
+      2331.090957756332,
+      1862.360860127095,
+      2023.2395771797928,
+      2492.8513099126735,
+      2500.53018111493,
+      2204.328018542915,
+      2221.4284083294992,
+      2526.0636650725965,
+      2105.1428581769296,
+      2153.4846365832286,
+      2350.7887130351237,
+      2355.2300099990234,
+      1976.2505610372384,
+      2399.1806601421245,
+      2059.124878842142,
+      2025.0795902054483,
+      2291.781231560581,
+      1899.7448354976518,
+      1754.382599852913,
+      2390.762882428954,
+      1992.9194230240887,
+      2183.8467620233796,
+      2581.9612777886505,
+      2023.031948998005,
+      2086.062348061534,
+      2801.7337299132005,
+      1596.622034170893,
+      2242.043454827166,
+      2612.751678467231,
+      2421.7544934750645,
+      2631.5562974534037,
+      2029.9806205971524,
+      2596.695379387681,
+      2179.8289718844153,
+      2197.555202188711,
+      2210.028443255878,
+      1994.1110734694125,
+      1946.954907883933,
+      2452.820417397083,
+      2386.9325615386233,
+      2054.4141192401626,
+      2334.325629955398,
+      2575.1324004796334,
+      1822.1217302913656,
+      2445.3165357474686,
+      2618.9340554253495,
+      2197.517514530127,
+      3048.7094209408237,
+      3013.9042829304763,
+      2315.857223578345,
+      2510.0521057008623,
+      2090.4964290809016,
+      2094.387662301323,
+      2473.708557341925,
+      1948.1742392985968,
+      1895.758852456363,
+      2346.755490743195,
+      2146.1263460787513,
+      2031.0309927062497,
+      2465.7090204104243,
+      1709.6595489550934,
+      2151.4422511422426,
+      2420.2033495831156,
+      2111.3670200449124,
+      2050.0360452115633,
+      2117.7444164330436,
+      2122.991822876386,
+      2404.231103700308,
+      1920.0367704812322,
+      2373.97989039503,
+      2440.3582114107758,
+      1601.0583541312083,
+      2256.9380910132795,
+      2167.356737287765,
+      2074.2627091732297,
+      2305.8204902666066,
+      2148.9585911940385,
+      1792.3018644562453,
+      1796.9115875115651,
+      2226.0277776044636,
+      2332.183963584348,
+      2214.6428515677194,
+      1919.2084062619845,
+      2405.757167019703,
+      2499.752622427534,
+      2499.973978531243,
+      1917.514881298187,
+      2419.6010111862106,
+      2482.8641579165514,
+      2066.734399965317,
+      1996.9635683540482,
+      2048.8303394864106,
+      2007.829780301773,
+      2018.239017889936,
+      2000.3648100617381,
+      1882.488466542801,
+      2028.1074494874936,
+      2664.2752210185295,
+      2561.387459952125,
+      2222.168046450733,
+      2203.9893375422666,
+      2562.8390585442544,
+      2156.5595006862204,
+      2224.8584793944383,
+      2036.2410826487778,
+      2213.1680821844507,
+      2164.6134189118698,
+      2227.1496372418865,
+      2045.1242863617524,
+      2090.275194003571,
+      1710.808939264308,
+      1948.7671795265846,
+      2178.44483672795,
+      1946.8502527587136,
+      2291.478817997961,
+      2268.4235583329673,
+      2079.1133526898752,
+      2668.2824138385354,
+      2463.4766976774918,
+      2176.4375203529275,
+      2879.1701072820733,
+      1645.1720639495434,
+      1914.9943080855357,
+      1900.9329358677194,
+      1615.3674834744775,
+      1730.5808658751932,
+      2155.8463829008474,
+      1883.5928399382567,
+      1562.7080384170722,
+      1979.0389721613199,
+      2027.8557641015793,
+      2128.836596203037,
+      2086.9627244714584,
+      1784.7329772265653,
+      2035.9165994706168,
+      2385.7920809100974,
+      1944.447067934738,
+      2439.918760942667,
+      2495.2933615108263,
+      2317.4015678484957,
+      1616.433324741028,
+      2009.5713473275837,
+      1808.5217831145967,
+      1540.300961933522,
+      1892.1743013440032,
+      2165.1448973836987,
+      1697.4355873886152,
+      2143.2855899296296,
+      2222.192127907336,
+      1871.08288075827,
+      2051.4995718579453,
+      2431.8774475700866,
+      2062.430349531025,
+      2380.703193036321,
+      2628.448279879214,
+      1952.5506395481782,
+      2301.312185109472,
+      2495.252818186299,
+      1928.224589270313,
+      1971.584097453957,
+      2021.6376068260438,
+      1793.1713916968451,
+      2189.0738528732495,
+      2151.441680982003,
+      1875.6247030434065,
+      2068.1470772972925,
+      1950.192414438466,
+      2147.507516478891,
+      2218.2299700436834,
+      2197.549598985197,
+      2267.2788683059407,
+      2298.327081451492,
+      2246.0263607832685,
+      2434.4364358101443,
+      2143.175917495653,
+      2541.678760189808,
+      1770.7094171546046,
+      1599.3949856117467,
+      2082.4083589280303,
+      1952.0422433953627,
+      2145.167322145291,
+      2368.2659450886563,
+      2615.692905012615,
+      1915.0750202885874,
+      2214.4121085892452,
+      2730.8675813130644,
+      2095.7463618800184,
+      2565.6219181061474,
+      2821.180145494671,
+      2525.858618371187,
+      2669.375487512638,
+      2572.81574673871,
+      2321.8614113106178
+    ]
+  }
+}

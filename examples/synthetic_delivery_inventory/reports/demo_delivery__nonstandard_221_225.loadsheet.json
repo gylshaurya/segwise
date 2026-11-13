@@ -1,0 +1,497 @@
+{
+  "schema": "segwise.loadsheet/1",
+  "generated_by": "segwise 0.1.0",
+  "generated_at": "2026-11-13T17:04:26+00:00",
+  "source": {
+    "path": "/data/demo_delivery/nonstandard_221_225.sgy",
+    "file_name": "nonstandard_221_225.sgy",
+    "size_bytes": 1251600,
+    "fingerprint": "4e6e0a920b055288"
+  },
+  "status": "needs_review",
+  "status_reason": "Coordinate system needs choosing",
+  "summary": "3D post-stack, IL 1000-1029 x XL 2000-2039, 1,200 traces x 200 samples @ 4 ms, EPSG:23031 (unconfirmed)",
+  "layout": {
+    "endian": "big",
+    "text_encoding": "ebcdic",
+    "revision": "1.0",
+    "ns": 200,
+    "dt_us": 4000.0,
+    "n_traces": 1200,
+    "data_offset": 3600,
+    "variable_length": false,
+    "is_su": false,
+    "sample_format": 1,
+    "declared_format": 1
+  },
+  "geometry": {
+    "kind": "3D post-stack",
+    "inline": {
+      "byte": 221,
+      "type": "int32"
+    },
+    "crossline": {
+      "byte": 225,
+      "type": "int32"
+    },
+    "x": {
+      "byte": 201,
+      "type": "int32"
+    },
+    "y": {
+      "byte": 205,
+      "type": "int32"
+    },
+    "scalar_header": -100,
+    "scalar_effective": -100,
+    "swap_xy": false,
+    "coord_type": "projected",
+    "coordinate_units_code": 1,
+    "il_min": 1000,
+    "il_max": 1029,
+    "il_inc": 1,
+    "xl_min": 2000,
+    "xl_max": 2039,
+    "xl_inc": 1,
+    "n_inlines": 30,
+    "n_crosslines": 40,
+    "fill": 1.0,
+    "inline_spacing": 25.000066517284395,
+    "crossline_spacing": 12.49998659087389,
+    "inline_azimuth": 30.000035485665233,
+    "corners": [
+      {
+        "inline": 1000,
+        "crossline": 2000,
+        "x": 619999.9990107532,
+        "y": 6074000.00060976
+      },
+      {
+        "inline": 1000,
+        "crossline": 2039,
+        "x": 620243.7490107532,
+        "y": 6074422.187390247
+      },
+      {
+        "inline": 1029,
+        "crossline": 2039,
+        "x": 620871.6196559145,
+        "y": 6074059.687390246
+      },
+      {
+        "inline": 1029,
+        "crossline": 2000,
+        "x": 620627.8696559145,
+        "y": 6073637.500609759
+      }
+    ],
+    "centre_lonlat": [
+      4.87197,
+      54.79708
+    ]
+  },
+  "crs": {
+    "coord_type": "projected",
+    "status": "ambiguous",
+    "chosen": {
+      "epsg": 23031,
+      "name": "ED50 / UTM zone 31N",
+      "reasons": [
+        "zone 31N overlaps 'NORTH SEA' mentioned in the text; datum ED50 assumed",
+        "zone 31N overlaps 'NORTH SEA' mentioned in the text; datum ED50 assumed",
+        "zone 31N overlaps 'DUTCH' mentioned in the text; datum ED50 assumed",
+        "zone 31N overlaps 'DUTCH' mentioned in the text; datum ED50 assumed",
+        "places the survey inside NORTH SEA, DUTCH as the text says"
+      ],
+      "inside_area_of_use": true,
+      "matches_regions": [
+        "NORTH SEA",
+        "DUTCH"
+      ],
+      "conflicts_regions": [],
+      "centre_lonlat": [
+        4.872,
+        54.79708
+      ],
+      "score": 11.0,
+      "from_text": false
+    },
+    "candidates": [
+      {
+        "epsg": 23031,
+        "name": "ED50 / UTM zone 31N",
+        "reasons": [
+          "zone 31N overlaps 'NORTH SEA' mentioned in the text; datum ED50 assumed",
+          "zone 31N overlaps 'NORTH SEA' mentioned in the text; datum ED50 assumed",
+          "zone 31N overlaps 'DUTCH' mentioned in the text; datum ED50 assumed",
+          "zone 31N overlaps 'DUTCH' mentioned in the text; datum ED50 assumed",
+          "places the survey inside NORTH SEA, DUTCH as the text says"
+        ],
+        "inside_area_of_use": true,
+        "matches_regions": [
+          "NORTH SEA",
+          "DUTCH"
+        ],
+        "conflicts_regions": [],
+        "centre_lonlat": [
+          4.872,
+          54.79708
+        ],
+        "score": 11.0,
+        "from_text": false
+      },
+      {
+        "epsg": 32631,
+        "name": "WGS 84 / UTM zone 31N",
+        "reasons": [
+          "zone 31N overlaps 'NORTH SEA' mentioned in the text; datum WGS 84 assumed",
+          "zone 31N overlaps 'NORTH SEA' mentioned in the text; datum WGS 84 assumed",
+          "zone 31N overlaps 'DUTCH' mentioned in the text; datum WGS 84 assumed",
+          "zone 31N overlaps 'DUTCH' mentioned in the text; datum WGS 84 assumed",
+          "places the survey inside NORTH SEA, DUTCH as the text says"
+        ],
+        "inside_area_of_use": true,
+        "matches_regions": [
+          "NORTH SEA",
+          "DUTCH"
+        ],
+        "conflicts_regions": [],
+        "centre_lonlat": [
+          4.87352,
+          54.79896
+        ],
+        "score": 11.0,
+        "from_text": false
+      },
+      {
+        "epsg": 25831,
+        "name": "ETRS89 / UTM zone 31N",
+        "reasons": [
+          "zone 31N overlaps 'NORTH SEA' mentioned in the text; datum ETRS89 assumed",
+          "zone 31N overlaps 'NORTH SEA' mentioned in the text; datum ETRS89 assumed",
+          "zone 31N overlaps 'DUTCH' mentioned in the text; datum ETRS89 assumed",
+          "zone 31N overlaps 'DUTCH' mentioned in the text; datum ETRS89 assumed",
+          "places the survey inside NORTH SEA, DUTCH as the text says"
+        ],
+        "inside_area_of_use": true,
+        "matches_regions": [
+          "NORTH SEA",
+          "DUTCH"
+        ],
+        "conflicts_regions": [],
+        "centre_lonlat": [
+          4.87352,
+          54.79896
+        ],
+        "score": 11.0,
+        "from_text": false
+      },
+      {
+        "epsg": 23030,
+        "name": "ED50 / UTM zone 30N",
+        "reasons": [
+          "zone 30N overlaps 'NORTH SEA' mentioned in the text; datum ED50 assumed",
+          "zone 30N overlaps 'NORTH SEA' mentioned in the text; datum ED50 assumed",
+          "places the survey inside NORTH SEA as the text says"
+        ],
+        "inside_area_of_use": true,
+        "matches_regions": [
+          "NORTH SEA"
+        ],
+        "conflicts_regions": [
+          "DUTCH"
+        ],
+        "centre_lonlat": [
+          -1.12815,
+          54.797
+        ],
+        "score": 4.0,
+        "from_text": false
+      },
+      {
+        "epsg": 32630,
+        "name": "WGS 84 / UTM zone 30N",
+        "reasons": [
+          "zone 30N overlaps 'NORTH SEA' mentioned in the text; datum WGS 84 assumed",
+          "zone 30N overlaps 'NORTH SEA' mentioned in the text; datum WGS 84 assumed",
+          "places the survey inside NORTH SEA as the text says"
+        ],
+        "inside_area_of_use": true,
+        "matches_regions": [
+          "NORTH SEA"
+        ],
+        "conflicts_regions": [
+          "DUTCH"
+        ],
+        "centre_lonlat": [
+          -1.12648,
+          54.79896
+        ],
+        "score": 4.0,
+        "from_text": false
+      },
+      {
+        "epsg": 25830,
+        "name": "ETRS89 / UTM zone 30N",
+        "reasons": [
+          "zone 30N overlaps 'NORTH SEA' mentioned in the text; datum ETRS89 assumed",
+          "zone 30N overlaps 'NORTH SEA' mentioned in the text; datum ETRS89 assumed",
+          "places the survey inside NORTH SEA as the text says"
+        ],
+        "inside_area_of_use": true,
+        "matches_regions": [
+          "NORTH SEA"
+        ],
+        "conflicts_regions": [
+          "DUTCH"
+        ],
+        "centre_lonlat": [
+          -1.12648,
+          54.79896
+        ],
+        "score": 4.0,
+        "from_text": false
+      },
+      {
+        "epsg": 23032,
+        "name": "ED50 / UTM zone 32N",
+        "reasons": [
+          "zone 32N overlaps 'NORTH SEA' mentioned in the text; datum ED50 assumed",
+          "zone 32N overlaps 'NORTH SEA' mentioned in the text; datum ED50 assumed",
+          "places the survey inside NORTH SEA as the text says"
+        ],
+        "inside_area_of_use": true,
+        "matches_regions": [
+          "NORTH SEA"
+        ],
+        "conflicts_regions": [
+          "DUTCH"
+        ],
+        "centre_lonlat": [
+          10.87217,
+          54.79713
+        ],
+        "score": 4.0,
+        "from_text": false
+      },
+      {
+        "epsg": 32632,
+        "name": "WGS 84 / UTM zone 32N",
+        "reasons": [
+          "zone 32N overlaps 'NORTH SEA' mentioned in the text; datum WGS 84 assumed",
+          "zone 32N overlaps 'NORTH SEA' mentioned in the text; datum WGS 84 assumed",
+          "places the survey inside NORTH SEA as the text says"
+        ],
+        "inside_area_of_use": true,
+        "matches_regions": [
+          "NORTH SEA"
+        ],
+        "conflicts_regions": [
+          "DUTCH"
+        ],
+        "centre_lonlat": [
+          10.87352,
+          54.79896
+        ],
+        "score": 4.0,
+        "from_text": false
+      }
+    ],
+    "notes": [
+      "The datum is not stated. Candidates on different datums differ by roughly 10-300 m on the ground; confirm the datum with the data supplier before using positions for drilling or permits.",
+      "Several CRSs fit equally well: EPSG:23031, EPSG:32631, EPSG:25831."
+    ],
+    "datum_stated": false,
+    "units": null
+  },
+  "decisions": [
+    {
+      "key": "endian",
+      "label": "Byte order",
+      "value": "big",
+      "display": "big-endian",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "The binary header only makes sense read this way."
+      ]
+    },
+    {
+      "key": "ns",
+      "label": "Samples per trace",
+      "value": 200,
+      "display": "200 samples",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "File size divides exactly into traces of this length."
+      ]
+    },
+    {
+      "key": "dt",
+      "label": "Sample interval",
+      "value": 4000.0,
+      "display": "4000 \u00b5s (4 ms)",
+      "confidence": "high",
+      "source": "binary header",
+      "evidence": []
+    },
+    {
+      "key": "sample_format",
+      "label": "Sample format",
+      "value": 1,
+      "display": "1 - 4-byte IBM floating point",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "IBM-normalisation test on 40,000 non-zero samples: 0.00% have a zero leading fraction digit (genuine IBM floats: 0%; IEEE floats: typically 5-10%).",
+        "This agrees with the declared format."
+      ]
+    },
+    {
+      "key": "kind",
+      "label": "Data type",
+      "value": "3D post-stack",
+      "display": "3D post-stack",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Bytes 221-224 and 225-228 together give a unique grid position for 100.0% of 1200 sampled traces; the first stays constant for runs of traces while the second steps by 1.",
+        "The inline number is also stored in byte(s) 223; byte 221 was chosen as the conventional location.",
+        "The crossline number is also stored in byte(s) 227; byte 225 was chosen as the conventional location.",
+        "Coordinates in bytes 201 and 205 are an exact linear function of (inline, crossline): residual 0.02% of a bin, a perfect regular grid."
+      ]
+    },
+    {
+      "key": "inline",
+      "label": "Inline number",
+      "value": {
+        "byte": 221,
+        "type": "int32"
+      },
+      "display": "bytes 221-224 (int32), 1000-1029",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Bytes 221-224 and 225-228 together give a unique grid position for 100.0% of 1200 sampled traces; the first stays constant for runs of traces while the second steps by 1.",
+        "The inline number is also stored in byte(s) 223; byte 221 was chosen as the conventional location.",
+        "Coordinates in bytes 201 and 205 are an exact linear function of (inline, crossline): residual 0.02% of a bin, a perfect regular grid."
+      ]
+    },
+    {
+      "key": "crossline",
+      "label": "Crossline number",
+      "value": {
+        "byte": 225,
+        "type": "int32"
+      },
+      "display": "bytes 225-228 (int32), 2000-2039",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Bytes 221-224 and 225-228 together give a unique grid position for 100.0% of 1200 sampled traces; the first stays constant for runs of traces while the second steps by 1.",
+        "The crossline number is also stored in byte(s) 227; byte 225 was chosen as the conventional location.",
+        "Coordinates in bytes 201 and 205 are an exact linear function of (inline, crossline): residual 0.02% of a bin, a perfect regular grid."
+      ]
+    },
+    {
+      "key": "x",
+      "label": "X coordinate (easting)",
+      "value": {
+        "byte": 201,
+        "type": "int32"
+      },
+      "display": "bytes 201-204 (int32)",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Coordinates in bytes 201 and 205 are an exact linear function of (inline, crossline): residual 0.02% of a bin, a perfect regular grid.",
+        "Across all traces, positions deviate from a perfect grid by 0.00404 units RMS; 0 traces are more than half a bin off."
+      ]
+    },
+    {
+      "key": "y",
+      "label": "Y coordinate (northing)",
+      "value": {
+        "byte": 205,
+        "type": "int32"
+      },
+      "display": "bytes 205-208 (int32)",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Coordinates in bytes 201 and 205 are an exact linear function of (inline, crossline): residual 0.02% of a bin, a perfect regular grid.",
+        "Across all traces, positions deviate from a perfect grid by 0.00404 units RMS; 0 traces are more than half a bin off."
+      ]
+    },
+    {
+      "key": "scalar",
+      "label": "Coordinate scalar",
+      "value": -100,
+      "display": "-100 (divide by 100)",
+      "confidence": "high",
+      "source": "binary header",
+      "evidence": [
+        "With scalar -100 the bin/trace spacing is 25.000 m, a standard survey size."
+      ]
+    },
+    {
+      "key": "crs",
+      "label": "Coordinate reference system",
+      "value": 23031,
+      "display": "EPSG:23031 - ED50 / UTM zone 31N",
+      "confidence": "low",
+      "source": "text header + data",
+      "evidence": [
+        "zone 31N overlaps 'NORTH SEA' mentioned in the text; datum ED50 assumed",
+        "zone 31N overlaps 'NORTH SEA' mentioned in the text; datum ED50 assumed",
+        "zone 31N overlaps 'DUTCH' mentioned in the text; datum ED50 assumed",
+        "zone 31N overlaps 'DUTCH' mentioned in the text; datum ED50 assumed",
+        "places the survey inside NORTH SEA, DUTCH as the text says",
+        "The datum is not stated. Candidates on different datums differ by roughly 10-300 m on the ground; confirm the datum with the data supplier before using positions for drilling or permits.",
+        "Several CRSs fit equally well: EPSG:23031, EPSG:32631, EPSG:25831."
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "code": "CRS_AMBIGUOUS",
+      "severity": "warning",
+      "title": "Coordinate system needs choosing",
+      "detail": "Candidates: EPSG:23031 (ED50 / UTM zone 31N), EPSG:32631 (WGS 84 / UTM zone 31N), EPSG:25831 (ETRS89 / UTM zone 31N), EPSG:23030 (ED50 / UTM zone 30N). The datum is not stated. Candidates on different datums differ by roughly 10-300 m on the ground; confirm the datum with the data supplier before using positions for drilling or permits. Several CRSs fit equally well: EPSG:23031, EPSG:32631, EPSG:25831.",
+      "fix": "Choose the CRS with --crs EPSG:xxxx (or in the web app). Ask the data supplier if unsure.",
+      "explain": "Several map projections fit the clues equally well, or the clues contradict the coordinates. Loading with the wrong one shifts the survey by metres to hundreds of kilometres.",
+      "auto_fixed": false
+    }
+  ],
+  "load_original_file": {
+    "Inline number": "221-224",
+    "Crossline number": "225-228",
+    "X coordinate (easting)": "201-204",
+    "Y coordinate (northing)": "205-208",
+    "Coordinate scalar": "bytes 71-72 (apply from header; value -100)",
+    "Sample format": "1",
+    "Byte order": "big",
+    "Samples / interval": "200 @ 4 ms",
+    "Coordinate system": "EPSG:23031 ED50 / UTM zone 31N (not confirmed)"
+  },
+  "overrides": {
+    "inline": {
+      "byte": 221,
+      "type": "int32"
+    },
+    "crossline": {
+      "byte": 225,
+      "type": "int32"
+    },
+    "x": {
+      "byte": 201,
+      "type": "int32"
+    },
+    "y": {
+      "byte": 205,
+      "type": "int32"
+    },
+    "epsg": 23031
+  }
+}

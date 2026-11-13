@@ -1,0 +1,3 @@
+{% extends "web_base.html" %}
+{% block title %}{{ r.file_name }} · Segwise{% endblock %}
+{% block main %}{% set interactive = True %}{% set back_label = back_label %}{% include "report_main.html" %}{% endblock %}

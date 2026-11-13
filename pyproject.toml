@@ -1,0 +1,47 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "segwise"
+version = "0.1.0"
+description = "Forensic SEG-Y loader: works out where the geometry, coordinates and CRS really are in a SEG-Y file, proves it with evidence, and writes a clean standard file that loads first time."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Shaurya" }]
+keywords = ["seismic", "SEG-Y", "segy", "geophysics", "data management", "QC", "CRS"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Physics",
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: Apache Software License",
+]
+dependencies = [
+  "numpy>=1.24",
+  "pyproj>=3.5",
+  "matplotlib>=3.7",
+  "jinja2>=3.1",
+]
+
+[project.optional-dependencies]
+ui = ["fastapi>=0.110", "uvicorn>=0.27", "python-multipart>=0.0.9"]
+mcp = ["mcp>=1.0"]
+verify = ["segyio>=1.9"]
+all = ["segwise[ui,verify]"]
+dev = ["segwise[all]", "pytest>=8", "httpx>=0.27"]
+
+[project.scripts]
+segwise = "segwise.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/gylshaurya/segwise"
+Issues = "https://github.com/gylshaurya/segwise/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/segwise"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

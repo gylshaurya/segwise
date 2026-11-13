@@ -1,0 +1,8 @@
+{% extends "web_base.html" %}
+{% block pagecls %} narrow{% endblock %}
+{% block main %}
+<h1>{{ title }}</h1>
+<p class="lead" style="margin-top:8px">This page moves on by itself when the work is done.</p>
+<div id="jobbox" style="margin-top:24px"><div class="progress"><i></i></div><div class="small" data-stage style="margin-top:8px">Starting…</div></div>
+{% endblock %}
+{% block scripts %}<script>SS.watch("{{ job_id }}", document.getElementById("jobbox"));</script>{% endblock %}

@@ -1,0 +1,366 @@
+{
+  "schema": "segwise.loadsheet/1",
+  "generated_by": "segwise 0.1.0",
+  "generated_at": "2026-11-13T17:04:24+00:00",
+  "source": {
+    "path": "/data/demo_delivery/feet_gom.sgy",
+    "file_name": "feet_gom.sgy",
+    "size_bytes": 1251600,
+    "fingerprint": "583368914406e369"
+  },
+  "status": "needs_review",
+  "status_reason": "Coordinate system needs choosing",
+  "summary": "3D post-stack, IL 1000-1029 x XL 2000-2039, 1,200 traces x 200 samples @ 4 ms",
+  "layout": {
+    "endian": "big",
+    "text_encoding": "ebcdic",
+    "revision": "1.0",
+    "ns": 200,
+    "dt_us": 4000.0,
+    "n_traces": 1200,
+    "data_offset": 3600,
+    "variable_length": false,
+    "is_su": false,
+    "sample_format": 1,
+    "declared_format": 1
+  },
+  "geometry": {
+    "kind": "3D post-stack",
+    "inline": {
+      "byte": 189,
+      "type": "int32"
+    },
+    "crossline": {
+      "byte": 193,
+      "type": "int32"
+    },
+    "x": {
+      "byte": 181,
+      "type": "int32"
+    },
+    "y": {
+      "byte": 185,
+      "type": "int32"
+    },
+    "scalar_header": -10,
+    "scalar_effective": -10,
+    "swap_xy": false,
+    "coord_type": "projected",
+    "coordinate_units_code": 1,
+    "il_min": 1000,
+    "il_max": 1029,
+    "il_inc": 1,
+    "xl_min": 2000,
+    "xl_max": 2039,
+    "xl_inc": 1,
+    "n_inlines": 30,
+    "n_crosslines": 40,
+    "fill": 1.0,
+    "inline_spacing": 82.50028825015629,
+    "crossline_spacing": 82.50011587979277,
+    "inline_azimuth": 29.999961058971756,
+    "corners": [
+      {
+        "inline": 1000,
+        "crossline": 2000,
+        "x": 1899999.9928278276,
+        "y": 10199999.99585924
+      },
+      {
+        "inline": 1000,
+        "crossline": 2039,
+        "x": 1901608.7431936811,
+        "y": 10202786.43760314
+      },
+      {
+        "inline": 1029,
+        "crossline": 2039,
+        "x": 1903680.7188388424,
+        "y": 10201590.187974107
+      },
+      {
+        "inline": 1029,
+        "crossline": 2000,
+        "x": 1902071.9684729888,
+        "y": 10198803.746230206
+      }
+    ]
+  },
+  "crs": {
+    "coord_type": "projected",
+    "status": "ambiguous",
+    "chosen": null,
+    "candidates": [
+      {
+        "epsg": 26715,
+        "name": "NAD27 / UTM zone 15N",
+        "reasons": [
+          "zone 15N overlaps 'GULF OF MEXICO' mentioned in the text",
+          "zone 15N overlaps 'GULF OF MEXICO' mentioned in the text",
+          "coordinates fall OUTSIDE this CRS's area of use",
+          "places the survey outside GULF OF MEXICO named in the text"
+        ],
+        "inside_area_of_use": false,
+        "matches_regions": [],
+        "conflicts_regions": [
+          "GULF OF MEXICO"
+        ],
+        "centre_lonlat": [
+          5.1697,
+          77.41226
+        ],
+        "score": -6.0,
+        "from_text": true
+      },
+      {
+        "epsg": 26716,
+        "name": "NAD27 / UTM zone 16N",
+        "reasons": [
+          "zone 16N overlaps 'GULF OF MEXICO' mentioned in the text",
+          "zone 16N overlaps 'GULF OF MEXICO' mentioned in the text",
+          "coordinates fall OUTSIDE this CRS's area of use",
+          "places the survey outside GULF OF MEXICO named in the text"
+        ],
+        "inside_area_of_use": false,
+        "matches_regions": [],
+        "conflicts_regions": [
+          "GULF OF MEXICO"
+        ],
+        "centre_lonlat": [
+          11.1697,
+          77.41226
+        ],
+        "score": -6.0,
+        "from_text": true
+      },
+      {
+        "epsg": 26717,
+        "name": "NAD27 / UTM zone 17N",
+        "reasons": [
+          "zone 17N overlaps 'GULF OF MEXICO' mentioned in the text",
+          "zone 17N overlaps 'GULF OF MEXICO' mentioned in the text",
+          "coordinates fall OUTSIDE this CRS's area of use",
+          "places the survey outside GULF OF MEXICO named in the text"
+        ],
+        "inside_area_of_use": false,
+        "matches_regions": [],
+        "conflicts_regions": [
+          "GULF OF MEXICO"
+        ],
+        "centre_lonlat": [
+          17.1697,
+          77.41226
+        ],
+        "score": -6.0,
+        "from_text": true
+      },
+      {
+        "epsg": 26714,
+        "name": "NAD27 / UTM zone 14N",
+        "reasons": [
+          "zone 14N overlaps 'GULF OF MEXICO' mentioned in the text",
+          "coordinates fall OUTSIDE this CRS's area of use",
+          "places the survey outside GULF OF MEXICO named in the text"
+        ],
+        "inside_area_of_use": false,
+        "matches_regions": [],
+        "conflicts_regions": [
+          "GULF OF MEXICO"
+        ],
+        "centre_lonlat": [
+          -0.8303,
+          77.41226
+        ],
+        "score": -7.0,
+        "from_text": true
+      }
+    ],
+    "notes": [
+      "Several CRSs fit equally well: EPSG:26715, EPSG:26716, EPSG:26717."
+    ],
+    "datum_stated": true,
+    "units": "feet"
+  },
+  "decisions": [
+    {
+      "key": "endian",
+      "label": "Byte order",
+      "value": "big",
+      "display": "big-endian",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "The binary header only makes sense read this way."
+      ]
+    },
+    {
+      "key": "ns",
+      "label": "Samples per trace",
+      "value": 200,
+      "display": "200 samples",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "File size divides exactly into traces of this length."
+      ]
+    },
+    {
+      "key": "dt",
+      "label": "Sample interval",
+      "value": 4000.0,
+      "display": "4000 \u00b5s (4 ms)",
+      "confidence": "high",
+      "source": "binary header",
+      "evidence": []
+    },
+    {
+      "key": "sample_format",
+      "label": "Sample format",
+      "value": 1,
+      "display": "1 - 4-byte IBM floating point",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "IBM-normalisation test on 40,000 non-zero samples: 0.00% have a zero leading fraction digit (genuine IBM floats: 0%; IEEE floats: typically 5-10%).",
+        "This agrees with the declared format."
+      ]
+    },
+    {
+      "key": "kind",
+      "label": "Data type",
+      "value": "3D post-stack",
+      "display": "3D post-stack",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Bytes 189-192 and 193-196 together give a unique grid position for 100.0% of 1200 sampled traces; the first stays constant for runs of traces while the second steps by 1.",
+        "The inline number is also stored in byte(s) 191; byte 189 was chosen as the conventional location.",
+        "The crossline number is also stored in byte(s) 195; byte 193 was chosen as the conventional location.",
+        "Coordinates in bytes 181 and 185 are an exact linear function of (inline, crossline): residual 0.04% of a bin, a perfect regular grid."
+      ]
+    },
+    {
+      "key": "inline",
+      "label": "Inline number",
+      "value": {
+        "byte": 189,
+        "type": "int32"
+      },
+      "display": "bytes 189-192 (int32), 1000-1029",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Bytes 189-192 and 193-196 together give a unique grid position for 100.0% of 1200 sampled traces; the first stays constant for runs of traces while the second steps by 1.",
+        "The inline number is also stored in byte(s) 191; byte 189 was chosen as the conventional location.",
+        "Coordinates in bytes 181 and 185 are an exact linear function of (inline, crossline): residual 0.04% of a bin, a perfect regular grid."
+      ]
+    },
+    {
+      "key": "crossline",
+      "label": "Crossline number",
+      "value": {
+        "byte": 193,
+        "type": "int32"
+      },
+      "display": "bytes 193-196 (int32), 2000-2039",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Bytes 189-192 and 193-196 together give a unique grid position for 100.0% of 1200 sampled traces; the first stays constant for runs of traces while the second steps by 1.",
+        "The crossline number is also stored in byte(s) 195; byte 193 was chosen as the conventional location.",
+        "Coordinates in bytes 181 and 185 are an exact linear function of (inline, crossline): residual 0.04% of a bin, a perfect regular grid."
+      ]
+    },
+    {
+      "key": "x",
+      "label": "X coordinate (easting)",
+      "value": {
+        "byte": 181,
+        "type": "int32"
+      },
+      "display": "bytes 181-184 (int32)",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Coordinates in bytes 181 and 185 are an exact linear function of (inline, crossline): residual 0.04% of a bin, a perfect regular grid.",
+        "Across all traces, positions deviate from a perfect grid by 0.0407 units RMS; 0 traces are more than half a bin off."
+      ]
+    },
+    {
+      "key": "y",
+      "label": "Y coordinate (northing)",
+      "value": {
+        "byte": 185,
+        "type": "int32"
+      },
+      "display": "bytes 185-188 (int32)",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Coordinates in bytes 181 and 185 are an exact linear function of (inline, crossline): residual 0.04% of a bin, a perfect regular grid.",
+        "Across all traces, positions deviate from a perfect grid by 0.0407 units RMS; 0 traces are more than half a bin off."
+      ]
+    },
+    {
+      "key": "scalar",
+      "label": "Coordinate scalar",
+      "value": -10,
+      "display": "-10 (divide by 10)",
+      "confidence": "high",
+      "source": "binary header",
+      "evidence": [
+        "With scalar -10 the bin/trace spacing is 82.500 ft, a standard survey size."
+      ]
+    },
+    {
+      "key": "crs",
+      "label": "Coordinate reference system",
+      "value": null,
+      "display": "not determined",
+      "confidence": "none",
+      "source": "data",
+      "evidence": [
+        "Several CRSs fit equally well: EPSG:26715, EPSG:26716, EPSG:26717."
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "code": "CRS_AMBIGUOUS",
+      "severity": "warning",
+      "title": "Coordinate system needs choosing",
+      "detail": "Candidates: EPSG:26715 (NAD27 / UTM zone 15N), EPSG:26716 (NAD27 / UTM zone 16N), EPSG:26717 (NAD27 / UTM zone 17N), EPSG:26714 (NAD27 / UTM zone 14N). Several CRSs fit equally well: EPSG:26715, EPSG:26716, EPSG:26717.",
+      "fix": "Choose the CRS with --crs EPSG:xxxx (or in the web app). Ask the data supplier if unsure.",
+      "explain": "Several map projections fit the clues equally well, or the clues contradict the coordinates. Loading with the wrong one shifts the survey by metres to hundreds of kilometres.",
+      "auto_fixed": false
+    }
+  ],
+  "load_original_file": {
+    "Inline number": "189-192",
+    "Crossline number": "193-196",
+    "X coordinate (easting)": "181-184",
+    "Y coordinate (northing)": "185-188",
+    "Coordinate scalar": "bytes 71-72 (apply from header; value -10)",
+    "Sample format": "1",
+    "Byte order": "big",
+    "Samples / interval": "200 @ 4 ms"
+  },
+  "overrides": {
+    "inline": {
+      "byte": 189,
+      "type": "int32"
+    },
+    "crossline": {
+      "byte": 193,
+      "type": "int32"
+    },
+    "x": {
+      "byte": 181,
+      "type": "int32"
+    },
+    "y": {
+      "byte": 185,
+      "type": "int32"
+    }
+  }
+}

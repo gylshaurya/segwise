@@ -1,0 +1,13 @@
+{% extends "web_base.html" %}
+{% block main %}
+<h1>Load sheets</h1>
+<p class="lead" style="margin-top:8px">A load sheet records how to read a file and why. Confirm one file of a delivery, download its sheet, and apply it to the rest from the command line: <code>segwise fix --loadsheet sheet.json /data/delivery -o /data/fixed</code></p>
+<div style="margin-top:28px">
+{% if sheets %}<div class="tablewrap"><table class="tbl"><thead><tr><th>File</th><th>Result</th><th>Decisions it records</th><th></th></tr></thead><tbody>
+{% for rid, rep, ov in sheets %}<tr><td><a class="name" href="/file/{{ rid }}">{{ rep.file_name }}</a></td><td>{{ status(rep.status) }}</td>
+<td class="muted small">{% for k, v in ov.items() %}{{ k }}: {{ v.byte if v is mapping else v }}{{ ", " if not loop.last }}{% else %}automatic only{% endfor %}</td>
+<td class="nw"><a class="btn btn-sm" href="/api/file/{{ rid }}/loadsheet">{{ icon("download", "sm") }} Download</a></td></tr>{% endfor %}
+</tbody></table></div>
+{% else %}<div class="empty tablewrap">Check a file and its load sheet appears here.</div>{% endif %}
+</div>
+{% endblock %}

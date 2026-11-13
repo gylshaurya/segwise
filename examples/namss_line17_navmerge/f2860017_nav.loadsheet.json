@@ -1,0 +1,302 @@
+{
+  "schema": "segwise.loadsheet/1",
+  "generated_by": "segwise 0.1.0",
+  "generated_at": "2026-11-13T17:04:22+00:00",
+  "source": {
+    "path": "/data/fixed/f2860017_nav.sgy",
+    "file_name": "f2860017_nav.sgy",
+    "size_bytes": 174738960,
+    "fingerprint": "adbbb87a3924f92e"
+  },
+  "status": "ready",
+  "status_reason": "Standard layout and a confirmed coordinate system. Loads as it is.",
+  "summary": "2D pre-stack, ensembles 1-8607, 17,064 traces x 2500 samples @ 4 ms, EPSG:32660",
+  "layout": {
+    "endian": "big",
+    "text_encoding": "ebcdic",
+    "revision": "1.0",
+    "ns": 2500,
+    "dt_us": 4000.0,
+    "n_traces": 17064,
+    "data_offset": 3600,
+    "variable_length": false,
+    "is_su": false,
+    "sample_format": 1,
+    "declared_format": 1
+  },
+  "geometry": {
+    "kind": "2D pre-stack",
+    "ensemble": {
+      "byte": 21,
+      "type": "int32"
+    },
+    "offset": {
+      "byte": 37,
+      "type": "int32"
+    },
+    "x": {
+      "byte": 181,
+      "type": "int32"
+    },
+    "y": {
+      "byte": 185,
+      "type": "int32"
+    },
+    "scalar_header": -100,
+    "scalar_effective": -100,
+    "swap_xy": false,
+    "coord_type": "projected",
+    "coordinate_units_code": 1,
+    "key_min": 1,
+    "key_max": 8607,
+    "fold": 1.98,
+    "trace_spacing": 37.08485405118211,
+    "line_length": 313101.58001460496,
+    "centre_lonlat": [
+      178.21279,
+      58.20375
+    ]
+  },
+  "crs": {
+    "coord_type": "projected",
+    "status": "confirmed",
+    "chosen": {
+      "epsg": 32660,
+      "name": "WGS 84 / UTM zone 60N",
+      "reasons": [
+        "set by the user",
+        "places the survey inside BERING SEA as the text says"
+      ],
+      "inside_area_of_use": true,
+      "matches_regions": [
+        "BERING SEA"
+      ],
+      "conflicts_regions": [],
+      "centre_lonlat": [
+        178.21201,
+        58.20431
+      ],
+      "score": 104.0,
+      "from_text": false
+    },
+    "candidates": [
+      {
+        "epsg": 32660,
+        "name": "WGS 84 / UTM zone 60N",
+        "reasons": [
+          "set by the user",
+          "places the survey inside BERING SEA as the text says"
+        ],
+        "inside_area_of_use": true,
+        "matches_regions": [
+          "BERING SEA"
+        ],
+        "conflicts_regions": [],
+        "centre_lonlat": [
+          178.21201,
+          58.20431
+        ],
+        "score": 104.0,
+        "from_text": false
+      }
+    ],
+    "notes": [],
+    "datum_stated": false,
+    "units": null
+  },
+  "decisions": [
+    {
+      "key": "endian",
+      "label": "Byte order",
+      "value": "big",
+      "display": "big-endian",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "The binary header only makes sense read this way."
+      ]
+    },
+    {
+      "key": "ns",
+      "label": "Samples per trace",
+      "value": 2500,
+      "display": "2500 samples",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "File size divides exactly into traces of this length."
+      ]
+    },
+    {
+      "key": "dt",
+      "label": "Sample interval",
+      "value": 4000.0,
+      "display": "4000 \u00b5s (4 ms)",
+      "confidence": "high",
+      "source": "binary header",
+      "evidence": []
+    },
+    {
+      "key": "sample_format",
+      "label": "Sample format",
+      "value": 1,
+      "display": "1 - 4-byte IBM floating point",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "IBM-normalisation test on 205,267 non-zero samples: 0.00% have a zero leading fraction digit (genuine IBM floats: 0%; IEEE floats: typically 5-10%).",
+        "This agrees with the declared format."
+      ]
+    },
+    {
+      "key": "kind",
+      "label": "Data type",
+      "value": "2D pre-stack",
+      "display": "2D pre-stack",
+      "confidence": "medium",
+      "source": "user",
+      "evidence": [
+        "Byte 21 (CDP) stays constant for runs of about 2.0 traces while byte 13 cycles within each run: the file is organised as ensembles (gathers) of ~2 traces.",
+        "The ensemble number is also stored in byte(s) 23.",
+        "Cdp coordinates vary in bytes 181/185."
+      ]
+    },
+    {
+      "key": "ensemble",
+      "label": "Ensemble (gather) key",
+      "value": {
+        "byte": 21,
+        "type": "int32"
+      },
+      "display": "bytes 21-24 (int32)",
+      "confidence": "medium",
+      "source": "user",
+      "evidence": [
+        "Byte 21 (CDP) stays constant for runs of about 2.0 traces while byte 13 cycles within each run: the file is organised as ensembles (gathers) of ~2 traces.",
+        "The ensemble number is also stored in byte(s) 23.",
+        "Cdp coordinates vary in bytes 181/185."
+      ]
+    },
+    {
+      "key": "x",
+      "label": "X coordinate (easting)",
+      "value": {
+        "byte": 181,
+        "type": "int32"
+      },
+      "display": "bytes 181-184 (int32)",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Cdp coordinates vary in bytes 181/185."
+      ]
+    },
+    {
+      "key": "y",
+      "label": "Y coordinate (northing)",
+      "value": {
+        "byte": 185,
+        "type": "int32"
+      },
+      "display": "bytes 185-188 (int32)",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Cdp coordinates vary in bytes 181/185."
+      ]
+    },
+    {
+      "key": "scalar",
+      "label": "Coordinate scalar",
+      "value": -100,
+      "display": "-100 (divide by 100)",
+      "confidence": "high",
+      "source": "binary header",
+      "evidence": [
+        "With scalar -100 the bin/trace spacing is 37.085 m, a standard survey size."
+      ]
+    },
+    {
+      "key": "crs",
+      "label": "Coordinate reference system",
+      "value": 32660,
+      "display": "EPSG:32660 - WGS 84 / UTM zone 60N",
+      "confidence": "high",
+      "source": "user",
+      "evidence": [
+        "set by the user",
+        "places the survey inside BERING SEA as the text says"
+      ]
+    }
+  ],
+  "issues": [],
+  "load_original_file": {
+    "CDP / ensemble number": "21-24",
+    "X coordinate (easting)": "181-184",
+    "Y coordinate (northing)": "185-188",
+    "Coordinate scalar": "bytes 71-72 (apply from header; value -100)",
+    "Sample format": "1",
+    "Byte order": "big",
+    "Samples / interval": "2500 @ 4 ms",
+    "Coordinate system": "EPSG:32660 WGS 84 / UTM zone 60N (confirmed)"
+  },
+  "overrides": {
+    "x": {
+      "byte": 181,
+      "type": "int32"
+    },
+    "y": {
+      "byte": 185,
+      "type": "int32"
+    },
+    "epsg": 32660
+  },
+  "fixed_file": {
+    "path": "/data/fixed/f2860017_nav.sgy",
+    "actions": [
+      "Added a provenance stamp to blank lines of the textual header (original text kept)."
+    ],
+    "warnings": [],
+    "verification": {
+      "checks": [
+        {
+          "name": "Output is readable as standard SEG-Y",
+          "ok": true,
+          "detail": "big-endian rev 1, no structural issues"
+        },
+        {
+          "name": "Trace count preserved",
+          "ok": true,
+          "detail": "17064 traces"
+        },
+        {
+          "name": "Samples per trace and interval preserved",
+          "ok": true,
+          "detail": "2500 samples @ 4 ms"
+        },
+        {
+          "name": "Amplitudes bit-identical to the source",
+          "ok": true,
+          "detail": "500 traces compared byte-for-byte"
+        },
+        {
+          "name": "segyio (independent reader) opens the file",
+          "ok": true,
+          "detail": "17064 traces"
+        }
+      ],
+      "passed": true
+    },
+    "output_scalar": -100,
+    "output_format": 1,
+    "load": {
+      "X coordinate (easting)": "181-184",
+      "Y coordinate (northing)": "185-188",
+      "Coordinate scalar": "bytes 71-72 (apply from header)",
+      "Sample format": "1",
+      "Byte order": "big",
+      "Samples / interval": "2500 @ 4 ms",
+      "Coordinate system": "EPSG:32660 WGS 84 / UTM zone 60N (confirmed)"
+    }
+  }
+}

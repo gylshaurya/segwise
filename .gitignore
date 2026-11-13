@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.egg-info/
+dist/
+build/
+tests/data/
+segwise_out/
+segwise_inventory/
+.pytest_cache/
+.impeccable/mocks/
+.DS_Store
+
+# private notes and design-tool files (not published)
+internal/
+.impeccable/
+build/
+*.spec.bak

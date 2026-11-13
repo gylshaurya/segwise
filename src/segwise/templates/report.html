@@ -1,0 +1,13 @@
+{% from "_macros.html" import sprite, icon, logo, status, sev %}<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ r.file_name }} · Segwise report</title>
+<style>{{ css | safe }}</style></head>
+<body>{{ sprite() }}
+<header class="topbar"><div class="in">
+  <span class="brand">{{ logo() }}Segwise</span>
+  <span class="faint">File report</span>
+  <div class="right"><span class="local"><span class="dot"></span>Made on the user's computer. No data was uploaded</span></div>
+</div></header>
+<main class="page">{% set interactive = False %}{% include "report_main.html" %}</main>
+<script>{{ js | safe }}</script>
+</body></html>

@@ -1,0 +1,52 @@
+name: windows-app
+# Builds Segwise.exe on Windows, tests the packaged app, and attaches it to the GitHub release
+# when a version tag (v0.1.0, v0.2.0, ...) is pushed. Run it by hand from the Actions tab to get a test build.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install ".[ui,verify]" "pyinstaller>=6.10"
+      - name: Build Segwise.exe
+        run: pyinstaller --noconfirm --clean --distpath dist --workpath build packaging/segwise.spec
+      - name: Test the packaged app
+        shell: bash
+        run: |
+          set -e
+          ./dist/Segwise.exe --version
+          ./dist/Segwise.exe _selftest
+          python -c "import sys; sys.path.insert(0, 'tests'); import synth; c = next(c for c in synth.cases() if c.name == 'nonstandard_221_225'); synth.write(c, 'demo.sgy')"
+          ./dist/Segwise.exe scan demo.sgy --crs 23031 -o scan_out
+          ./dist/Segwise.exe fix demo.sgy --crs 23031 -o fixed/demo_std.sgy
+          ./dist/Segwise.exe scan fixed/demo_std.sgy --no-files
+          mkdir -p delivery && cp demo.sgy delivery/a.sgy && cp demo.sgy delivery/b.sgy
+          ./dist/Segwise.exe inventory delivery -o inv_out -j 2
+          ./dist/Segwise.exe ui --no-browser --port 8799 &
+          for i in $(seq 1 60); do curl -sf http://127.0.0.1:8799/healthz && break; sleep 1; done
+          curl -sf http://127.0.0.1:8799/ | grep -q "Choose a folder"
+          echo "packaged app OK"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Segwise-windows
+          path: dist/Segwise.exe
+      - name: Attach to the release
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 || gh release create "$GITHUB_REF_NAME" --title "Segwise $GITHUB_REF_NAME" --notes-file packaging/RELEASE_NOTES.md
+          gh release upload "$GITHUB_REF_NAME" dist/Segwise.exe --clobber

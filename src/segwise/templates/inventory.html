@@ -1,0 +1,50 @@
+{% from "_macros.html" import sprite, icon, logo, status, sev %}<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Delivery check · Segwise</title><style>{{ css | safe }}</style></head>
+<body>{{ sprite() }}
+<header class="topbar"><div class="in">
+  <span class="brand">{{ logo() }}Segwise</span>
+  <nav class="nav"><a href="inventory.csv" download>Spreadsheet (CSV)</a><a href="inventory.geojson" download>Map outlines (GeoJSON)</a></nav>
+  <div class="right"><span class="local"><span class="dot"></span>Checked locally</span></div>
+</div></header>
+<main class="page">
+  <div class="pagehead">
+    <h1>Delivery check</h1>
+    <div class="meta mono">{{ source }}</div>
+    <div class="meta">{{ rows | length + failures | length }} files · {{ groups | length }} different header layout{{ "s" if groups | length != 1 }} · {{ generated }}</div>
+  </div>
+  <div class="stack">
+    {% set nr = counts.get("needs_review", 0) %}{% set nu = counts.get("unusable", 0) %}
+    <div class="banner {{ 'needs_review' if nr else ('unusable' if nu else 'ready') }}">
+      <div class="ic">{{ icon("alert" if nr or nu else "check") }}</div>
+      <div class="t">{% if nr or nu %}{{ nr + nu }} of {{ rows | length + failures | length }} files need attention{% else %}All files can be loaded{% endif %}</div>
+      <div class="d">{% if nr %}Files marked “Needs a decision” usually just lack the coordinate system. Re-run with <code>--crs EPSG:xxxx</code> or set it in the Segwise app. {% endif %}Click a file name for its full report.</div>
+    </div>
+    <section>
+      <div class="h" style="margin-bottom:14px">
+        <div class="filters">
+          <button class="chipbtn on" data-filter="all">All <b>{{ rows | length + failures | length }}</b></button>
+          {% for s, label in [("ready", "Ready"), ("fixable", "Fixable"), ("needs_review", "Needs a decision"), ("unusable", "Can't load")] %}{% if counts.get(s) %}<button class="chipbtn" data-filter="{{ s }}">{{ label }} <b>{{ counts.get(s) }}</b></button>{% endif %}{% endfor %}
+        </div>
+        <div class="search" style="width:260px">{{ icon("search") }}<input class="input" placeholder="Search files" data-search="tr[data-status]" aria-label="Search files"></div>
+      </div>
+      <div class="tablewrap"><table class="tbl"><thead><tr>
+        <th class="th-sort">File</th><th class="th-sort">Result</th><th class="th-sort">Type</th><th class="th-sort nw">Inline / crossline bytes</th><th class="th-sort nw">X / Y bytes</th><th class="th-sort nw">Map system</th><th class="th-sort">Traces</th></tr></thead><tbody>
+      {% for row, stem in rows %}<tr data-status="{{ row.status }}">
+        <td><a class="name" href="reports/{{ stem }}.html">{{ row.file_name }}</a><div class="cell-sub">{{ row.status_reason }}</div></td>
+        <td data-v="{{ {'unusable':0,'needs_review':1,'fixable':2,'ready':3}[row.status] }}">{{ status(row.status) }}</td>
+        <td class="nw">{{ row.kind or "" }}</td>
+        <td class="nw">{% if row.inline_bytes %}{{ row.inline_bytes.split("-")[0] }} / {{ row.crossline_bytes.split("-")[0] }}<div class="cell-sub">lines {{ row.il_range }} / {{ row.xl_range }}</div>{% elif row.key_range %}{{ row.key_range }}{% endif %}</td>
+        <td class="nw">{% if row.x_bytes %}{{ row.x_bytes.split("-")[0] }} / {{ row.y_bytes.split("-")[0] }}{% else %}<span class="faint">none</span>{% endif %}</td>
+        <td class="nw">{{ ("EPSG:" ~ row.epsg) if row.epsg else "Not set" }}</td>
+        <td class="nw" data-v="{{ row.n_traces or 0 }}">{{ "{:,}".format(row.n_traces or 0) }}</td></tr>{% endfor %}
+      {% for f in failures %}<tr data-status="unusable"><td>{{ f.path.split("/")[-1] }}<div class="cell-sub">{{ f.error }}</div></td><td data-v="0">{{ status("unusable") }}</td><td colspan="5"></td></tr>{% endfor %}
+      </tbody></table></div>
+    </section>
+    {% if overview %}<details class="more-box"><summary><div><h2>Map of all surveys</h2><div class="faint small">Every file with coordinates and a known map system, drawn where it lands.</div></div>{{ icon("chev") }}</summary><div class="inner"><figure class="fig"><img src="{{ overview }}" alt="Map of all survey outlines"></figure></div></details>{% endif %}
+    {% if groups | length > 1 %}<details class="more-box"><summary><div><h2>Header layouts</h2><div class="faint small">Files that share byte positions, format and scalar. Confirm one and apply its load sheet with <code>segwise fix --loadsheet</code>.</div></div>{{ icon("chev") }}</summary>
+      <div class="inner"><div class="kv">{% for k, files in groups.items() %}<div class="mono">{{ k }}</div><div>{{ files | length }} file{{ "s" if files | length != 1 }} <span class="faint">{{ files[:4] | join(", ") }}{% if files | length > 4 %}…{% endif %}</span></div>{% endfor %}</div></div></details>{% endif %}
+  </div>
+  <p class="foot">Segwise {{ version }} · checked locally · click a file name for its full report</p>
+</main>
+<script>{{ js | safe }}</script></body></html>

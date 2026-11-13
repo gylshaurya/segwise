@@ -1,0 +1,100 @@
+{% from "_macros.html" import icon %}
+{% set G = r.geometry %}
+{% if r.status != "unusable" %}
+<section class="section noprint" id="fix">
+  <h2>Write a fixed copy</h2>
+  <p class="lead">A new, standard SEG-Y file that loads in any software with default settings. It is checked after writing. Your original file is never changed.</p>
+  <div class="form">
+    <label class="field" style="grid-column: span 2">Save the fixed copy as
+      <span class="inrow"><input class="input" id="out" value="{{ default_out }}"><button class="btn" type="button" data-pickfor="out" data-kind="save">{{ icon("folder", "sm") }} Choose…</button></span></label>
+    <label class="check"><input type="checkbox" id="ieee"> Convert amplitudes to IEEE float (only if your software needs it)</label>
+    <label class="check"><input type="checkbox" id="overwrite"> Replace the file if it already exists</label>
+  </div>
+  <details class="advanced" id="navbox" {% if not G.x %}open{% endif %}>
+    <summary>Add positions from a navigation file{% if not G.x %} (this file has none){% endif %}</summary>
+    <div class="form" style="margin-top:14px">
+      <label class="field" style="grid-column: span 2">Navigation file (UKOOA P1/90, CSV or text table)
+        <span class="inrow"><input class="input" id="navp" placeholder="/data/navigation/survey.p190"><button class="btn" type="button" data-pickfor="navp" data-kind="nav">{{ icon("folder", "sm") }} Choose…</button></span></label>
+      <label class="field">Line name <span class="faint">(optional, matched automatically)</span>
+        <input class="input" id="navl" placeholder="e.g. F286-17"></label>
+      <label class="field">Write positions in <span class="faint">(optional EPSG code)</span>
+        <input class="input" id="nave" placeholder="default: UTM zone of the line"></label>
+    </div>
+  </details>
+  <div class="row" style="margin-top:20px">
+    <button class="btn btn-primary" id="fixbtn">{{ icon("wrench", "sm") }} Write fixed copy</button>
+    <span class="faint small">Usually takes seconds; very large files take a minute or two.</span>
+  </div>
+  <div id="fixjob" class="hide" style="margin-top:14px;max-width:520px"><div class="progress"><i></i></div><div class="small" data-stage style="margin-top:6px">Starting…</div></div>
+</section>
+
+<details class="more-box noprint" id="decisions">
+  <summary><div><h2>Change a decision</h2><div class="faint small">Segwise's answers are filled in. Change any of them and re-check. The evidence is tested again with your choice.</div></div>{{ icon("chev") }}</summary>
+  <div class="inner">
+    <form id="ovform" class="form">
+      {% macro pick(name, label, cur) %}
+      <label class="field">{{ label }}<select class="input" name="{{ name }}"><option value="">Automatic</option>
+        {% for h in header_options %}{% if h.type != "float32" or name in ("x", "y") %}<option value="{{ h.byte }}:{{ h.type }}" {% if cur and cur.byte == h.byte and cur.type == h.type %}selected{% endif %}>Byte {{ h.byte }}{% if h.type != "int32" %} ({{ h.type }}){% endif %}{% if h.role %}: {{ h.role }}{% endif %}</option>{% endif %}{% endfor %}
+      </select></label>
+      {% endmacro %}
+      {% if G.inline or G.kind in ("3D post-stack", "3D pre-stack") %}{{ pick("inline", "Inline number", G.inline) }}{{ pick("crossline", "Crossline number", G.crossline) }}{% else %}{{ pick("cdp", "Trace / CDP number", G.cdp) }}<span></span>{% endif %}
+      {{ pick("x", "X coordinate (easting)", G.x) }}{{ pick("y", "Y coordinate (northing)", G.y) }}
+      <label class="field">Coordinate scalar<input class="input" name="scalar" value="{{ decisions.scalar if decisions.scalar is defined else '' }}" placeholder="Automatic ({{ G.scalar_effective if G.scalar_effective is not none else 'none' }})"></label>
+      <label class="field">Coordinate system (EPSG code)<input class="input" name="epsg" value="{{ r.overrides.epsg if r.overrides.epsg else '' }}" placeholder="{{ ('Automatic (' ~ r.crs.chosen.epsg ~ ')') if r.crs.chosen else 'e.g. 23031' }}"></label>
+      <label class="check" style="grid-column: span 2"><input type="checkbox" name="swap_xy" {% if G.swap_xy %}checked{% endif %}> X and Y are swapped in this file</label>
+    </form>
+    <div class="row"><button class="btn btn-primary" id="recheck">{{ icon("refresh", "sm") }} Re-check with these decisions</button></div>
+  </div>
+</details>
+
+<script>
+(function () {
+  var current = {{ r.overrides | tojson }};
+  var jb = document.getElementById("jobbox");
+  function recheck(extra, box) {
+    var o = Object.assign({}, current, extra);
+    SS.post("/api/file/{{ rid }}/reanalyze", {overrides: o}).then(function (j) { box.classList.remove("hide"); SS.watch(j.job, box); })
+      .catch(function (e) { SS.toast(e.message); });
+  }
+  var pick = document.getElementById("crs-pick"), other = document.getElementById("crs-other");
+  if (pick) {
+    pick.onchange = function () { other.classList.toggle("hide", pick.value !== "other"); if (pick.value === "other") other.focus(); };
+    document.getElementById("crs-use").onclick = function () {
+      var v = pick.value === "other" ? other.value.replace(/\D/g, "") : pick.value;
+      if (!v) { SS.toast("Type the EPSG code of the coordinate system."); return; }
+      recheck({epsg: parseInt(v, 10)}, jb);
+    };
+  }
+  var f = document.getElementById("ovform");
+  document.getElementById("recheck").onclick = function () {
+    var o = {}, fd = new FormData(f);
+    ["inline", "crossline", "cdp", "x", "y"].forEach(function (k) { var v = fd.get(k); if (v) { var p = v.split(":"); o[k] = {byte: parseInt(p[0], 10), type: p[1]}; } });
+    if (fd.get("scalar")) o.scalar = parseInt(fd.get("scalar"), 10);
+    if (fd.get("epsg")) o.epsg = parseInt(String(fd.get("epsg")).replace(/\D/g, ""), 10);
+    if (fd.get("swap_xy")) o.swap_xy = true;
+    current = {};
+    recheck(o, jb);
+    window.scrollTo({top: 0, behavior: "smooth"});
+  };
+  document.getElementById("fixbtn").onclick = function () {
+    var navp = document.getElementById("navp").value.trim();
+    var nav = navp ? {path: navp, line: document.getElementById("navl").value.trim(), to_epsg: document.getElementById("nave").value.replace(/\D/g, "")} : null;
+    var box = document.getElementById("fixjob");
+    SS.post("/api/file/{{ rid }}/fix", {output: document.getElementById("out").value, ieee: document.getElementById("ieee").checked,
+      overwrite: document.getElementById("overwrite").checked, nav: nav})
+      .then(function (j) { box.classList.remove("hide"); SS.watch(j.job, box); }).catch(function (e) { SS.toast(e.message); });
+  };
+})();
+document.querySelectorAll("[data-pickfor]").forEach(function (b) {
+  b.onclick = function (ev) {
+    ev.preventDefault();
+    var inp = document.getElementById(b.dataset.pickfor); b.disabled = true;
+    SS.toast("A file window has opened. If you can't see it, it may be behind this browser window.");
+    SS.post("/api/pick", {kind: b.dataset.kind, start: inp.value || {{ r.path | tojson }}}).then(function (r) {
+      b.disabled = false;
+      if (r.path) { inp.value = r.path; if (b.dataset.kind === "save" && r.exists) document.getElementById("overwrite").checked = true; }
+    }).catch(function (e) { b.disabled = false; SS.toast(e.message); });
+  };
+});
+</script>
+{% endif %}

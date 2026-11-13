@@ -1,0 +1,185 @@
+{% from "_macros.html" import icon, status, sev %}
+{% set G = r.geometry %}
+{% set crs_issue = r.issues | selectattr("code", "in", ["CRS_AMBIGUOUS", "CRS_UNKNOWN", "CRS_INFERRED"]) | list %}
+{% set nocoord = r.issues | selectattr("code", "equalto", "NO_COORDINATES") | list %}
+{% set auto = r.issues | selectattr("auto_fixed") | list %}
+{% set open_issues = r.issues | rejectattr("auto_fixed") | list %}
+
+<div class="pagehead">
+  {% if back_link %}<a class="back noprint" href="{{ back_link }}">{{ icon("back", "sm") }} {{ back_label or "Back" }}</a>{% endif %}
+  <div class="h">
+    <h1>{{ r.file_name }}</h1>
+    <div class="row noprint">
+      {% if loadsheet_href %}<a class="btn btn-sm" href="{{ loadsheet_href }}" download="{{ r.file_name.rsplit('.', 1)[0] }}.loadsheet.json">{{ icon("download", "sm") }} Load sheet</a>{% endif %}
+      {% if report_href %}<a class="btn btn-sm" href="{{ report_href }}">{{ icon("download", "sm") }} Report</a>{% endif %}
+      <button class="btn btn-sm" onclick="window.print()">{{ icon("print", "sm") }} Print</button>
+    </div>
+  </div>
+  <div class="meta">{{ r.summary or "" }}{% if r.summary %} · {% endif %}{{ (r.size / 1e6) | round(1) }} MB · checked {{ r.scanned_at[:16].replace("T", " ") }} UTC</div>
+  <div class="meta mono">{{ r.path }}</div>
+</div>
+
+<div class="stack">
+{# ------------------------------------------------------------------ what to do next #}
+{% set done = fixlog and fixlog.verification.passed %}
+<div class="banner {{ 'ready' if done else r.status }}">
+  <div class="ic">{{ icon("check" if done else {"ready": "check", "fixable": "wrench", "needs_review": "alert", "unusable": "x"}[r.status]) }}</div>
+  {% if done %}
+    <div class="t">Fixed copy written and checked</div>
+    <div class="d">The new file passed every check and loads with default settings. It is saved as <span class="mono" style="overflow-wrap:anywhere">{{ fixlog.output }}</span>. Details are under “Fixed copy” below.</div>
+  {% elif r.status == "ready" %}
+    <div class="t">Ready to load</div>
+    <div class="d">Everything checks out. Use the settings below in your software, or keep the load sheet as a record.</div>
+  {% elif r.status == "fixable" %}
+    <div class="t">Loads with the settings below, or write a fixed copy</div>
+    <div class="d">{% if auto %}Segwise found {{ auto | length }} problem{{ "s" if auto | length != 1 }} it corrects automatically in a fixed copy.{% else %}Its layout is non-standard, so most software needs the settings below.{% endif %} A fixed copy loads in any software with default settings.</div>
+  {% elif r.status == "needs_review" %}
+    <div class="t">{% if crs_issue %}Choose the coordinate system{% elif nocoord %}This file has no positions{% else %}Needs a decision{% endif %}</div>
+    <div class="d">{% if crs_issue %}The file doesn't say which map system its coordinates use{% if r.crs.candidates %}, and more than one fits{% endif %}. Pick the right one. It is usually in the delivery letter.{% elif nocoord %}There are no map coordinates in this file. Older lines often keep positions in a separate navigation file, which Segwise can merge in.{% else %}{{ r.status_reason }}.{% endif %}</div>
+  {% else %}
+    <div class="t">Can't be loaded</div>
+    <div class="d">{{ r.status_reason }}</div>
+  {% endif %}
+  {% if interactive %}
+  <div class="acts noprint">
+    {% if r.status == "needs_review" and crs_issue %}
+      <div class="decide">
+        <select class="input" id="crs-pick" aria-label="Coordinate system">
+          {% for c in (r.crs.candidates or [])[:6] %}<option value="{{ c.epsg }}">{{ c.name }} (EPSG:{{ c.epsg }})</option>{% endfor %}
+          <option value="other">Another system (type its EPSG code)…</option>
+        </select>
+        <input class="input hide" id="crs-other" placeholder="EPSG code, e.g. 23031" style="width:220px" aria-label="EPSG code">
+        <button class="btn btn-primary" id="crs-use">Use this system</button>
+      </div>
+    {% elif r.status == "needs_review" and nocoord %}
+      <a class="btn btn-primary" href="#fix" onclick="document.getElementById('navbox').open = true">{{ icon("compass", "sm") }} Merge navigation</a>
+    {% endif %}
+    {% if r.status in ("ready", "fixable") %}
+      <a class="btn btn-primary" href="#fix">{{ icon("wrench", "sm") }} Write a fixed copy</a>
+    {% endif %}
+    {% if r.status != "unusable" %}<a class="btn" href="#decisions" onclick="document.getElementById('decisions').open = true">Change a decision</a>{% endif %}
+  </div>
+  <div id="jobbox" class="hide noprint" style="margin-top:12px;max-width:520px"><div class="progress"><i></i></div><div class="small" data-stage style="margin-top:6px">Starting…</div></div>
+  {% endif %}
+</div>
+
+{# ------------------------------------------------------------------ problems #}
+{% if r.issues %}
+<section class="section" id="issues">
+  <div class="h"><h2>Problems found</h2><span class="faint small">{% if open_issues %}{{ open_issues | length }} to look at{% if auto %} · {{ auto | length }} fixed automatically in the fixed copy{% endif %}{% else %}Nothing for you to do. {{ auto | length }} fixed automatically in the fixed copy{% endif %}</span></div>
+  <p class="lead">Click a problem to see what it means and what to do.</p>
+  {% for i in open_issues + auto %}
+  <details class="issue">
+    <summary>{{ sev(i.severity) }}<span class="ttl">{{ i.title }}</span>{% if i.auto_fixed %}<span class="fixed">Fixed in the fixed copy</span>{% endif %}<span class="more">Details</span></summary>
+    <div class="body">
+      {% if i.explain %}<p><b>In plain words:</b> {{ i.explain }}</p>{% endif %}
+      <p><b>Exactly:</b> {{ i.detail }}</p>
+      {% if i.fix %}<p><b>What to do:</b> {{ i.fix }}</p>{% endif %}
+    </div>
+  </details>
+  {% endfor %}
+</section>
+{% endif %}
+
+{# ------------------------------------------------------------------ how to load + survey #}
+{% if load %}
+<div class="grid2">
+  <section class="section" id="load">
+    <h2>How to load it</h2>
+    <p class="lead">Type these into your loading software (Petrel, OpendTect, Kingdom, DUG…). Byte numbers count from 1, as in the SEG-Y standard.</p>
+    <div class="settings">{% for k, v in load.rows %}<div class="r{% if 'OVERRIDE' in (v | string) or 'swapped' in (v | string) %} alert{% endif %}"><span>{{ k }}</span><span>{{ v }}</span></div>{% endfor %}</div>
+    {% if load_fixed %}<p class="faint small" style="margin-top:14px">The fixed copy uses the standard positions: inline 189, crossline 193, X 181, Y 185.</p>{% endif %}
+  </section>
+  <section class="section" id="survey">
+    <h2>The survey</h2>
+    <p class="lead">Measured from {% if G.sampled %}a large sample of{% else %}every{% endif %} trace in the file.</p>
+    <div class="kv">
+      <div>Type</div><div>{{ G.kind or "unknown" }}</div>
+      {% if G.get("il_min") is not none %}<div>Inlines</div><div>{{ G.il_min }} to {{ G.il_max }} ({{ G.n_inlines }})</div>
+      <div>Crosslines</div><div>{{ G.xl_min }} to {{ G.xl_max }} ({{ G.n_crosslines }})</div>{% endif %}
+      {% if G.get("key_min") is not none %}<div>{{ "Gathers" if G.ensemble else "Trace numbers" }}</div><div>{{ G.key_min }} to {{ G.key_max }}</div>{% endif %}
+      {% if G.inline_spacing %}<div>Bin size</div><div>{{ "%.2f" | format(G.inline_spacing) }} × {{ "%.2f" | format(G.crossline_spacing) }}</div>{% endif %}
+      {% if G.trace_spacing %}<div>Trace spacing</div><div>{{ "%.2f" | format(G.trace_spacing) }}{% if G.line_length %} · {{ "%.1f" | format(G.line_length / 1000) }} km long{% endif %}</div>{% endif %}
+      <div>Traces</div><div>{{ "{:,}".format(r.layout.n_traces or 0) }} × {{ r.layout.ns }} samples, {{ (r.layout.dt_us or 0) / 1000 }} ms</div>
+      <div>Map system</div><div>{% if r.crs.chosen %}EPSG:{{ r.crs.chosen.epsg }} {{ r.crs.chosen.name }}{% if r.crs.status != "confirmed" %} <span class="conf low">not confirmed</span>{% endif %}{% elif G.x %}<span class="warn">not known</span>{% else %}<span class="warn">no coordinates</span>{% endif %}</div>
+      {% if G.centre_lonlat %}<div>Location</div><div>{{ "%.3f" | format(G.centre_lonlat[1]) }}°{{ "N" if G.centre_lonlat[1] >= 0 else "S" }}, {{ "%.3f" | format(G.centre_lonlat[0] | abs) }}°{{ "E" if G.centre_lonlat[0] >= 0 else "W" }} · {{ "on land" if G.centre_on_land else "at sea" }}</div>{% endif %}
+    </div>
+  </section>
+</div>
+{% endif %}
+
+{# ------------------------------------------------------------------ pictures #}
+{% if figs and (figs.location or figs.plan or figs.section or figs.tracks) %}
+<section class="section" id="pictures">
+  <h2>Pictures</h2>
+  <p class="lead">A quick look at the data, to confirm it is what it should be.</p>
+  <div class="figs">
+    {% if figs.location %}<figure class="fig"><img src="{{ figs.location }}" alt="Map showing where the survey lies"><figcaption>Where the survey is on Earth. If it isn't where it should be, the coordinate system or scalar is wrong.</figcaption></figure>{% endif %}
+    {% if figs.section %}<figure class="fig"><img src="{{ figs.section[0] }}" alt="Seismic section preview"><figcaption>The seismic itself: {{ figs.section[1] }}.</figcaption></figure>{% endif %}
+    {% if figs.plan %}<figure class="fig"><img src="{{ figs.plan }}" alt="Trace positions"><figcaption>Where each trace sits, in map coordinates{% if G.corners %}, with corner line numbers{% endif %}.</figcaption></figure>{% endif %}
+    {% if figs.tracks %}<figure class="fig"><img src="{{ figs.tracks }}" alt="Header values against trace number"><figcaption>Header values along the file. Regular steps and saw-teeth are healthy; spikes and gaps are not.</figcaption></figure>{% endif %}
+  </div>
+</section>
+{% endif %}
+
+{# ------------------------------------------------------------------ fixed file result #}
+{% if fixlog %}
+<section class="section" id="fixed">
+  <div class="h"><h2>Fixed copy</h2>{% if fixlog.verification.passed %}<span class="fixed">All checks passed</span>{% else %}<span class="status unusable">Checks failed</span>{% endif %}</div>
+  <p class="lead mono" style="font-size:13px;overflow-wrap:anywhere">{{ fixlog.output }}</p>
+  <div class="grid2">
+    <div><h3 class="subh">What changed</h3><ul class="notes">{% for a in fixlog.actions %}<li>{{ a }}</li>{% endfor %}{% for w in fixlog.warnings %}<li>{{ w }}</li>{% endfor %}</ul></div>
+    <div><h3 class="subh">How it was checked</h3>{% for c in fixlog.verification.checks %}<div class="check {{ 'ok' if c.ok else 'no' }}">{{ icon("check" if c.ok else "x", "sm") }}<div>{{ c.name }}<div class="faint small">{{ c.detail }}</div></div></div>{% endfor %}</div>
+  </div>
+</section>
+{% endif %}
+
+{% if interactive %}{% include "_actions.html" %}{% endif %}
+
+{# ------------------------------------------------------------------ technical details #}
+<details class="more-box" id="technical">
+  <summary><div><h2>Technical details</h2><div class="faint small">Evidence for every decision, survey corners, code snippets, the file's text header and raw header values.</div></div>{{ icon("chev") }}</summary>
+  <div class="inner">
+    <div>
+      <h3 class="subh">Evidence for each decision</h3>
+      {% for f in r.findings %}
+      <div class="finding">
+        <div class="top"><span class="lbl">{{ f.label }}</span><span class="val">{{ f.display }}</span><span class="conf {{ f.confidence }}">{{ f.confidence }}</span><span class="pill">from {{ f.source }}</span></div>
+        {% if f.evidence %}<ul>{% for e in f.evidence[:6] %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+      </div>
+      {% endfor %}
+      {% if r.notes %}<h3 class="subh" style="margin-top:16px">Notes</h3><ul class="notes">{% for n in r.notes %}<li>{{ n }}</li>{% endfor %}</ul>{% endif %}
+    </div>
+    {% if G.corners %}
+    <div><h3 class="subh">Survey corners (for setting up the survey in your software)</h3>
+      <div class="tablewrap"><table class="tbl"><thead><tr><th>Inline</th><th>Crossline</th><th>X</th><th>Y</th></tr></thead><tbody>
+      {% for c in G.corners %}<tr><td>{{ c.inline }}</td><td>{{ c.crossline }}</td><td>{{ "%.2f" | format(c.x) }}</td><td>{{ "%.2f" | format(c.y) }}</td></tr>{% endfor %}
+      </tbody></table></div></div>
+    {% endif %}
+    {% if load and load.snippets %}
+    <div><h3 class="subh">Code</h3>
+      <div class="tabs noprint">{% for name in load.snippets %}<button class="{{ 'on' if loop.first }}" data-tab="code{{ loop.index }}">{{ name }}</button>{% endfor %}</div>
+      {% for name, code in load.snippets.items() %}<div data-pane="code{{ loop.index }}" class="{{ '' if loop.first else 'hide' }}"><div class="code"><button class="btn btn-sm copy noprint" data-copy>{{ icon("copy", "sm") }}<span> Copy</span></button>{{ code }}</div></div>{% endfor %}
+    </div>
+    {% endif %}
+    {% if r.text and r.text.lines %}
+    <div><h3 class="subh">The file's text header</h3>
+      <p class="faint small" style="margin-bottom:10px">Highlighted lines contained claims that were checked against the data.</p>
+      <div class="texthdr">{% for ln in r.text.lines %}{% set h = r.text.highlights.get(loop.index | string) %}<div{% if h %} class="hl"{% endif %}><span class="n">{{ loop.index }}</span><span>{{ ln }}</span>{% if h %}<span class="why">{{ h | join(", ") }}</span>{% endif %}</div>{% endfor %}</div>
+    </div>
+    {% endif %}
+    {% if r.header_map %}
+    <div><h3 class="subh">What each header field holds</h3>
+      <div class="tablewrap" style="max-height:480px;overflow:auto"><table class="tbl"><thead><tr><th>Bytes</th><th>Type</th><th>Standard meaning</th><th>Found to be</th><th>Range</th><th>Pattern</th></tr></thead><tbody>
+      {% for h in r.header_map %}<tr class="{{ 'role' if h.role and not h.role.startswith('copy') else '' }}"><td class="nw">{{ h.byte }}-{{ h.end }}</td><td>{{ h.type }}</td><td>{{ h.standard }}</td><td><b>{{ h.role }}</b></td><td class="nw">{{ "%g" | format(h.min) }} to {{ "%g" | format(h.max) }}</td><td class="faint">{{ h.pattern }}</td></tr>{% endfor %}
+      </tbody></table></div></div>
+    {% endif %}
+    <div><h3 class="subh">File settings (binary header)</h3>
+      <div class="tablewrap"><table class="tbl"><tbody>
+      {% for b in r.binary_header %}{% if b.value %}<tr><td>{{ b.label }}</td><td class="nw">{{ b.value }}</td></tr>{% endif %}{% endfor %}
+      </tbody></table></div></div>
+  </div>
+</details>
+</div>
+
+<p class="foot">Segwise {{ r.tool_version }} · fingerprint {{ r.fingerprint }} · checked on this computer; no seismic data was sent anywhere.</p>

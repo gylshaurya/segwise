@@ -1,0 +1,334 @@
+{
+  "schema": "segwise.loadsheet/1",
+  "generated_by": "segwise 0.1.0",
+  "generated_at": "2026-11-13T17:04:26+00:00",
+  "source": {
+    "path": "/data/demo_delivery/truncated.sgy",
+    "file_name": "truncated.sgy",
+    "size_bytes": 1251100,
+    "fingerprint": "7ad8f4613a7925f4"
+  },
+  "status": "fixable",
+  "status_reason": "Loads with the right settings; a fixed standard copy can be written.",
+  "summary": "3D post-stack, IL 1000-1029 x XL 2000-2039, 1,199 traces x 200 samples @ 4 ms, EPSG:23031",
+  "layout": {
+    "endian": "big",
+    "text_encoding": "ebcdic",
+    "revision": "1.0",
+    "ns": 200,
+    "dt_us": 4000.0,
+    "n_traces": 1199,
+    "data_offset": 3600,
+    "variable_length": false,
+    "is_su": false,
+    "sample_format": 1,
+    "declared_format": 1
+  },
+  "geometry": {
+    "kind": "3D post-stack",
+    "inline": {
+      "byte": 189,
+      "type": "int32"
+    },
+    "crossline": {
+      "byte": 193,
+      "type": "int32"
+    },
+    "x": {
+      "byte": 181,
+      "type": "int32"
+    },
+    "y": {
+      "byte": 185,
+      "type": "int32"
+    },
+    "scalar_header": -100,
+    "scalar_effective": -100,
+    "swap_xy": false,
+    "coord_type": "projected",
+    "coordinate_units_code": 1,
+    "il_min": 1000,
+    "il_max": 1029,
+    "il_inc": 1,
+    "xl_min": 2000,
+    "xl_max": 2039,
+    "xl_inc": 1,
+    "n_inlines": 30,
+    "n_crosslines": 40,
+    "fill": 0.9992,
+    "inline_spacing": 25.000066680585906,
+    "crossline_spacing": 12.499986292620891,
+    "inline_azimuth": 30.000036051629664,
+    "corners": [
+      {
+        "inline": 1000,
+        "crossline": 2000,
+        "x": 619999.9990120959,
+        "y": 6074000.000619945
+      },
+      {
+        "inline": 1000,
+        "crossline": 2039,
+        "x": 620243.7490104503,
+        "y": 6074422.187387952
+      },
+      {
+        "inline": 1029,
+        "crossline": 2039,
+        "x": 620871.6196539932,
+        "y": 6074059.687375676
+      },
+      {
+        "inline": 1029,
+        "crossline": 2000,
+        "x": 620627.8696556387,
+        "y": 6073637.500607669
+      }
+    ],
+    "centre_lonlat": [
+      4.87196,
+      54.79708
+    ]
+  },
+  "crs": {
+    "coord_type": "projected",
+    "status": "confirmed",
+    "chosen": {
+      "epsg": 23031,
+      "name": "ED50 / UTM zone 31N",
+      "reasons": [
+        "EPSG:23031 is written in the textual header",
+        "ED50 + zone 31N stated in the textual header",
+        "places the survey inside NORTH SEA as the text says"
+      ],
+      "inside_area_of_use": true,
+      "matches_regions": [
+        "NORTH SEA"
+      ],
+      "conflicts_regions": [],
+      "centre_lonlat": [
+        4.87198,
+        54.79709
+      ],
+      "score": 22.0,
+      "from_text": true
+    },
+    "candidates": [
+      {
+        "epsg": 23031,
+        "name": "ED50 / UTM zone 31N",
+        "reasons": [
+          "EPSG:23031 is written in the textual header",
+          "ED50 + zone 31N stated in the textual header",
+          "places the survey inside NORTH SEA as the text says"
+        ],
+        "inside_area_of_use": true,
+        "matches_regions": [
+          "NORTH SEA"
+        ],
+        "conflicts_regions": [],
+        "centre_lonlat": [
+          4.87198,
+          54.79709
+        ],
+        "score": 22.0,
+        "from_text": true
+      }
+    ],
+    "notes": [],
+    "datum_stated": true,
+    "units": null
+  },
+  "decisions": [
+    {
+      "key": "endian",
+      "label": "Byte order",
+      "value": "big",
+      "display": "big-endian",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "The binary header only makes sense read this way."
+      ]
+    },
+    {
+      "key": "ns",
+      "label": "Samples per trace",
+      "value": 200,
+      "display": "200 samples",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Best-fitting trace length (the file has a partial trace at the end)."
+      ]
+    },
+    {
+      "key": "dt",
+      "label": "Sample interval",
+      "value": 4000.0,
+      "display": "4000 \u00b5s (4 ms)",
+      "confidence": "high",
+      "source": "binary header",
+      "evidence": []
+    },
+    {
+      "key": "sample_format",
+      "label": "Sample format",
+      "value": 1,
+      "display": "1 - 4-byte IBM floating point",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "IBM-normalisation test on 40,000 non-zero samples: 0.00% have a zero leading fraction digit (genuine IBM floats: 0%; IEEE floats: typically 5-10%).",
+        "This agrees with the declared format."
+      ]
+    },
+    {
+      "key": "kind",
+      "label": "Data type",
+      "value": "3D post-stack",
+      "display": "3D post-stack",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Bytes 189-192 and 193-196 together give a unique grid position for 100.0% of 1199 sampled traces; the first stays constant for runs of traces while the second steps by 1.",
+        "The inline number is also stored in byte(s) 191; byte 189 was chosen as the conventional location.",
+        "The crossline number is also stored in byte(s) 195; byte 193 was chosen as the conventional location.",
+        "Coordinates in bytes 181 and 185 are an exact linear function of (inline, crossline): residual 0.02% of a bin, a perfect regular grid.",
+        "The textual header (line 4) says inline is in byte 189, confirmed by the data.",
+        "The textual header (line 4) says crossline is in byte 193, confirmed by the data.",
+        "The textual header (line 4) says x is in byte 181, confirmed by the data.",
+        "The textual header (line 4) says y is in byte 185, confirmed by the data."
+      ]
+    },
+    {
+      "key": "inline",
+      "label": "Inline number",
+      "value": {
+        "byte": 189,
+        "type": "int32"
+      },
+      "display": "bytes 189-192 (int32), 1000-1029",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Bytes 189-192 and 193-196 together give a unique grid position for 100.0% of 1199 sampled traces; the first stays constant for runs of traces while the second steps by 1.",
+        "The inline number is also stored in byte(s) 191; byte 189 was chosen as the conventional location.",
+        "Coordinates in bytes 181 and 185 are an exact linear function of (inline, crossline): residual 0.02% of a bin, a perfect regular grid.",
+        "The textual header (line 4) says inline is in byte 189, confirmed by the data."
+      ]
+    },
+    {
+      "key": "crossline",
+      "label": "Crossline number",
+      "value": {
+        "byte": 193,
+        "type": "int32"
+      },
+      "display": "bytes 193-196 (int32), 2000-2039",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Bytes 189-192 and 193-196 together give a unique grid position for 100.0% of 1199 sampled traces; the first stays constant for runs of traces while the second steps by 1.",
+        "The crossline number is also stored in byte(s) 195; byte 193 was chosen as the conventional location.",
+        "Coordinates in bytes 181 and 185 are an exact linear function of (inline, crossline): residual 0.02% of a bin, a perfect regular grid.",
+        "The textual header (line 4) says crossline is in byte 193, confirmed by the data."
+      ]
+    },
+    {
+      "key": "x",
+      "label": "X coordinate (easting)",
+      "value": {
+        "byte": 181,
+        "type": "int32"
+      },
+      "display": "bytes 181-184 (int32)",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Coordinates in bytes 181 and 185 are an exact linear function of (inline, crossline): residual 0.02% of a bin, a perfect regular grid.",
+        "Across all traces, positions deviate from a perfect grid by 0.00404 units RMS; 0 traces are more than half a bin off."
+      ]
+    },
+    {
+      "key": "y",
+      "label": "Y coordinate (northing)",
+      "value": {
+        "byte": 185,
+        "type": "int32"
+      },
+      "display": "bytes 185-188 (int32)",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Coordinates in bytes 181 and 185 are an exact linear function of (inline, crossline): residual 0.02% of a bin, a perfect regular grid.",
+        "Across all traces, positions deviate from a perfect grid by 0.00404 units RMS; 0 traces are more than half a bin off."
+      ]
+    },
+    {
+      "key": "scalar",
+      "label": "Coordinate scalar",
+      "value": -100,
+      "display": "-100 (divide by 100)",
+      "confidence": "high",
+      "source": "binary header",
+      "evidence": [
+        "With scalar -100 the bin/trace spacing is 25.000 m, a standard survey size."
+      ]
+    },
+    {
+      "key": "crs",
+      "label": "Coordinate reference system",
+      "value": 23031,
+      "display": "EPSG:23031 - ED50 / UTM zone 31N",
+      "confidence": "high",
+      "source": "text header + data",
+      "evidence": [
+        "EPSG:23031 is written in the textual header",
+        "ED50 + zone 31N stated in the textual header",
+        "places the survey inside NORTH SEA as the text says"
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "code": "TRUNCATED",
+      "severity": "error",
+      "title": "File ends with a partial trace",
+      "detail": "After 1199 complete traces there are 540 bytes left over (a complete trace is 1040 bytes). The file was probably truncated during copying or tape transcription.",
+      "fix": "The incomplete last trace is dropped from the fixed file. Check the delivery for a missing piece.",
+      "explain": "The file is cut off part-way through its last trace, like a document missing its last page.",
+      "auto_fixed": true
+    }
+  ],
+  "load_original_file": {
+    "Inline number": "189-192",
+    "Crossline number": "193-196",
+    "X coordinate (easting)": "181-184",
+    "Y coordinate (northing)": "185-188",
+    "Coordinate scalar": "bytes 71-72 (apply from header; value -100)",
+    "Sample format": "1",
+    "Byte order": "big",
+    "Samples / interval": "200 @ 4 ms",
+    "Coordinate system": "EPSG:23031 ED50 / UTM zone 31N (confirmed)"
+  },
+  "overrides": {
+    "inline": {
+      "byte": 189,
+      "type": "int32"
+    },
+    "crossline": {
+      "byte": 193,
+      "type": "int32"
+    },
+    "x": {
+      "byte": 181,
+      "type": "int32"
+    },
+    "y": {
+      "byte": 185,
+      "type": "int32"
+    },
+    "epsg": 23031
+  }
+}

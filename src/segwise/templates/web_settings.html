@@ -1,0 +1,21 @@
+{% extends "web_base.html" %}
+{% block pagecls %} narrow{% endblock %}
+{% block main %}
+<h1>Settings</h1>
+<div class="stack" style="margin-top:28px">
+  <section class="section">
+    <h2>Appearance</h2>
+    <div class="tabs" style="margin:12px 0 0">{% for t in ["auto", "light", "dark"] %}<button data-theme-set="{{ t }}" class="{{ 'on' if (settings.theme or 'auto') == t }}">{{ {"auto": "Match my computer", "light": "Light", "dark": "Dark"}[t] }}</button>{% endfor %}</div>
+  </section>
+  <section class="section">
+    <h2>Where to save fixed files</h2>
+    <p class="lead">Used when the original's folder can't be written to (common on shared drives).</p>
+    <div class="row" style="flex-wrap:nowrap"><input class="input" id="out" value="{{ settings.out_dir }}" aria-label="Default output folder"><button class="btn btn-primary" id="save">Save</button></div>
+  </section>
+</div>
+<p class="foot">Segwise {{ version }} · settings are stored in ~/.segwise on this computer</p>
+{% endblock %}
+{% block scripts %}<script>
+document.querySelectorAll("[data-theme-set]").forEach(function (b) { b.onclick = function () { SS.post("/api/settings", {theme: b.dataset.themeSet}).then(function () { location.reload(); }); }; });
+document.getElementById("save").onclick = function () { SS.post("/api/settings", {out_dir: document.getElementById("out").value}).then(function () { SS.toast("Saved"); }); };
+</script>{% endblock %}

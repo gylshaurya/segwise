@@ -1,0 +1,94 @@
+{% extends "web_base.html" %}
+{% block main %}
+<div class="start">
+  <h1>Check seismic files</h1>
+  <p class="lead">Choose one SEG-Y file, or a folder to check a whole delivery at once. Segwise works out how to load each file and can write fixed copies.</p>
+  <div class="pickers">
+    <button class="pick" type="button" data-pick="file">{{ icon("file") }}<span><b>Choose a file</b><small>One SEG-Y file</small></span></button>
+    <button class="pick" type="button" data-pick="folder">{{ icon("folder") }}<span><b>Choose a folder</b><small>Every SEG-Y file inside it</small></span></button>
+  </div>
+  <div id="pickwait" class="hint hide" role="status">A file window has opened. If you can't see it, it may be behind this browser window.</div>
+  <form id="scanform" autocomplete="off">
+    <div class="pathbox">
+      <input class="input" id="path" placeholder="Or paste a file or folder path" aria-label="File or folder path">
+      <button class="btn btn-primary" type="submit">Check</button>
+    </div>
+    <div class="hint">Files are read where they are. Nothing is uploaded or changed.</div>
+    <div id="browser" class="browser hide"></div>
+    <details class="advanced">
+      <summary>I already know some settings (optional)</summary>
+      <div class="form" style="margin-top:14px;max-width:640px">
+        <label class="field">Coordinate system (EPSG code)<input class="input" name="epsg" placeholder="e.g. 23031"></label>
+        <label class="field">Coordinate scalar<input class="input" name="scalar" placeholder="e.g. -100"></label>
+        <label class="field">Inline byte<input class="input" name="inline" placeholder="e.g. 9"></label>
+        <label class="field">Crossline byte<input class="input" name="crossline" placeholder="e.g. 21"></label>
+      </div>
+    </details>
+    <div id="jobbox" class="hide" style="margin-top:18px;max-width:560px"><div class="progress"><i></i></div><div class="small" data-stage style="margin-top:6px">Starting…</div></div>
+  </form>
+</div>
+
+<div class="steps">
+  <div class="step"><span class="n">1</span><h3>Check</h3><p>Segwise reads the file and works out where everything is, with proof.</p></div>
+  <div class="step"><span class="n">2</span><h3>Decide</h3><p>If something can't be known from the file (usually the coordinate system), you pick it once.</p></div>
+  <div class="step"><span class="n">3</span><h3>Load or fix</h3><p>Use the settings shown, or write a fixed copy that loads with default settings anywhere.</p></div>
+</div>
+
+<section>
+  <div class="h" style="margin-bottom:14px"><h2>Recent checks</h2>
+    {% if history %}<div class="row"><div class="search" style="width:260px">{{ icon("search") }}<input class="input" placeholder="Search recent checks" data-search="tr[data-row]" aria-label="Search recent checks"></div><button class="btn btn-sm btn-ghost" id="clear">Clear list</button></div>{% endif %}</div>
+  {% if history %}
+  <div class="tablewrap"><table class="tbl"><thead><tr><th>File or folder</th><th>Result</th><th>What was found</th><th class="nw">Checked</th></tr></thead><tbody>
+    {% for h in history %}{% if h.kind == "folder" %}
+    <tr data-row><td><a class="name withicon" href="/inventory/{{ h.id }}">{{ icon("folder", "sm") }}{{ h.file_name }}</a><div class="cell-sub mono">{{ h.path }}</div></td><td>{{ status(h.status) }}</td>
+      <td class="muted">{{ h.n }} file{{ "s" if h.n != 1 }}<div class="cell-sub">{% set sep = joiner(", ") %}{% for s, label in [("ready", "ready"), ("fixable", "fixable"), ("needs_review", "need a decision"), ("unusable", "can't load")] %}{% if h.counts.get(s) %}{{ sep() }}{{ h.counts[s] }} {{ label }}{% endif %}{% endfor %}</div></td><td class="nw faint">{{ ago(h.at) }}</td></tr>
+    {% else %}
+    <tr data-row><td><a class="name withicon" href="/file/{{ h.id }}">{{ icon("file", "sm") }}{{ h.file_name }}</a></td><td>{{ status(h.status) }}</td><td class="muted">{{ h.reason }}<div class="cell-sub">{{ h.summary }}</div></td><td class="nw faint">{{ ago(h.at) }}</td></tr>
+    {% endif %}{% endfor %}
+  </tbody></table></div>
+  {% else %}<div class="empty tablewrap">Files and folders you check will appear here.</div>{% endif %}
+</section>
+{% endblock %}
+{% block scripts %}
+<script>
+(function () {
+  var f = document.getElementById("scanform"), path = document.getElementById("path");
+  var cl = document.getElementById("clear"); if (cl) cl.onclick = function () { SS.post("/api/history/clear").then(function () { location.reload(); }); };
+  function esc(s) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
+  function browse(p) {
+    fetch("/api/browse?path=" + encodeURIComponent(p || "")).then(function (r) { return r.json(); }).then(function (d) {
+      var b = document.getElementById("browser"); b.classList.remove("hide");
+      var h = '<div class="cur">' + esc(d.path) + '</div><a href="#" data-p="' + encodeURIComponent(d.parent) + '" data-dir="true"><svg class="icon sm"><use href="#i-back"/></svg> Up one folder</a>';
+      if (!d.entries.length) h += '<div class="empty">No folders or SEG-Y files here.</div>';
+      d.entries.forEach(function (e) { h += '<a href="#" data-p="' + encodeURIComponent(e.path) + '" data-dir="' + e.dir + '"><svg class="icon sm"><use href="#i-' + (e.dir ? "folder" : "file") + '"/></svg>' + esc(e.name) + (e.size ? '<span class="size">' + (e.size / 1e6).toFixed(1) + ' MB</span>' : '') + '</a>'; });
+      b.innerHTML = h;
+      b.querySelectorAll("[data-p]").forEach(function (a) { a.onclick = function (ev) { ev.preventDefault(); var p = decodeURIComponent(a.dataset.p); path.value = p; if (a.dataset.dir === "true") browse(p); else b.classList.add("hide"); }; });
+    });
+  }
+  function check() { f.requestSubmit ? f.requestSubmit() : f.dispatchEvent(new Event("submit", {cancelable: true})); }
+  document.querySelectorAll("[data-pick]").forEach(function (btn) {
+    btn.onclick = function () {
+      var kind = btn.dataset.pick;
+      var wait = document.getElementById("pickwait");
+      btn.disabled = true; wait.classList.remove("hide");
+      SS.post("/api/pick", {kind: kind, start: path.value}).then(function (r) {
+        btn.disabled = false; wait.classList.add("hide");
+        if (r.path) { path.value = r.path; check(); }
+      }).catch(function (err) { btn.disabled = false; wait.classList.add("hide"); SS.toast(err.message); browse(path.value); });
+    };
+  });
+  f.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!path.value.trim()) { SS.toast("Choose a file or folder first, or paste a path."); path.focus(); return; }
+    var ov = {}, fd = new FormData(f), q = function (n) { var el = f.querySelector('[name="' + n + '"]'); return el ? el.value.trim() : ""; };
+    if (q("epsg")) ov.epsg = parseInt(q("epsg").replace(/\D/g, ""), 10);
+    if (q("scalar")) ov.scalar = parseInt(q("scalar"), 10);
+    if (q("inline")) ov.inline = {byte: parseInt(q("inline"), 10), type: "int32"};
+    if (q("crossline")) ov.crossline = {byte: parseInt(q("crossline"), 10), type: "int32"};
+    SS.post("/api/scan", {path: path.value, overrides: ov}).then(function (j) {
+      var jb = document.getElementById("jobbox"); jb.classList.remove("hide"); SS.watch(j.job, jb);
+    }).catch(function (err) { SS.toast(err.message); });
+  });
+})();
+</script>
+{% endblock %}

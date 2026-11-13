@@ -1,0 +1,221 @@
+{
+  "schema": "segwise.loadsheet/1",
+  "generated_by": "segwise 0.1.0",
+  "generated_at": "2026-11-13T17:04:25+00:00",
+  "source": {
+    "path": "/data/demo_delivery/shot_gathers.sgy",
+    "file_name": "shot_gathers.sgy",
+    "size_bytes": 502800,
+    "fingerprint": "020cf614c308911e"
+  },
+  "status": "needs_review",
+  "status_reason": "Coordinate system unknown",
+  "summary": "shot gathers, ensembles 1-10, 480 traces x 200 samples @ 4 ms",
+  "layout": {
+    "endian": "big",
+    "text_encoding": "ebcdic",
+    "revision": "1.0",
+    "ns": 200,
+    "dt_us": 4000.0,
+    "n_traces": 480,
+    "data_offset": 3600,
+    "variable_length": false,
+    "is_su": false,
+    "sample_format": 1,
+    "declared_format": 1
+  },
+  "geometry": {
+    "kind": "shot gathers",
+    "ensemble": {
+      "byte": 9,
+      "type": "int32"
+    },
+    "offset": {
+      "byte": 37,
+      "type": "int32"
+    },
+    "x": {
+      "byte": 73,
+      "type": "int32"
+    },
+    "y": {
+      "byte": 77,
+      "type": "int32"
+    },
+    "scalar_header": -100,
+    "scalar_effective": -100,
+    "swap_xy": false,
+    "coord_type": "projected",
+    "coordinate_units_code": 1,
+    "key_min": 1,
+    "key_max": 10,
+    "fold": 48.0,
+    "trace_spacing": 12.504055342232528,
+    "line_length": 5987.502626259447
+  },
+  "crs": {
+    "coord_type": "projected",
+    "status": "unknown",
+    "chosen": null,
+    "candidates": [],
+    "notes": [
+      "The textual header gives no usable CRS information. The coordinates look like a projected grid (metres or feet), but the projection, zone and datum must be supplied by the user."
+    ],
+    "datum_stated": false,
+    "units": null
+  },
+  "decisions": [
+    {
+      "key": "endian",
+      "label": "Byte order",
+      "value": "big",
+      "display": "big-endian",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "The binary header only makes sense read this way."
+      ]
+    },
+    {
+      "key": "ns",
+      "label": "Samples per trace",
+      "value": 200,
+      "display": "200 samples",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "File size divides exactly into traces of this length."
+      ]
+    },
+    {
+      "key": "dt",
+      "label": "Sample interval",
+      "value": 4000.0,
+      "display": "4000 \u00b5s (4 ms)",
+      "confidence": "high",
+      "source": "binary header",
+      "evidence": []
+    },
+    {
+      "key": "sample_format",
+      "label": "Sample format",
+      "value": 1,
+      "display": "1 - 4-byte IBM floating point",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "IBM-normalisation test on 40,000 non-zero samples: 0.00% have a zero leading fraction digit (genuine IBM floats: 0%; IEEE floats: typically 5-10%).",
+        "This agrees with the declared format."
+      ]
+    },
+    {
+      "key": "kind",
+      "label": "Data type",
+      "value": "shot gathers",
+      "display": "shot gathers",
+      "confidence": "medium",
+      "source": "data",
+      "evidence": [
+        "Byte 9 (FieldRecord) stays constant for runs of about 53.2 traces while byte 13 cycles within each run: the file is organised as ensembles (gathers) of ~53 traces.",
+        "The ensemble number is also stored in byte(s) 11.",
+        "Source coordinates vary in bytes 73/77."
+      ]
+    },
+    {
+      "key": "ensemble",
+      "label": "Ensemble (gather) key",
+      "value": {
+        "byte": 9,
+        "type": "int32"
+      },
+      "display": "bytes 9-12 (int32)",
+      "confidence": "medium",
+      "source": "data",
+      "evidence": [
+        "Byte 9 (FieldRecord) stays constant for runs of about 53.2 traces while byte 13 cycles within each run: the file is organised as ensembles (gathers) of ~53 traces.",
+        "The ensemble number is also stored in byte(s) 11.",
+        "Source coordinates vary in bytes 73/77."
+      ]
+    },
+    {
+      "key": "x",
+      "label": "X coordinate (easting)",
+      "value": {
+        "byte": 73,
+        "type": "int32"
+      },
+      "display": "bytes 73-76 (int32)",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Source coordinates vary in bytes 73/77."
+      ]
+    },
+    {
+      "key": "y",
+      "label": "Y coordinate (northing)",
+      "value": {
+        "byte": 77,
+        "type": "int32"
+      },
+      "display": "bytes 77-80 (int32)",
+      "confidence": "high",
+      "source": "data",
+      "evidence": [
+        "Source coordinates vary in bytes 73/77."
+      ]
+    },
+    {
+      "key": "scalar",
+      "label": "Coordinate scalar",
+      "value": -100,
+      "display": "-100 (divide by 100)",
+      "confidence": "high",
+      "source": "binary header",
+      "evidence": [
+        "With scalar -100 the bin/trace spacing is 12.504 m, a standard survey size."
+      ]
+    },
+    {
+      "key": "crs",
+      "label": "Coordinate reference system",
+      "value": null,
+      "display": "not determined",
+      "confidence": "none",
+      "source": "data",
+      "evidence": [
+        "The textual header gives no usable CRS information. The coordinates look like a projected grid (metres or feet), but the projection, zone and datum must be supplied by the user."
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "code": "CRS_UNKNOWN",
+      "severity": "warning",
+      "title": "Coordinate system unknown",
+      "detail": "The file gives no usable CRS clue. The textual header gives no usable CRS information. The coordinates look like a projected grid (metres or feet), but the projection, zone and datum must be supplied by the user.",
+      "fix": "Supply it with --crs EPSG:xxxx. Without it the survey can't be placed on a map with confidence.",
+      "explain": "The coordinates are numbers on some map grid, but nothing says which grid.",
+      "auto_fixed": false
+    }
+  ],
+  "load_original_file": {
+    "CDP / ensemble number": "9-12",
+    "X coordinate (easting)": "73-76",
+    "Y coordinate (northing)": "77-80",
+    "Coordinate scalar": "bytes 71-72 (apply from header; value -100)",
+    "Sample format": "1",
+    "Byte order": "big",
+    "Samples / interval": "200 @ 4 ms"
+  },
+  "overrides": {
+    "x": {
+      "byte": 73,
+      "type": "int32"
+    },
+    "y": {
+      "byte": 77,
+      "type": "int32"
+    }
+  }
+}

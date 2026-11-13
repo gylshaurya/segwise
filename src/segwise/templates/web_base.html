@@ -1,0 +1,37 @@
+{% from "_macros.html" import sprite, icon, logo, status, sev %}<!doctype html>
+<html lang="en"{% if theme in ("light", "dark") %} data-theme="{{ theme }}"{% endif %}><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}Segwise{% endblock %}</title><style>{{ css | safe }}</style>
+<script>
+window.SS = {
+  post: function (url, body) {
+    return fetch(url, {method: "POST", headers: {"Content-Type": "application/json", "X-Segwise": "1"}, body: JSON.stringify(body || {})})
+      .then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error(j.detail || r.statusText); return j; }); });
+  },
+  toast: function (msg) { var t = document.createElement("div"); t.className = "toast"; t.setAttribute("role", "status"); t.textContent = msg; document.body.appendChild(t); setTimeout(function () { t.remove(); }, 4200); },
+  watch: function (job, el) {
+    var bar = el && el.querySelector(".progress > i"), lab = el && el.querySelector("[data-stage]");
+    (function poll() {
+      fetch("/api/jobs/" + job).then(function (r) { return r.json(); }).then(function (j) {
+        if (bar) bar.style.width = Math.round(j.progress * 100) + "%";
+        if (lab) lab.textContent = j.stage;
+        if (j.done) { if (j.error) { if (lab) lab.textContent = j.error; SS.toast(j.error); } else if (j.result && j.result.redirect) location.href = j.result.redirect; }
+        else setTimeout(poll, 400);
+      });
+    })();
+  }
+};
+</script></head>
+<body>{{ sprite() }}
+<header class="topbar"><div class="in">
+  <a class="brand" href="/">{{ logo() }}Segwise</a>
+  <nav class="nav" aria-label="Main">
+    <a href="/" class="{{ 'on' if path == '/' or path.startswith('/file') or path.startswith('/inventory') }}">Check</a>
+    <a href="/loadsheets" class="{{ 'on' if path.startswith('/loadsheets') }}">Load sheets</a>
+    <a href="/settings" class="{{ 'on' if path.startswith('/settings') }}">Settings</a>
+  </nav>
+  <div class="right"><span class="local" title="Files are read in place. No seismic data leaves this computer."><span class="dot"></span>Working locally</span></div>
+</div></header>
+<main class="page{% block pagecls %}{% endblock %}">{% block main %}{% endblock %}</main>
+<script>{{ js | safe }}</script>
+{% block scripts %}{% endblock %}
+</body></html>

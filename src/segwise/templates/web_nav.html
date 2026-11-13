@@ -1,0 +1,16 @@
+{% extends "web_base.html" %}
+{% block pagecls %} narrow{% endblock %}
+{% block main %}
+<h1>Add positions from a navigation file</h1>
+<p class="lead" style="margin-top:8px">Older seismic lines often keep their positions in a separate navigation file. Segwise matches it to the traces by shot or CDP number and writes a file with coordinates.</p>
+<div class="stack" style="margin-top:28px">
+  <div class="steps" style="margin:0">
+    <div class="step"><span class="n">1</span><h3>Check the line</h3><p>On <a href="/">Check files</a>, check the SEG-Y line.</p></div>
+    <div class="step"><span class="n">2</span><h3>Open “Write a fixed copy”</h3><p>Choose “Add positions from a navigation file”.</p></div>
+    <div class="step"><span class="n">3</span><h3>Point to the nav file</h3><p>UKOOA P1/90, CSV or a text table all work.</p></div>
+  </div>
+  {% if files %}<section><h2 style="margin-bottom:14px">Recently checked</h2><div class="tablewrap"><table class="tbl"><tbody>
+  {% for rid, rep in files | reverse %}<tr><td><a class="name" href="/file/{{ rid }}#fix">{{ rep.file_name }}</a></td><td>{{ status(rep.status) }}</td><td class="faint">{{ "no positions" if not rep.geometry.get("x") else "has positions" }}</td></tr>{% endfor %}
+  </tbody></table></div></section>{% endif %}
+</div>
+{% endblock %}

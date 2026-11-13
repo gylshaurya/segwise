@@ -1,0 +1,50 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "file": "f3.sgy",
+        "status": "fixable",
+        "kind": "3D post-stack",
+        "summary": "3D post-stack, IL 111-133 x XL 875-892, 414 traces x 75 samples @ 4 ms, EPSG:23031",
+        "fingerprint": "9ca96bfe233cc8f3",
+        "epsg": 23031,
+        "crs_status": "confirmed",
+        "il_min": 111,
+        "il_max": 133,
+        "xl_min": 875,
+        "xl_max": 892,
+        "n_traces": 414
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.868348647426465,
+              54.79896244347574
+            ],
+            [
+              4.874958324160078,
+              54.79896713849947
+            ],
+            [
+              4.874948251499295,
+              54.803908831471084
+            ],
+            [
+              4.8683377680232045,
+              54.803904142079205
+            ],
+            [
+              4.868348647426465,
+              54.79896244347574
+            ]
+          ]
+        ]
+      }
+    }
+  ],
+  "note": "Coordinates are WGS 84 longitude/latitude, converted from the file's CRS"
+}

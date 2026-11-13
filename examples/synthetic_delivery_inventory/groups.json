@@ -1,0 +1,57 @@
+{
+  "94d3f67840": [
+    "ascii_text.sgy",
+    "bin_ns_wrong.sgy",
+    "crossline_sorted.sgy",
+    "ibm_declared_ieee.sgy",
+    "il_step_2.sgy",
+    "irregular_outline.sgy",
+    "no_text.sgy",
+    "standard.sgy",
+    "swapped_xy.sgy",
+    "trace_ns_stale.sgy",
+    "truncated.sgy",
+    "wrong_scalar.sgy",
+    "zero_coords.sgy"
+  ],
+  "77845d7947": [
+    "big_survey_geometry.sgy"
+  ],
+  "8ca961ade0": [
+    "feet_gom.sgy"
+  ],
+  "083002f792": [
+    "float_coords.sgy"
+  ],
+  "8683ac5423": [
+    "ieee.sgy",
+    "ieee_declared_ibm.sgy"
+  ],
+  "61e6737cc1": [
+    "int16_keys.sgy"
+  ],
+  "3e611d2d15": [
+    "int16_samples.sgy"
+  ],
+  "7c691a938f": [
+    "legacy_9_21_73_77.sgy"
+  ],
+  "18f5412cb4": [
+    "line_2d.sgy"
+  ],
+  "6fe647392c": [
+    "little_endian.sgy"
+  ],
+  "04873d5233": [
+    "lying_text.sgy"
+  ],
+  "4eaf1b37a8": [
+    "nonstandard_221_225.sgy"
+  ],
+  "4217be7468": [
+    "shot_gathers.sgy"
+  ],
+  "b1b6ff3c72": [
+    "wide_survey.sgy"
+  ]
+}
